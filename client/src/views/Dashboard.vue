@@ -5,7 +5,7 @@
     <p><router-link :to="{ name: 'PaymentSetup'}">Payment Setup</router-link></p>
     <br>
     <b>Plej.link:</b>
-    <input type="text" name="link" :value= "'http://localhost:8080/donate/' + user.linkToken" disabled v-autowidth="{maxWidth: '960px', minWidth: '20px', comfortZone: 0}">
+    <input type="text" name="link" :value= "'http://localhost:8080/donate/' + this.user.links[0].linkToken" disabled v-autowidth="{maxWidth: '960px', minWidth: '20px', comfortZone: 0}">
     <button v-on:click="generateLinkToken">Generate New Link</button>
   </div>
 </template>
@@ -20,7 +20,14 @@ export default {
     return {
       user: {
         name: '',
-        linkToken: ''
+        email: '',
+        alias: '',
+        links: [
+          {
+            link_token: '',
+            link_content: ''
+          }
+        ]
       }
     }
   },
@@ -31,18 +38,20 @@ export default {
         .then((response) => {
           self.$set(this, 'user', response.data.user)
         })
-        .catch((errors) => {
-          console.log(errors)
+        .catch((err) => {
+          console.log(err)
           router.push('/')
         })
     },
     generateLinkToken: function () {
+      let self = this
       axios.get('/api/generatelinktoken')
         .then((response) => {
-          this.user.linkToken = response.data.linkToken
+          console.log(response.data.linkToken)
+          self.user.links[0].linkToken = response.data.linkToken
         })
-        .catch((errors) => {
-          console.log(errors)
+        .catch((err) => {
+          console.log(err)
           router.push('/')
         })
     }

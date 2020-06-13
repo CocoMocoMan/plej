@@ -37,7 +37,7 @@ export default {
         }
         axios.post('/api/login', data)
           .then((response) => {
-            console.log(response.success)
+            console.log(response.data.success)
             router.push('/dashboard')
           })
           .catch((err) => {
