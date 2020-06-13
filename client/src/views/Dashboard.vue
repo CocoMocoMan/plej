@@ -15,7 +15,7 @@ import axios from 'axios'
 import router from '../router'
 import InternalLayout from '../layouts/Internal'
 export default {
-  name: 'Login',
+  name: 'Dashboard',
   data () {
     return {
       user: {
@@ -29,7 +29,6 @@ export default {
       let self = this
       axios.get('/api/user')
         .then((response) => {
-          console.log(response)
           self.$set(this, 'user', response.data.user)
         })
         .catch((errors) => {
@@ -40,7 +39,6 @@ export default {
     generateLinkToken: function () {
       axios.get('/api/generatelinktoken')
         .then((response) => {
-          console.log(response)
           this.user.linkToken = response.data.linkToken
         })
         .catch((errors) => {

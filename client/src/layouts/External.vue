@@ -1,6 +1,10 @@
 <template>
   <div id="external">
     <img src="../assets/logo.png">
+    <div>
+      <router-link :to="{ name: 'Login'}">Log In</router-link>
+      <router-link :to="{ name: 'Register'}">Register</router-link>
+    </div>
     <slot/>
   </div>
 </template>
