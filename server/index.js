@@ -1,188 +1,202 @@
-const express = require('express')
- 
-// creating an express instance
-const app = express()
-const cookieSession = require('cookie-session')
-const bodyParser = require('body-parser')
-const passport = require('passport')
+// const express = require('express')
+// const cookieSession = require('cookie-session')
+// const bodyParser = require('body-parser')
+// const passport = require('passport')
+// const mysql = require('mysql')
 
-// getting the local authentication type
-const LocalStrategy = require('passport-local').Strategy
-
-app.use(bodyParser.json())
-
-app.use(cookieSession({
-  name: 'mysession',
-  keys: ['vueauthrandomkey'],
-  maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))
-
-app.use(passport.initialize())
-app.use(passport.session())
+// const app = express()
+// const port = 3000
+// const con = mysql.createConnection({
+//   host: process.env.DATABASE_HOST || '127.0.0.1',
+//   user: "root",
+//   password: "password",
+//   database: "plejdb",
+//     port: 3306
+// })
+// const LocalStrategy = require('passport-local').Strategy // getting the local authentication type
 
 
-const authMiddleware = (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    res.status(401).send('You are not authenticated')
-  } else {
-    return next()
-  }
-}
+// app.use(bodyParser.json())
 
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
+// app.use(cookieSession({
+//   name: 'mysession',
+//   keys: ['vueauthrandomkey'],
+//   maxAge: 24 * 60 * 60 * 1000 // 24 hours
+// }))
 
-passport.deserializeUser((id, done) => {
-  let user = users.find((user) => {
-    return user.id === id
-  })
+// app.use(passport.initialize())
+// app.use(passport.session())
 
-  done(null, user)
-})
 
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password'
-    },
 
-    (username, password, done) => {
-      let user = users.find((user) => {
-        return user.email === username && user.password === password
-      })
+// passport.serializeUser((user, done) => {
+//   done(null, user.id)
+// })
 
-      if (user) {
-        done(null, user)
-      } else {
-        done(null, false, { message: 'Incorrect username or password'})
-      }
-    }
-  )
-)
+// passport.deserializeUser((id, done) => {
+//   const query = `SELECT * FROM User WHERE User.UserID = ${ id } AND User.Active = true`;
+//   con.query(query, (err, results) => {
+//     let user = results[0]
+//     done(null, user)
+//   })
+// })
 
-//temp db
-let users = [
-  {
-    id: 1,
-    name: 'Jude',
-    email: 'user@email.com',
-    password: 'password'
-  },
-  {
-    id: 2,
-    name: 'Emma',
-    email: 'emma@email.com',
-    password: 'password2'
-  }
-]
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: 'email',
+//       passwordField: 'password'
+//     },
 
-app.post('/api/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
+//     (username, password, done) => {
+//       const query = `SELECT * FROM User WHERE User.Username = ${ username } AND User.Password = ${ password } AND User.Active = true`;
+//       con.query(query, (err, results) => {
+//         if(err) {
+//           done(null, false, { message: err.message})
+//         } else if (results.length == 0) {
+//           done(null, false, { message: 'Incorrect username or password'})
+//         } else {
+//           let user = results[0]
+//           done(null, user)
+//         }
+//       });
+//     }
+//   )
+// )
 
-    if (!user) {
-      return res.status(400).send([user, 'Cannot log in', info]);
-    }
+// //temp db
+// let users = [
+//   {
+//     id: 1,
+//     name: 'Jude',
+//     email: 'user@email.com',
+//     password: 'password'
+//   },
+//   {
+//     id: 2,
+//     name: 'Emma',
+//     email: 'emma@email.com',
+//     password: 'password2'
+//   }
+// ]
 
-    req.login(user, err => {
-      res.send('Logged in');
-    });
-  })(req, res, next);
-})
+// app.post('/api/login', (req, res, next) => {
+//   passport.authenticate('local', (err, user, info) => {
+//     if (err) {
+//       return next(err);
+//     }
 
-app.get('/api/logout', function(req, res) {
-  req.logout();
+//     if (!user) {
+//       return res.status(400).send([user, 'Cannot log in', info]);
+//     }
 
-  console.log('logged out')
+//     req.login(user, err => {
+//       res.send('Logged in');
+//     });
+//   })(req, res, next);
+// })
 
-  return res.send();
-});
+// app.get('/api/logout', function(req, res) {
+//   req.logout();
 
-app.get('/api/user', authMiddleware, (req, res) => {
-  let user = users.find(user => {
-    return user.id === req.session.passport.user
-  })
+//   console.log('logged out')
 
-  console.log([user, req.session])
+//   return res.send();
+// });
 
-  res.send({ user: user })
-})
+// app.get('/api/user', authMiddleware, (req, res) => {
+//   if (!req.user) {
+//     let err = 'User Not Found'
+//     console.log(err)
+//     res.status(400).send(['Error', err])
+//   }
+  
+//   console.log([user, req.session])
+//   res.status(200).send({ user: req.user })
+// })
 
-app.get('/api/generatelinktoken', authMiddleware, (req, res) => {
-  let userIndex = users.findIndex(user => {
-    return user.id === req.session.passport.user
-  })
+// app.get('/api/generatelinktoken', authMiddleware, (req, res) => {
+//   if (!req.user) {
+//     let err = 'User Not Found'
+//     console.log(err)
+//     res.status(400).send(['Error', err])
+//   }
 
-  let linkToken = randomToken()
+//   const linkToken = randomToken()
 
-  users[userIndex].linkToken = linkToken
-
-  console.log(linkToken)
-
-  res.send({ linkToken: linkToken })
-})
-
-app.get('/api/creator/:token', (req, res) => {
-  let token = req.params.token;
-
-  let creator = users.find(user => {
-    return user.linkToken === token
-  })
-
-  if (!creator) {
-    return res.status(400).send([creator, 'No user found for token']);
-  }
-
-  console.log(creator)
-
-  res.send({ creator: creator })
-})
-
-app.post('/api/charge', async (req, res) => {
-  const stripe = require('stripe')('sk_test_51GqsuDEBGViFyBImr9whAxh3oeFgJ7mqqW9O2O48K5QuOiKi0RGYgUjeRNe6I7uIA28Mz2oyqDR5uUCbqiNMQnU700VPYkm0WM')
-  console.log(req.body)
-  const token = req.body.stripeToken
-  console.log(token)
-
-  const charge = await stripe.charges.create({
-    amount: 999,
-    currency: 'usd',
-    description: 'Example charge',
-    source: token,
-  })
-
-  if (charge.object === "charge") {
-    console.log(charge)
-    res.send({ charge: charge })
-  } else {
-    console.log('error')
-    res.send('Error')
-  }
+//   const link = {
     
-})
+//   }
 
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000')
-})
 
-function randomToken() {
-  let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let length = randomInt(8, 4);
-  return randomString(length, chars);
-}
 
-function randomString(length, chars) {
-  var result = ''
-  for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
-  return result
-}
+//   const query = 'INSERT INTO Link '
 
-function randomInt(min, range) {
-  return Math.floor(Math.random() * range + min)
-}
+
+//   console.log(linkToken)
+
+//   res.send({ linkToken: linkToken })
+// })
+
+// app.get('/api/creator/:token', (req, res) => {
+//   let token = req.params.token;
+
+//   let creator = users.find(user => {
+//     return user.linkToken === token
+//   })
+
+//   if (!creator) {
+//     return res.status(400).send([creator, 'No user found for token']);
+//   }
+
+//   console.log(creator)
+
+//   res.send({ creator: creator })
+// })
+
+// app.post('/api/charge', async (req, res) => {
+//   const stripe = require('stripe')('sk_test_51GqsuDEBGViFyBImr9whAxh3oeFgJ7mqqW9O2O48K5QuOiKi0RGYgUjeRNe6I7uIA28Mz2oyqDR5uUCbqiNMQnU700VPYkm0WM')
+//   console.log(req.body)
+//   const token = req.body.stripeToken
+//   console.log(token)
+
+//   const charge = await stripe.charges.create({
+//     amount: 999,
+//     currency: 'usd',
+//     description: 'Example charge',
+//     source: token,
+//   })
+
+//   if (charge.object === "charge") {
+//     console.log(charge)
+//     res.send({ charge: charge })
+//   } else {
+//     console.log('error')
+//     res.send('Error')
+//   }
+    
+// })
+
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+//   app.listen(port, () => console.log(`Listening on port ${port}`));
+// });
+
+// function randomToken() {
+//   let chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//   let length = randomInt(8, 4);
+//   return randomString(length, chars);
+// }
+
+// function randomString(length, chars) {
+//   var result = ''
+//   for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
+//   return result
+// }
+
+// function randomInt(min, range) {
+//   return Math.floor(Math.random() * range + min)
+// }
 
 
