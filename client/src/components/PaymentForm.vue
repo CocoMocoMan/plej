@@ -27,27 +27,27 @@ export default {
       spk: stripeKey,
       options: stripeOptions,
       cardStyle: {
-        iconStyle: 'solid',
-        style: {
-          base: {
-            iconColor: '#c4f0ff',
-            color: '#fff',
-            fontWeight: 500,
-            fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-            fontSize: '16px',
-            fontSmoothing: 'antialiased',
-            ':-webkit-autofill': {
-              color: '#fce883'
-            },
-            '::placeholder': {
-              color: '#87BBFD'
-            }
-          },
-          invalid: {
-            iconColor: '#FFC7EE',
-            color: '#FFC7EE'
-          }
-        }
+        // iconStyle: 'solid',
+        // style: {
+        //   base: {
+        //     iconColor: '#c4f0ff',
+        //     color: '#fff',
+        //     fontWeight: 500,
+        //     fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+        //     fontSize: '16px',
+        //     fontSmoothing: 'antialiased',
+        //     ':-webkit-autofill': {
+        //       color: '#fce883'
+        //     },
+        //     '::placeholder': {
+        //       color: '#87BBFD'
+        //     }
+        //   },
+        //   invalid: {
+        //     iconColor: '#FFC7EE',
+        //     color: '#FFC7EE'
+        //   }
+        // }
       },
       stripe: undefined,
       card: undefined,
@@ -91,14 +91,14 @@ export default {
     }
   },
   mounted () {
-    this.stripe = Stripe(stripeKey, stripeOptions)
-    const elements = stripe.elements({
+    this.stripe = Stripe(this.spk, this.options)
+    const elements = this.stripe.elements({
       fonts: [
         {
           cssSrc: 'https://fonts.googleapis.com/css?family=Roboto'
         }
       ],
-      locale: auto
+      locale: 'auto'
     })
     this.card = elements.create('card', this.cardStyle)
     this.card.mount(this.$refs.card)

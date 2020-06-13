@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
-const ThirdPartyProviderSchema = new mongoose.Schema({
+const ThirdPartyProviderSchema = new mongoose.Schema(
+  {
   provider_name: {
     type: String,
     default: null
@@ -16,7 +17,8 @@ const ThirdPartyProviderSchema = new mongoose.Schema({
   }
 })
 
-const LinkSchema = new mongoose.Schema({
+const LinkSchema = new mongoose.Schema(
+  {
   link_token: {
     type: String,
     default: null

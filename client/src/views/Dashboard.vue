@@ -7,6 +7,11 @@
     <b>Plej.link:</b>
     <input type="text" name="link" :value= "'http://localhost:8080/donate/' + this.user.links[0].linkToken" disabled v-autowidth="{maxWidth: '960px', minWidth: '20px', comfortZone: 0}">
     <button v-on:click="generateLinkToken">Generate New Link</button>
+    <ul>
+      <li v-for="link in user.links" v-bind:key="link.link_token">
+        {{ link.link_token }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -36,6 +41,7 @@ export default {
       let self = this
       axios.get('/api/user')
         .then((response) => {
+          console.log(response.data.user)
           self.$set(this, 'user', response.data.user)
         })
         .catch((err) => {
@@ -48,7 +54,7 @@ export default {
       axios.get('/api/generatelinktoken')
         .then((response) => {
           console.log(response.data.linkToken)
-          self.user.links[0].linkToken = response.data.linkToken
+          self.getUserData()
         })
         .catch((err) => {
           console.log(err)

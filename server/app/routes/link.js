@@ -6,7 +6,7 @@ module.exports = function(app) {
     let user = req.user
     const linkToken = user.generateToken()
     user.links.push({
-      linkToken: linkToken
+      link_token: linkToken
     })
     user.save()
     console.log(linkToken)
@@ -20,7 +20,7 @@ module.exports = function(app) {
         if (!creator) {
           res.status(400).json({ message: 'Invalid Link' })
         }
-        res.status(200).json( { creator: creator })
+        res.status(200).json({ creator: creator })
       })
       .catch(err => {
         console.log(err)
