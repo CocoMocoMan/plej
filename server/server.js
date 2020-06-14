@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const dbconfig = require('./config/database')
 const authRoutes = require('./app/routes/auth')
 const linkRoutes = require('./app/routes/link')
+const paymentRoutes = require('./app/routes/payment')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -27,6 +28,7 @@ app.use(passport.session())
 //routes
 authRoutes(app, passport)
 linkRoutes(app)
+paymentRoutes(app)
 
 //serve
 app.listen(port, () => console.log(

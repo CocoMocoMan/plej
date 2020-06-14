@@ -1,10 +1,25 @@
 <template>
-  <div id="internal">
-    <img src="../assets/logo.png">
-    <div>
-      <router-link :to="{ name: 'Dashboard'}">Dashboard</router-link>
-      <a href="#" v-on:click="logout">Logout</a>
-    </div>
+  <div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="http://localhost:8080">
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <router-link class="navbar-item" :to="{ name: 'Dashboard'}">Dashboard</router-link>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary is-rounded" href="#" v-on:click="logout">
+                <strong>Logout</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
     <slot/>
   </div>
 </template>
@@ -26,12 +41,7 @@ export default {
 </script>
 
 <style>
-#internal {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .navbar {
+     margin-bottom:50px
+  }
 </style>

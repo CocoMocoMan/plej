@@ -1,8 +1,8 @@
 <template>
   <div id="payment">
     <form>
-      <div class="form-row">
-        <label for="card">
+      <div>
+        <label for="card" class="label">
           Credit or debit card
         </label>
         <div ref="card">
@@ -11,7 +11,8 @@
         <!-- Used to display Element errors. -->
         <div ref="carderrors"></div>
       </div>
-      <button :disabled="lockSubmit" v-on:click="purchase">Donate</button>
+      <br>
+      <button class="button is-rounded is-primary" :disabled="lockSubmit" v-on:click="purchase">Donate</button>
     </form>
   </div>
 </template>
@@ -27,27 +28,27 @@ export default {
       spk: stripeKey,
       options: stripeOptions,
       cardStyle: {
-        // iconStyle: 'solid',
-        // style: {
-        //   base: {
-        //     iconColor: '#c4f0ff',
-        //     color: '#fff',
-        //     fontWeight: 500,
-        //     fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-        //     fontSize: '16px',
-        //     fontSmoothing: 'antialiased',
-        //     ':-webkit-autofill': {
-        //       color: '#fce883'
-        //     },
-        //     '::placeholder': {
-        //       color: '#87BBFD'
-        //     }
-        //   },
-        //   invalid: {
-        //     iconColor: '#FFC7EE',
-        //     color: '#FFC7EE'
-        //   }
-        // }
+        iconStyle: 'solid',
+        style: {
+          base: {
+            iconColor: '#c4f0ff',
+            color: '#fff',
+            fontWeight: 500,
+            fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+            fontSize: '16px',
+            fontSmoothing: 'antialiased',
+            ':-webkit-autofill': {
+              color: '#fce883'
+            },
+            '::placeholder': {
+              color: '#87BBFD'
+            }
+          },
+          invalid: {
+            iconColor: '#FFC7EE',
+            color: '#FFC7EE'
+          }
+        }
       },
       stripe: undefined,
       card: undefined,

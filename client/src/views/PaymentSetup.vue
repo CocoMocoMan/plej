@@ -12,11 +12,11 @@ export default {
   name: 'PaymentSetup',
   data () {
     return {
+      stateValue: '',
       user: {
         email: '',
         name: ''
-      },
-      stateValue: ''
+      }
     }
   },
   methods: {
@@ -24,7 +24,6 @@ export default {
       let self = this
       axios.get('/api/user')
         .then((response) => {
-          console.log(response)
           self.$set(this, 'user', response.data.user)
         })
         .catch((errors) => {

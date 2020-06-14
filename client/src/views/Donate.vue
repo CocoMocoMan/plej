@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <p>Donate to {{ creator.name }} </p>
-    <PaymentForm />
+  <div class = "columns is-centered is-mutliline has-text-centered">
+    <div class="column is-one-quarter">
+      <p>Donate to <span class="tag is-rounded is-medium is-dark">{{ creator.name }}</span> </p>
+      <br>
+      <PaymentForm />
+    </div>
   </div>
 </template>
 

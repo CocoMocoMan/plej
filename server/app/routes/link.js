@@ -8,9 +8,14 @@ module.exports = function(app) {
     user.links.push({
       link_token: linkToken
     })
-    user.save()
-    console.log(linkToken)
-    res.status(200).send({ linkToken: linkToken })
+    user.save().
+      then(() => {
+        console.log(linkToken)
+        return res.status(200).send({ success: 'Link Created' })
+      })
+      .catch(err => {
+        return res.status(400).send({ message: 'Unable to create link' })
+      })
   })
 
   app.get('/api/creator/:token', (req, res) => {
@@ -18,13 +23,13 @@ module.exports = function(app) {
     User.findOne( { 'links.link_token': token} )
       .then(creator => {
         if (!creator) {
-          res.status(400).json({ message: 'Invalid Link' })
+          return res.status(400).json({ message: 'Invalid Link' })
         }
-        res.status(200).json({ creator: creator })
+        return res.status(200).json({ creator: creator })
       })
       .catch(err => {
         console.log(err)
-        res.status(400).json({ message: err.message })
+        return res.status(400).json({ message: err.message })
       })
   })
 }

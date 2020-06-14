@@ -6,6 +6,7 @@ import Dashboard from '@/views/Dashboard'
 import Donate from '@/views/Donate'
 import InvalidLink from '@/views/InvalidLink'
 import PaymentSetup from '@/views/PaymentSetup'
+import LinkManager from '@/views/LinkManager'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/paymentsetup',
       name: 'PaymentSetup',
       component: PaymentSetup
+    },
+    {
+      path: '/linkmanager',
+      name: 'LinkManager',
+      component: LinkManager
     },
     {
       path: '/donate/:token',

@@ -13,10 +13,11 @@ module.exports = function(passport) {
   }) 
 
   passport.use('local-signup', new LocalStrategy({
-    usernameField : 'email',
-    passwordField : 'password',
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
   }, 
-  (email, password, done) => {
+  (req, email, password, done) => {
     User.findOne( { email: email })
       .then(user=> {
         if (user) {
@@ -25,6 +26,8 @@ module.exports = function(passport) {
           const newUser = new User()
           newUser.email = email
           newUser.password = newUser.generateHash(password)
+          newUser.name = req.body.name
+          newUser.alias = req.body.alias
           newUser
             .save()
             .then(user => {
