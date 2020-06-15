@@ -1,9 +1,17 @@
 <template>
-  <div class = "columns is-centered is-mutliline has-text-centered">
-    <div class="column is-one-quarter">
-      <p>Donate to <span class="tag is-rounded is-medium is-dark">{{ creator.name }}</span> </p>
-      <br>
-      <PaymentForm />
+  <div class="columns is-centered is-multiline">
+  <div lass="column is-one-quarter">
+    <p><span class="label">Donate to {{ creator.name }}  </span></p>
+    <div class="field">
+          <div class="control">
+            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$1"/>
+            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$5" />
+            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$10" />
+            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$20" />
+            <input class ="input is-rounded" type="text" name="Custom_Tip" placeholder="Custom Tip" />
+          </div>
+        </div>
+    <PaymentForm />
     </div>
   </div>
 </template>
