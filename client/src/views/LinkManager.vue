@@ -1,26 +1,29 @@
 <template>
-  <div class="columns is-centered is-multiline has-text-centered">
-    <div class="column is-one-quarter">
-      <h1 class="title">Plej.links</h1>
-      <button class="button is-rounded is-small is-light" v-on:click="generateLinkToken">Generate New Link</button>
-      <ul>
-        <li v-for="link in user.links" v-bind:key="link.link_token">
-          <input type="text" name="link" :value= "donate_url + link.link_token" disabled v-autowidth="{maxWidth: '960px', minWidth: '20px', comfortZone: 0}">
-        </li>
-      </ul>
+    <div class="columns is-centered is-multiline has-text-centered">
+      <div class="column is-half">
+        <h1 class="title">Plej.links</h1>
+        <button class="button is-rounded is-white is-strong has-text-grey" v-on:click="generateLinkToken">Generate New Link</button>
+        <ul>
+          <li v-for="link in user.links" v-bind:key="link.link_token">
+            <linkcomponent v-bind:iLink="link"/>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import axios from 'axios'
 import router from '../router'
 import InternalLayout from '../layouts/Internal'
+import linkcomponent from '../components/Link'
 export default {
   name: 'LinkManager',
+  components: {
+    linkcomponent
+  },
   data () {
     return {
-      donate_url: 'http://localhost:8080/donate/',
       user: {
         name: '',
         email: '',
@@ -37,24 +40,30 @@ export default {
   methods: {
     getUserData: function () {
       let self = this
-      axios.get('/api/user')
+      axios.get('/api/auth/user')
         .then((response) => {
           self.$set(this, 'user', response.data.user)
         })
         .catch((err) => {
-          console.log(err)
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+          }
           router.push('/')
         })
     },
     generateLinkToken: function () {
       let self = this
-      axios.get('/api/generatelinktoken')
+      axios.get('/api/link/generatelinktoken')
         .then((response) => {
           self.getUserData()
         })
         .catch((err) => {
-          console.log(err)
-          router.push('/')
+          if (err.response) {
+            console.log(err.response.data.message)
+            if (err.response.status === 401) {
+              router.push('/')
+            }
+          }
         })
     }
   },

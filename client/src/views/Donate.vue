@@ -1,17 +1,15 @@
 <template>
-  <div class="columns is-centered is-multiline">
-  <div lass="column is-one-quarter">
-    <p><span class="label">Donate to {{ creator.name }}  </span></p>
-    <div class="field">
-          <div class="control">
-            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$1"/>
-            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$5" />
-            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$10" />
-            <input class="input button  is-primary is-rounded is-strong" type="submit" value="$20" />
-            <input class ="input is-rounded" type="text" name="Custom_Tip" placeholder="Custom Tip" />
-          </div>
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-half">
+      <div class="card">
+        <header class="card-header">
+          <p class="label card-header-title is-centered">Donate to {{ creator.name }} </p>
+        </header>
+        <div class="card-body">
+          <!-- Link Preview will go here -->
         </div>
-    <PaymentForm />
+      </div>
+      <paymentform />
     </div>
   </div>
 </template>
@@ -20,11 +18,11 @@
 import axios from 'axios'
 import router from '../router'
 import ExternalLayout from '../layouts/External'
-import PaymentForm from '../components/PaymentForm'
+import paymentform from '../components/PaymentForm'
 export default {
   name: 'Donate',
   components: {
-    PaymentForm
+    paymentform
   },
   data () {
     return {
@@ -36,13 +34,16 @@ export default {
   methods: {
     getCreatorData: function () {
       let self = this
-      axios.get('/api/creator/' + this.$route.params.token)
+      axios.get('/api/link/creator/' + this.$route.params.token)
         .then((response) => {
-          console.log(response)
+          console.log(response.data.creator)
           self.$set(this, 'creator', response.data.creator)
         })
-        .catch((errors) => {
-          console.log(errors)
+        .catch((err) => {
+          if (err.response && (err.response.status === 400 ||
+                               err.response.status === 500)) {
+            console.log(err.response.data.message)
+          }
           router.push('/invalidlink')
         })
     }

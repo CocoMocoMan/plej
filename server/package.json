@@ -24,7 +24,9 @@
     "passport-local": "^1.0.0",
     "save": "^2.4.0",
     "sequelize": "^5.21.12",
-    "stripe": "^8.60.0"
+    "stripe": "^8.60.0",
+    "url-exists": "^1.0.3",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

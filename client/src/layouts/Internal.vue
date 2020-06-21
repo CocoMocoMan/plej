@@ -12,7 +12,7 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary is-rounded" href="#" v-on:click="logout">
+              <a class="button is-primary is-rounded has-text-white" href="#" v-on:click="logout">
                 <strong>Logout</strong>
               </a>
             </div>
@@ -31,7 +31,7 @@ export default {
   name: 'Internal',
   methods: {
     logout: function (e) {
-      axios.get('/api/logout')
+      axios.get('/api/auth/logout')
         .then(() => {
           router.push('/')
         })
@@ -39,9 +39,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .navbar {
-     margin-bottom:50px
-  }
-</style>

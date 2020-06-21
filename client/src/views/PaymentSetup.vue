@@ -22,12 +22,14 @@ export default {
   methods: {
     getUserData: function () {
       let self = this
-      axios.get('/api/user')
+      axios.get('/api/auth/user')
         .then((response) => {
           self.$set(this, 'user', response.data.user)
         })
-        .catch((errors) => {
-          console.log(errors)
+        .catch((err) => {
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+          }
           router.push('/')
         })
     },

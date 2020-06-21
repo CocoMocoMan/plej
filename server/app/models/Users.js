@@ -21,7 +21,9 @@ const LinkSchema = new mongoose.Schema(
   {
   link_token: {
     type: String,
-    default: null
+    index: true,
+    unique: true,
+    sparse: true
   },
   link_content: {
     type: String,
@@ -73,6 +75,15 @@ UserSchema.methods.validPassword = function(password) {
 
 UserSchema.methods.generateToken = function() {
   return randomToken()
+}
+
+UserSchema.methods.publicData = function() {
+  let publicUser = this
+  publicUser.email = ''
+  publicUser.password = ''
+  publicUser.third_party_auth = []
+  publicUser.date = ''
+  return publicUser
 }
 
 function randomToken() {

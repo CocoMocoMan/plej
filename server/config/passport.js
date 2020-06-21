@@ -1,5 +1,6 @@
 const User = require('../app/models/Users')
 const LocalStrategy = require('passport-local').Strategy
+const validator = require('../utils/validator')
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -18,6 +19,7 @@ module.exports = function(passport) {
     passReqToCallback: true
   }, 
   (req, email, password, done) => {
+    if (!validator.validEmail(email)) return done(null, false, { message: 'Not a valid email' })
     User.findOne( { email: email })
       .then(user=> {
         if (user) {

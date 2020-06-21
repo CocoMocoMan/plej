@@ -7,7 +7,7 @@
           <div class="control has-icons-left">
             <input class ="input is-rounded" type="text" name="name" placeholder="Name" />
             <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
+              <i class="fa fa-user"></i>
             </span>
           </div>
         </div>
@@ -16,7 +16,7 @@
           <div class="control has-icons-left">
             <input class ="input is-rounded" type="text" name="alias" placeholder="Alias" />
             <span class="icon is-small is-left">
-              <i class="fas fa-user-secret"></i>
+              <i class="fa fa-user-secret"></i>
             </span>
           </div>
         </div>
@@ -25,7 +25,7 @@
           <div class="control has-icons-left">
             <input class ="input is-rounded" type="text" name="email" placeholder="Email" />
             <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
+              <i class="fa fa-envelope"></i>
             </span>
           </div>
         </div>
@@ -34,13 +34,13 @@
           <div class="control has-icons-left">
             <input class ="input is-rounded" type="password" name="password" placeholder="Password"/>
              <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
+              <i class="fa fa-lock"></i>
             </span>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input button is-primary is-rounded is-strong" type="submit" value="Sign Up" />
+            <input class="input button is-primary is-rounded is-strong has-text-white" type="submit" value="Sign Up" />
           </div>
         </div>
       </form>
@@ -56,17 +56,18 @@ export default {
   name: 'Register',
   methods: {
     checkLogin: function () {
-      axios.get('/api/user')
+      axios.get('/api/auth/user')
         .then((response) => {
           console.log('Logged in')
           router.push('/dashboard')
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+          }
         })
     },
     register: (e) => {
-      console.log('jere')
       e.preventDefault()
       let email = e.target.elements.email.value
       let password = e.target.elements.password.value
@@ -79,13 +80,15 @@ export default {
           name: name,
           alias: alias
         }
-        axios.post('/api/register', data)
+        axios.post('/api/auth/register', data)
           .then((response) => {
             console.log(response.success)
             router.push('/dashboard')
           })
           .catch((err) => {
-            console.log(err.response.data.info.message)
+            if (err.response && err.response.status === 500) {
+              console.log(err.response.data.info.message)
+            }
           })
       }
       register()

@@ -2,11 +2,11 @@
   <div class = "columns is-centered is-multiline has-text-centered">
     <div class = "column is-one-quarter">
       <h1 class="title">Dashboard</h1>
-      <p>Name <span class="tag is-rounded is-medium is-dark"> {{ user.name }}</span></p>
+      <p class="label">Welcome, {{ user.name }} </p>
       <br>
       <div>
-        <router-link class="button is-info is-rounded" :to="{ name: 'PaymentSetup'}">Payment Setup</router-link>
-        <router-link class="button is-warning is-rounded" :to="{ name: 'LinkManager'}">Manage Links</router-link>
+        <router-link class="button is-white is-rounded is-strong has-text-grey" :to="{ name: 'PaymentSetup'}">Payment Setup</router-link>
+        <router-link class="button is-primary is-rounded has-text-white is-strong" :to="{ name: 'LinkManager'}">Manage Links</router-link>
       </div>
     </div>
   </div>
@@ -31,12 +31,14 @@ export default {
   methods: {
     getUserData: function () {
       let self = this
-      axios.get('/api/user')
+      axios.get('/api/auth/user')
         .then((response) => {
           self.$set(this, 'user', response.data.user)
         })
         .catch((err) => {
-          console.log(err)
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+          }
           router.push('/')
         })
     }

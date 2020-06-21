@@ -9,8 +9,8 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <router-link class="button is-light is-rounded" :to="{ name: 'Login'}">Log In</router-link>
-              <router-link class="button is-primary is-rounded" :to="{ name: 'Register'}">
+              <router-link class="button is-white is-rounded is-strong has-text-grey" :to="{ name: 'Login'}">Log In</router-link>
+              <router-link class="button is-primary is-rounded has-text-white is-strong" :to="{ name: 'Register'}">
                 <strong>Sign up</strong>
               </router-link>
             </div>
@@ -21,9 +21,3 @@
     <slot/>
   </div>
 </template>
-
-<style>
-  .navbar {
-     margin-bottom:50px
-  }
-</style>
