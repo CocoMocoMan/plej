@@ -7,6 +7,7 @@ import Donate from '@/views/Donate'
 import InvalidLink from '@/views/InvalidLink'
 import PaymentSetup from '@/views/PaymentSetup'
 import LinkManager from '@/views/LinkManager'
+import Landing from '@/views/Landing'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/invalidlink',
       name: 'InvalidLink',
       component: InvalidLink
+    },
+    {
+      path: '/landing',
+      name: 'Landing',
+      component: Landing
     }
   ]
 })
