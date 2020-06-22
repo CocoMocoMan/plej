@@ -6,6 +6,7 @@
         </a>
       </div>
       <div class="navbar-menu">
+        <a class="title is-primary is-strong" style="color:#9299DF" href="/"> plej </a>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
@@ -21,3 +22,4 @@
     <slot/>
   </div>
 </template>
+
