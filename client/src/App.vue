@@ -18,13 +18,13 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Hind+Siliguri:400,600');
 
-$pink: #ffa9be;
+$lightgrey: #f8f8f8;
 $black: #686868;
-$beige: #fdf1ec;
+$blue: #9299DF;
 $link: #686868;
-$primary: $pink;
+$primary: $blue;
 $family-primary: Hind Siliguri, sans-serif;
-$input-border-color: $beige; //check with team
+$input-border-color: $lightgrey;
 
 @import './../node_modules/bulma/css/bulma.css';
 @import "../node_modules/bulma/sass/utilities/_all.sass";
@@ -38,12 +38,12 @@ $input-border-color: $beige; //check with team
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 html {
-  background-color: $beige;
+  background-color: $lightgrey;
 }
 
 .navbar {
   margin-bottom:50px;
-  background-color: $beige;
+  background-color: $lightgrey;
 }
 
 .is-strong {
