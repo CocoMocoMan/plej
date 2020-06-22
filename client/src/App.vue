@@ -22,7 +22,7 @@ $pink: #ffa9be;
 $black: #686868;
 $beige: #fdf1ec;
 $link: #686868;
-$primary: #;
+$primary: $pink;
 $family-primary: Hind Siliguri, sans-serif;
 $input-border-color: $beige; //check with team
 
