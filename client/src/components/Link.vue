@@ -1,8 +1,13 @@
  <template>
   <div class="card">
     <header class="card-header is-centered">
-       <div v-if="link.link_content" class="card-header-title is-centered">
-        <linkprevue :url="link.link_content"></linkprevue>
+      <a type="text" name="link" :href= "donate_url + link.link_token" target="_blank">
+          {{ donate_url + link.link_token }}
+        </a>
+    </header>
+    <div class="card-body">
+      <div v-if="link.link_content" class="card-header-title is-centered">
+        <linkpreview :url="link.link_content" />
       </div>
       <div v-else class="card-header-title">
         <div class="field has-addons">
@@ -19,11 +24,6 @@
           </div>
         </div>
       </div>
-    </header>
-    <div class="card-body">
-        <a type="text" name="link" :href= "donate_url + link.link_token" target="_blank">
-          {{ donate_url + link.link_token }}
-        </a>
     </div>
   </div>
 </template>
@@ -31,11 +31,11 @@
 <script>
 import axios from 'axios'
 import router from '../router'
-import linkprevue from 'link-prevue'
+import linkpreview from './LinkPreview'
 export default {
   name: 'Link',
   components: {
-    linkprevue
+    linkpreview
   },
   props: {
     iLink: {

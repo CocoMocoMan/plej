@@ -6,28 +6,25 @@
             <div class="columns is-vcentered">
                 <div class="column is-5 is-offset-1 landing-caption">
                     <h1 class="title is-1 is-bold is-spaced">
-                        Manage, Deploy.
+                        Plej your love, <br>
+                        Fund your passion.
                     </h1>
-                    <h2 class="subtitle is-5 is-muted">Lorem ipsum sit dolor amet is a dummy text used by typography industry </h2>
+                    <h2 class="subtitle is-5 is-muted"> Providing the link between your supporters and the content they love.</h2>
                     <div class="button-wrap">
-                        <a class="button cta is-rounded primary-btn raised">
+                        <a class="button is-primary is-rounded has-text-white is-strong">
                             Get Started
-                        </a>
-                        <a class="button cta is-rounded">
-                            Discover
                         </a>
                     </div>
                 </div>
                 <div class="column is-5">
                     <figure class="image is-4by3">
-                        <img src="assets/img/illustrations/worker.svg" alt="Description">
+                        <img src="../assets/landingimage1.jpg" alt="Description">
                     </figure>
                 </div>
 
             </div>
         </div>
     </div>
-
     <div class="hero-foot mb-20">
         <div class="container">
             <div class="tabs is-centered">
@@ -46,8 +43,8 @@
 <section class="section section-feature-grey is-medium">
     <div class="container">
         <div class="title-wrapper has-text-centered">
-            <h2 class="title is-2">Great Power Comes </h2>
-            <h3 class="subtitle is-5 is-muted">With great Responsability</h3>
+            <h2 class="title is-2">Drive your content </h2>
+            <h3 class="subtitle is-5 is-muted">Through community support</h3>
             <div class="divider is-centered"></div>
         </div>
 
@@ -56,7 +53,7 @@
                 <div class="column is-one-third">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>App builder</h4>
+                            <h4>Empower your creations</h4>
                         </div>
                         <div class="card-icon">
                             <img src="assets/img/icons/web.svg">
@@ -72,7 +69,7 @@
                 <div class="column">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>Cloud integration</h4>
+                            <h4>Simplify support</h4>
                         </div>
                         <div class="card-icon">
                             <img src="assets/img/icons/rocket.svg">
@@ -88,7 +85,7 @@
                 <div class="column">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>Addons & Plugins</h4>
+                            <h4>Uncover your worth</h4>
                         </div>
                         <div class="card-icon">
                             <img src="assets/img/icons/light-bulb.svg">
@@ -405,41 +402,15 @@
     </div>
 </section>
 
-
-
-
-<div id="auth-modal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="flex-card auth-card">
-            <div class="tabs-wrapper">
-                <div class="tabs">
-                    <ul>
-                        <li class="is-active" data-tab="login-tab"><a>Login</a></li>
-                        <li data-tab="register-tab"><a>Register</a></li>
-                    </ul>
-                </div>
-                <div id="login-tab" class="tab-content is-active">
-                    <div class="field">
-                        <label>Username</label>
-                        <div class="control">
-                            <input type="text" class="input is-medium" placeholder="Enter username">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <div class="control">
-                            <input type="password" class="input is-medium" placeholder="Enter password">
-                        </div>
-                    </div>
-
-                    <a class="button is-fullwidth secondary-btn is-rounded raised">Log in</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
 </div>
 </template>
 
+<script>
+import ExternalLayout from '../layouts/External'
+export default {
+  name: 'InvalidLink',
+  created () {
+    this.$emit('update:layout', ExternalLayout)
+  }
+}
+</script>

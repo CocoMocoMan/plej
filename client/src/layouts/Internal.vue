@@ -2,12 +2,12 @@
   <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="http://localhost:8080">
+        <a class="navbar-item" href="#">
         </a>
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="navbar-item" :to="{ name: 'Dashboard'}">Dashboard</router-link>
+          <router-link class="title is-primary is-strong" style="color:#9299DF" :to="{ name: 'Dashboard'}">plej</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">

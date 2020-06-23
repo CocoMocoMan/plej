@@ -35,7 +35,7 @@
       </div>
       <div class="field">
         <div class="control has-icons-left">
-          <input class ="input is-rounded" v-on:blur="updatePaymentAmount('custom', $event)" @paste.prevent
+          <input class ="input is-rounded" v-on:input="updatePaymentAmount('custom', $event)" @paste.prevent
                   v-on:keypress="numericOnly" type="number" ref="custom" placeholder="Custom Donation" :disabled="isLoading"/>
           <span class="icon is-small is-left">
               <i class="fa fa-usd"></i>
@@ -68,6 +68,7 @@
 <script>
 import { stripeKey, stripeOptions } from '../stripeConfig.js'
 import axios from 'axios'
+import router from '../router'
 /* eslint-disable no-undef */
 export default {
   name: 'PaymentForm',
@@ -126,6 +127,7 @@ export default {
               } else {
                 if (result.paymentIntent.status === 'succeeded') {
                   console.log('success')
+                  router.push('PaymentConfirmation')
                 }
               }
             })
@@ -143,6 +145,9 @@ export default {
         if (e.target.value) {
           this.paymentAmount = e.target.value
           this.lockSubmit = false
+        } else {
+          this.paymentAmount = ''
+          this.lockSubmit = true
         }
       } else {
         this.paymentAmount = value

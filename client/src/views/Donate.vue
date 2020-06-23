@@ -3,12 +3,10 @@
     <div class="column is-half">
       <div class="card">
         <header class="card-header">
-          <p class="label card-header-title is-centered">Donate to {{ creator.name }} </p>
+            <p class="label card-header-title">Donate to {{ creator.name }} </p>
         </header>
-          <div>
-          <linkprevue :url="link.link_content" cardWidth="100%" style="height=300px"/>
-          </div>
       </div>
+      <linkpreview :url="link.link_content"/>
       <paymentform />
     </div>
   </div>
@@ -19,12 +17,12 @@ import axios from 'axios'
 import router from '../router'
 import ExternalLayout from '../layouts/External'
 import paymentform from '../components/PaymentForm'
-import linkprevue from 'link-prevue'
+import linkpreview from '../components/LinkPreview'
 export default {
   name: 'Donate',
   components: {
     paymentform,
-    linkprevue
+    linkpreview
   },
   data () {
     return {
@@ -43,7 +41,6 @@ export default {
       let self = this
       axios.get('/api/link/creator/' + this.$route.params.token)
         .then((response) => {
-          console.log(response.data.creator)
           self.$set(this, 'creator', response.data.creator)
           self.$set(this, 'link', response.data.link)
         })

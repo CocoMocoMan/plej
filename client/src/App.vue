@@ -21,12 +21,9 @@ export default {
 $lightgrey: #f8f8f8;
 $black: #686868;
 $blue: #9299DF;
+$beige: #fdf1ec;
 $link: #686868;
-<<<<<<< HEAD
-$primary: $pink;
-=======
 $primary: $blue;
->>>>>>> a7360071e9958d0e1f71239aed6197c1b970c3c1
 $family-primary: Hind Siliguri, sans-serif;
 $input-border-color: $lightgrey;
 
@@ -42,12 +39,12 @@ $input-border-color: $lightgrey;
 @import "../node_modules/bulma/sass/layout/section.sass";
 
 html {
-  background-color: $lightgrey;
+  background-color: $beige;
 }
 
 .navbar {
-  margin-bottom:50px;
-  background-color: $lightgrey;
+  margin-bottom:20px;
+  background-color: $beige;
 }
 
 .is-strong {
