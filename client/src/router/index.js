@@ -8,6 +8,7 @@ import InvalidLink from '@/views/InvalidLink'
 import PaymentSetup from '@/views/PaymentSetup'
 import LinkManager from '@/views/LinkManager'
 import Landing from '@/views/Landing'
+import PaymentConfirmation from '@/views/PaymentConfirmation'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/landing',
       name: 'Landing',
       component: Landing
+    },
+    {
+      path: '/confirmation',
+      name: 'PaymentConfirmation',
+      component: PaymentConfirmation
     }
   ]
 })

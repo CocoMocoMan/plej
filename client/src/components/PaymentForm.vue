@@ -127,7 +127,7 @@ export default {
               } else {
                 if (result.paymentIntent.status === 'succeeded') {
                   console.log('success')
-                  router.push('PaymentConfirmation')
+                  router.push('/confirmation')
                 }
               }
             })
