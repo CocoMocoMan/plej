@@ -108,7 +108,8 @@ export default {
       let self = this
       self.lockSubmit = true
       self.isLoading = true
-      axios.get('/api/payment/secret/' + self.paymentAmount)
+      let data = { card: self.card }
+      axios.post('/api/payment/secret/' + self.paymentAmount, data)
         .then((response) => {
           return response.data.client_secret
         })
@@ -116,7 +117,8 @@ export default {
           self.stripe.confirmCardPayment(clientSecret, {
             payment_method: {
               card: self.card
-            }
+            },
+            receipt_email: 'othman@plej.link'
           })
             .then((result) => {
               if (result.error) {

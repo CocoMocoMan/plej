@@ -28,7 +28,8 @@ module.exports = function(app) {
           return res.status(400).json({ message: 'Invalid Link' })
         }
         creator = creator.publicData()
-        return res.status(200).json({ creator: creator })
+        const link = creator.links.find(link => {return link.link_token === token})
+        return res.status(200).json({ creator: creator, link: link })
       })
       .catch(err => {
         console.log(err)
