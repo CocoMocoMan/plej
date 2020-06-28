@@ -408,7 +408,7 @@
 <script>
 import ExternalLayout from '../layouts/External'
 export default {
-  name: 'InvalidLink',
+  name: 'Landing',
   created () {
     this.$emit('update:layout', ExternalLayout)
   }

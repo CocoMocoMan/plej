@@ -6,17 +6,17 @@
    <footer class="footer is-vcentered" style="background-color:#9299DF">
         <div class="columns">
           <div class="column">
-              <p class="copyright-text is-size-7 is-strong">Copyright &copy;  Plej.link</p>
-              <p class="copyright-text is-size-7 is-strong">2020 All Rights Reserved by Plej</p>
+              <p class="copyright-text is-size-6 is-strong">Copyright &copy;  Plej.link</p>
+              <p class="copyright-text is-size-6 is-strong">2020 All Rights Reserved by Plej</p>
           </div>
           <div class="column">
-              <p class ="terms-text is-size-7 is-strong"> Terms and Conditions</p>
+              <p class ="terms-text is-size-6 is-strong"> Terms and Conditions</p>
           </div>
           <div class="column">
-              <p class ="privacy-text is-size-7 is-strong"> Privacy Policy</p>
+              <p class ="privacy-text is-size-6 is-strong"> Privacy Policy</p>
           </div>
           <div class="column">
-              <a class="is-size-7 is-strong"> Contact Us </a>
+              <a class="is-size-6 is-strong"> Contact Us </a>
           </div>
         </div>
               <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
