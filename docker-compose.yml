@@ -1,0 +1,26 @@
+version: '3'
+services: 
+  client: 
+    build: ./client
+    image: oakel/plej-client
+    container_name: client
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - server
+    links:
+      - server  
+  server: 
+    container_name: server
+    restart: always
+    build: ./server
+    image: oakel/plej-server
+    ports: 
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports: 
+      - "27017:27017"

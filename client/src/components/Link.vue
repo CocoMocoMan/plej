@@ -57,7 +57,7 @@ export default {
   },
   data () {
     return {
-      donate_url: 'http://localhost:8080/donate/',
+      donate_url: `http://${location.host}/donate/`,
       link: this.iLink,
       balance: ''
     }
@@ -84,7 +84,6 @@ export default {
     },
     calculateBalance: function () {
       let balance = 0
-      console.log(this.link.donations)
       for (let donation of this.link.donations) {
         console.log(donation.amount)
         balance += parseInt(donation.amount)
@@ -93,7 +92,6 @@ export default {
     }
   },
   mounted () {
-    console.log('Mounting')
     this.balance = this.calculateBalance()
   }
 }
