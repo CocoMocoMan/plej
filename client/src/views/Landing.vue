@@ -44,7 +44,7 @@
                         </div>
                         <div class="card-icon">
                           <figure class="image is-4by3">
-                            <img src="../assets/img-landing-5.jpg">
+                            <img src="../assets/Empower_Creation.png">
                           </figure>
                         </div>
                         <div class="card-text">
@@ -59,7 +59,7 @@
                         </div>
                         <div class="card-icon">
                           <figure class="image is-4by3">
-                            <img src="../assets/img-landing-4.jpg">
+                            <img src="../assets/Simplify_Support.jpg">
                           </figure>
                         </div>
                         <div class="card-text">
@@ -70,10 +70,12 @@
                 <div class="column">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>Uncover your worth</h4>
+                            <h4 class="title is-5">Uncover your worth</h4>
                         </div>
                         <div class="card-icon">
-                            <img src="assets/img/icons/light-bulb.svg">
+                            <figure class="image is-4by3">
+                                <img src="../assets/Uncoveryourworth.jpg">
+                            </figure>
                         </div>
                         <div class="card-text">
                             <p>This is some explanatory text that is on two rows</p>
