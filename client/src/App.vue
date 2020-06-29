@@ -10,13 +10,13 @@
           <p class="copyright-text is-size-6 is-strong">2020 All Rights Reserved by Plej</p>
         </div>
         <div class="column">
-          <a class ="terms-text is-size-6 is-strong" href=""> Terms and Conditions</a>
+          <a class ="terms-text is-size-6 is-strong" href="/termsconditions"> Terms and Conditions</a>
         </div>
         <div class="column">
-          <p class ="privacy-text is-size-6 is-strong"> Privacy Policy</p>
+          <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy"> Privacy Policy</a>
         </div>
         <div class="column">
-          <a class="is-size-6 is-strong"> Contact Us </a>
+          <a class="is-size-6 is-strong" href="/contactus"> Contact Us </a>
         </div>
       </div>
           <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
