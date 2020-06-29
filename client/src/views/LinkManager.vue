@@ -11,7 +11,6 @@
       </div>
     </div>
 </template>
-
 <script>
 import axios from 'axios'
 import router from '../router'
@@ -28,12 +27,7 @@ export default {
         name: '',
         email: '',
         alias: '',
-        links: [
-          {
-            link_token: '',
-            link_content: ''
-          }
-        ]
+        links: []
       }
     }
   },

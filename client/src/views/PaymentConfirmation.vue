@@ -10,7 +10,7 @@
                 </div>
                 <div class="column is-5">
                     <figure class="image is-4by3">
-                        <img src="../assets/landingimage1.jpg" alt="Description">
+                        <img src="../assets/img-landing-1.jpg" alt="Description">
                     </figure>
                 </div>
             </div>

@@ -1,9 +1,9 @@
  <template>
   <div class="card">
     <header class="card-header is-centered">
-      <a type="text" name="link" :href= "donate_url + link.link_token" target="_blank">
-          {{ donate_url + link.link_token }}
-        </a>
+      <a type="text" class="link" name="link" :href= "donate_url + link.link_token" target="_blank">
+        {{ donate_url + link.link_token }}
+      </a>
     </header>
     <div class="card-body">
       <div v-if="link.link_content" class="card-header-title is-centered">
@@ -25,8 +25,19 @@
         </div>
       </div>
     </div>
+    <footer class="card-footer">
+      <p class="card-header-title">Donations raised: ${{ balance }}</p>
+    </footer>
   </div>
 </template>
+
+<style scoped>
+  a {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px
+  }
+</style>
 
 <script>
 import axios from 'axios'
@@ -40,13 +51,15 @@ export default {
   props: {
     iLink: {
       link_token: '',
-      link_content: ''
+      link_content: '',
+      donations: []
     }
   },
   data () {
     return {
       donate_url: 'http://localhost:8080/donate/',
-      link: this.iLink
+      link: this.iLink,
+      balance: ''
     }
   },
   methods: {
@@ -68,15 +81,20 @@ export default {
             }
           }
         })
+    },
+    calculateBalance: function () {
+      let balance = 0
+      console.log(this.link.donations)
+      for (let donation of this.link.donations) {
+        console.log(donation.amount)
+        balance += parseInt(donation.amount)
+      }
+      return balance
     }
+  },
+  mounted () {
+    console.log('Mounting')
+    this.balance = this.calculateBalance()
   }
 }
 </script>
-
-<style scoped>
-  a {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10px
-  }
-</style>

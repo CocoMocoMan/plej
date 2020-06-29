@@ -17,6 +17,27 @@ const ThirdPartyProviderSchema = new mongoose.Schema(
   }
 })
 
+const DonationSchema = new mongoose.Schema(
+  {
+    amount: {
+      type: Number,
+      required: true
+    },
+    from: {
+      type: String,
+      default: null
+    },
+    message: {
+      type: String,
+      default: null
+    },
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  }
+)
+
 const LinkSchema = new mongoose.Schema(
   {
   link_token: {
@@ -29,6 +50,7 @@ const LinkSchema = new mongoose.Schema(
     type: String,
     default: null
   },
+  donations: [DonationSchema],
   date: {
     type: Date,
     default: Date.now
@@ -82,6 +104,7 @@ UserSchema.methods.publicData = function() {
   publicUser.email = ''
   publicUser.password = ''
   publicUser.third_party_auth = []
+  publicUser.donations = []
   publicUser.date = ''
   return publicUser
 }

@@ -1,6 +1,8 @@
 <template>
   <div class = "columns is-centered is-multiline has-text-centered">
-    <div class = "column is-one-quarter">
+    <div class = "column is-one-third">
+    </div>
+    <div class = "column is-one-third">
       <h1 class="title">Dashboard</h1>
       <p class="label">Welcome, {{ user.name }} </p>
       <br>
@@ -9,6 +11,7 @@
         <router-link class="button is-primary is-rounded has-text-white is-strong" :to="{ name: 'LinkManager'}">Manage Links</router-link>
       </div>
     </div>
+    <div class="column is-one-third"></div>
   </div>
 </template>
 
@@ -25,7 +28,8 @@ export default {
         name: '',
         email: '',
         alias: ''
-      }
+      },
+      balance: ''
     }
   },
   methods: {

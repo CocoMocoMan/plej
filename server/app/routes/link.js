@@ -2,7 +2,6 @@ const authMiddleware = require('../../utils/auth.js')
 const User = require('../models/Users')
 const validator = require('../../utils/validator')
 
-
 module.exports = function(app) {
   app.get('/api/link/generatelinktoken', authMiddleware, (req, res) => {
     let user = req.user

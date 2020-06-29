@@ -1,6 +1,18 @@
 <template>
   <div id="payment">
     <form>
+      <div class="columns is-centered">
+        <div class="column is-one-third">
+          <div class="field">
+            <div class="control has-icons-left">
+              <input class ="input is-rounded" type="text" placeholder="From" v-model="donation.from" :disabled="isLoading"/>
+              <span class="icon is-small is-left">
+                <i class="fa fa-paper-plane"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
      <div class="columns is-centered">
         <div class="column is-half">
           <div class="field">
@@ -33,13 +45,17 @@
           </div>
         </div>
       </div>
-      <div class="field">
-        <div class="control has-icons-left">
-          <input class ="input is-rounded" v-on:input="updatePaymentAmount('custom', $event)" @paste.prevent
-                  v-on:keypress="numericOnly" type="number" ref="custom" placeholder="Custom Donation" :disabled="isLoading"/>
-          <span class="icon is-small is-left">
-              <i class="fa fa-usd"></i>
-          </span>
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="field">
+            <div class="control has-icons-left">
+              <input class ="input is-rounded" v-on:input="updatePaymentAmount('custom', $event)" @paste.prevent
+                v-on:keypress="numericOnly" type="number" ref="custom" placeholder="Custom Donation" :disabled="isLoading"/>
+              <span class="icon is-small is-left">
+                <i class="fa fa-usd"></i>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="card has-text-centered">
@@ -60,11 +76,15 @@
         </div>
       </div>
       <button class="button is-rounded is-primary is-strong has-text-white"
-              :class="isLoading ? 'is-loading' : ''"  :disabled="lockSubmit" v-on:click="purchase">Donate<div v-if="paymentAmount">&nbsp;${{ paymentAmount }}</div></button>
+              :class="isLoading ? 'is-loading' : ''"  :disabled="lockSubmit" v-on:click="purchase">Donate<div v-if="donation.amount">&nbsp;${{ donation.amount }}</div></button>
     </form>
   </div>
 </template>
-
+<style>
+.donation-info {
+  margin-top:40px
+}
+</style>
 <script>
 import { stripeKey, stripeOptions } from '../stripeConfig.js'
 import axios from 'axios'
@@ -72,6 +92,9 @@ import router from '../router'
 /* eslint-disable no-undef */
 export default {
   name: 'PaymentForm',
+  props: {
+    linkToken: ''
+  },
   data () {
     return {
       spk: stripeKey,
@@ -99,7 +122,11 @@ export default {
       card: undefined,
       lockSubmit: true,
       isLoading: false,
-      paymentAmount: ''
+      donation: {
+        amount: '',
+        from: '',
+        message: ''
+      }
     }
   },
   methods: {
@@ -108,35 +135,50 @@ export default {
       let self = this
       self.lockSubmit = true
       self.isLoading = true
-      let data = { card: self.card }
-      axios.post('/api/payment/secret/' + self.paymentAmount, data)
+      // axios.get('/api/payment/secret')
+      //   .then((response) => {
+      //     return response.data.intent.client_secret
+      //   })
+      //   .then((clientSecret) => {
+      //     return self.stripe.confirmCardSetup(clientSecret, {
+      //       payment_method: {
+      //         card: self.card
+      //       }
+      //     })
+      //   })
+      self.stripe.createPaymentMethod({
+        type: 'card',
+        card: self.card
+      })
+        .then((result) => {
+          if (result.error) {
+            throw result.error
+          } else if (result.paymentMethod) {
+            return result.paymentMethod
+          }
+        })
+        .then((paymentMethod) => {
+          const data = {
+            data:
+            {
+              paymentMethod: paymentMethod.id,
+              token: self.linkToken,
+              donation: self.donation
+            }
+          }
+          console.log(data)
+          return axios.post('/api/payment/confirm', data)
+        })
         .then((response) => {
-          return response.data.client_secret
+          return response.data.intent
         })
-        .then((clientSecret) => {
-          self.stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-              card: self.card
-            },
-            receipt_email: 'othman@plej.link'
-          })
-            .then((result) => {
-              if (result.error) {
-                let errorElement = self.$refs.carderrors
-                errorElement.textContent = result.error.message
-                self.lockSubmit = false
-                self.isLoading = false
-              } else {
-                if (result.paymentIntent.status === 'succeeded') {
-                  console.log('success')
-                  router.push('/confirmation')
-                }
-              }
-            })
+        .then((result) => {
+          console.log(result)
+          router.push('/confirmation')
         })
-        .catch(() => {
+        .catch((err) => {
           let errorElement = self.$refs.carderrors
-          errorElement.textContent = 'Unable to complete transaction. Please try again later.'
+          errorElement.textContent = err.message
           self.lockSubmit = false
           self.isLoading = false
         })
@@ -145,15 +187,15 @@ export default {
       e.preventDefault()
       if (value === 'custom') {
         if (e.target.value) {
-          this.paymentAmount = e.target.value
+          this.donation.amount = e.target.value
           this.lockSubmit = false
         } else {
-          this.paymentAmount = ''
+          this.donation.amount = ''
           this.lockSubmit = true
         }
       } else {
-        this.paymentAmount = value
-        this.$refs.custom.value = ''
+        this.donation.amount = value
+        this.$refs.custom.value = value
         this.lockSubmit = false
       }
     },

@@ -7,7 +7,7 @@
         </header>
       </div>
       <linkpreview :url="link.link_content"/>
-      <paymentform />
+      <paymentform :linkToken="link.link_token"/>
     </div>
   </div>
 </template>

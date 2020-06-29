@@ -1,16 +1,11 @@
+const User = require('../models/Users')
+
+const stripe = require('stripe')('sk_test_51GqsuDEBGViFyBImr9whAxh3oeFgJ7mqqW9O2O48K5QuOiKi0RGYgUjeRNe6I7uIA28Mz2oyqDR5uUCbqiNMQnU700VPYkm0WM')
+
 module.exports = function(app) {
-  app.post('/api/payment/secret/:amount', async (req, res) => {
-    const stripe = require('stripe')('sk_test_51GqsuDEBGViFyBImr9whAxh3oeFgJ7mqqW9O2O48K5QuOiKi0RGYgUjeRNe6I7uIA28Mz2oyqDR5uUCbqiNMQnU700VPYkm0WM')
-    const amountInCents = req.params.amount * 100.0
-    const intent = await stripe.paymentIntents.create(
+  app.get('/api/payment/secret/', async (req, res) => {
+    stripe.setupIntents.create(
       {
-        amount: amountInCents,
-        currency: 'usd',
-        confirm: true,
-        payment_method: {
-          card: req.body.card
-        },
-        receipt_email: 'othman@plej.link',
         // Verify your integration in this guide by including this parameter
         metadata: {integration_check: 'accept_a_payment'}
       },
@@ -20,6 +15,44 @@ module.exports = function(app) {
           return res.status(500).json({ message: err.message })
         }
         return res.status(200).json({ intent: intent })
+      })
+    )
+  })
+
+  app.post('/api/payment/confirm', async (req, res) => {
+    const donation = req.body.data.donation
+    const amountInCents = donation.amount * 100.0
+    const paymentMethod = req.body.data.paymentMethod
+    const token = req.body.data.token
+    stripe.paymentIntents.create(
+      {
+        amount: amountInCents,
+        currency: 'usd',
+        confirm: true, 
+        payment_method: paymentMethod,
+        receipt_email: 'othman@plej.link',
+        metadata: { link: token }
+      },
+      ((err, intent) => {           
+        if (err) {
+          console.log(err.message)
+          return res.status(500).json({ message: err.message })
+        }
+        User.findOneAndUpdate(
+          { 'links.link_token': token },
+          {
+            '$push': {
+              'links.$.donations': donation
+            }
+          }
+        )
+          .then(() => {
+            return res.status(200).json({ intent: intent })
+          })
+          .catch((err) => {
+            console.log(err.message)
+            return res.status(500).json({ message: err.message })
+          })
       })
     )
   })

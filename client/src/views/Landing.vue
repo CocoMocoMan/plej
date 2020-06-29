@@ -18,23 +18,10 @@
                 </div>
                 <div class="column is-5">
                     <figure class="image is-4by3">
-                        <img src="../assets/landingimage1.jpg" alt="Description">
+                        <img src="../assets/img-landing-1.jpg" alt="Description">
                     </figure>
                 </div>
 
-            </div>
-        </div>
-    </div>
-    <div class="hero-foot mb-20">
-        <div class="container">
-            <div class="tabs is-centered">
-                <ul>
-                    <li><a><img class="partner-logo" src="assets/img/logos/clients/systek.svg"></a></li>
-                    <li><a><img class="partner-logo" src="assets/img/logos/clients/tribe.svg"></a></li>
-                    <li><a><img class="partner-logo" src="assets/img/logos/clients/kromo.svg"></a></li>
-                    <li><a><img class="partner-logo" src="assets/img/logos/clients/infinite.svg"></a></li>
-                    <li><a><img class="partner-logo" src="assets/img/logos/clients/gutwork.svg"></a></li>
-                </ul>
             </div>
         </div>
     </div>
@@ -53,32 +40,30 @@
                 <div class="column is-one-third">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>Empower your creations</h4>
+                            <h4 class="title is-5">Empower your creations</h4>
                         </div>
                         <div class="card-icon">
-                            <img src="assets/img/icons/web.svg">
+                          <figure class="image is-4by3">
+                            <img src="../assets/img-landing-5.jpg">
+                          </figure>
                         </div>
                         <div class="card-text">
                             <p>This is some cool explanatory text that is on two rows</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#" class="button btn-align-md primary-btn raised">Free Trial</a>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="feature-card is-bordered has-text-centered is-feature-reveal">
                         <div class="card-title">
-                            <h4>Simplify support</h4>
+                            <h4 class="title is-5" >Simplify support</h4>
                         </div>
                         <div class="card-icon">
-                            <img src="assets/img/icons/rocket.svg">
+                          <figure class="image is-4by3">
+                            <img src="../assets/img-landing-4.jpg">
+                          </figure>
                         </div>
                         <div class="card-text">
                             <p>This is some explanatory text that is on two rows</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#" class="button btn-align-md primary-btn raised">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -93,185 +78,12 @@
                         <div class="card-text">
                             <p>This is some explanatory text that is on two rows</p>
                         </div>
-                        <div class="card-action">
-                            <a href="#" class="button btn-align-md primary-btn raised">Get Started</a>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="section is-medium">
-    <div class="container">
-        <div class="title-wrapper has-text-centered">
-            <h2 class="title is-2">Awesome Features</h2>
-            <h3 class="subtitle is-5 is-muted">To make you super happy</h3>
-            <div class="divider is-centered"></div>
-        </div>
-
-        <div class="columns is-vcentered side-feature mt-60">
-            <div class="column is-4 is-offset-2">
-                <h3 class="title is-3 mb-10 is-title-reveal">Connect with people</h3>
-                <p class="subtitle is-5 is-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime contra Aristonem dicuntur a Chryippo.</p>
-            </div>
-            <div class="column is-5">
-                <img src="assets/img/illustrations/features/feature-1.png" alt="">
-            </div>
-        </div>
-
-        <div class="columns is-vcentered side-feature mt-60">
-            <div class="column is-5 is-offset-1">
-                <img src="assets/img/illustrations/features/feature-2.png" alt="">
-            </div>
-            <div class="column is-4 is-offset-1">
-                <h3 class="title is-3 mb-10 is-title-reveal">Collaborate easily</h3>
-                <p class="subtitle is-5 is-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime contra Aristonem dicuntur a Chryippo.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section section-feature-grey is-medium">
-    <div class="container">
-        <div class="columns is-vcentered app-side">
-            <div class="column is-5 is-offset-1">
-                <h3 class="title is-3 is-spaced is-title-reveal">An intuitive app</h3>
-                <p class="subtitle is-5 is-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum audissem Antiochum, Brute, ut solebam, cum M. Quae diligentissime contra Aristonem dicuntur a Chryippo.</p>
-            </div>
-            <div class="column is-10">
-                <div class="has-text-centered">
-                    <img class="pushed-image" src="assets/img/illustrations/mockups/app-mockup.png">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section is-medium">
-    <div class="container">
-        <div class="title-wrapper has-text-centered">
-            <h2 class="title is-2">Wait, there's more</h2>
-            <h3 class="subtitle is-5 is-muted">To make you super happy</h3>
-            <div class="divider is-centered"></div>
-        </div>
-
-        <div class="content-wrapper">
-            <div class="columns is-multiline icon-list">
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-github" size="large"></ion-icon>
-                        </div>
-                        <h4>Github</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-bitbucket" size="large"></ion-icon>
-                        </div>
-                        <h4>Bitbucket</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-slack" size="large"></ion-icon>
-                        </div>
-                        <h4>Slack</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-npm" size="large"></ion-icon>
-                        </div>
-                        <h4>Npm</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-javascript" size="large"></ion-icon>
-                        </div>
-                        <h4>Javascript</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-nodejs" size="large"></ion-icon>
-                        </div>
-                        <h4>Nodejs</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-angular" size="large"></ion-icon>
-                        </div>
-                        <h4>Angular</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-google" size="large"></ion-icon>
-                        </div>
-                        <h4>Google</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-python" size="large"></ion-icon>
-                        </div>
-                        <h4>Python</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-polymer" size="large"></ion-icon>
-                        </div>
-                        <h4>Polymer</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-android" size="large"></ion-icon>
-                        </div>
-                        <h4>Android</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="feature-icon has-text-centered">
-                        <div class="icon-wrap is-icon-reveal">
-                            <ion-icon name="logo-apple" size="large"></ion-icon>
-                        </div>
-                        <h4>Apple</h4>
-                        <p>Some feature text</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="section is-medium  has-background-image" data-background="https://source.unsplash.com/g30P1zcOzXo/1600x900" data-color="#4FC1EA" data-color-opacity=".6">
     <div class="overlay"></div>
     <div class="container">
@@ -320,47 +132,6 @@
         </div>
     </div>
 </section>
-
-<section class="section is-medium">
-    <div class="container">
-        <div class="title-wrapper has-text-centered">
-            <h2 class="title is-2">Get Started</h2>
-            <h3 class="subtitle is-5 is-muted">Choose one of our plans</h3>
-            <div class="divider is-centered"></div>
-        </div>
-
-        <div class="pricing-wrap">
-            <div class="feature-card is-pricing has-text-centered">
-                <h3 class="plan-name">Starter</h3>
-                <img src="assets/img/illustrations/pricing/1.svg" alt=""/>
-                <div class="price">
-                    0
-                </div>
-                <p>Sign up, get some awesome features and get started now</p>
-                <a class="button is-fullwidth is-bold">Get Started</a>
-            </div>
-            <div class="feature-card is-pricing has-text-centered">
-                <h3 class="plan-name">Pro</h3>
-                <img src="assets/img/illustrations/pricing/2.svg" alt=""/>
-                <div class="price">
-                    15
-                </div>
-                <p>Sign up, get some awesome features and get started now</p>
-                <a class="button is-fullwidth primary-btn raised is-bold">Get Started</a>
-            </div>
-            <div class="feature-card is-pricing has-text-centered">
-                <h3 class="plan-name">Business</h3>
-                <img src="assets/img/illustrations/pricing/3.svg" alt=""/>
-                <div class="price">
-                    30
-                </div>
-                <p>Sign up, get some awesome features and get started now</p>
-                <a class="button is-fullwidth is-bold">Get Started</a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="section section-light-grey is-medium">
     <div class="container">
         <div class="title-wrapper has-text-centered">
