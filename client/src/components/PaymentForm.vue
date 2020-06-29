@@ -75,16 +75,30 @@
           </div>
         </div>
       </div>
-      <button class="button is-rounded is-primary is-strong has-text-white"
-              :class="isLoading ? 'is-loading' : ''"  :disabled="lockSubmit" v-on:click="purchase">Donate<div v-if="donation.amount">&nbsp;${{ donation.amount }}</div></button>
+       <div class="columns is-centered">
+        <div class="column is-one-quarter">
+             <div class="columns is-centered">
+        <div class="column">
+          <button class="button is-rounded is-primary is-strong has-text-white"
+            :class="isLoading ? 'is-loading' : ''"  :disabled="lockSubmit" v-on:click="purchase">Donate<div v-if="donation.amount">&nbsp;${{ donation.amount }}</div></button>
+        </div>
+        <div class="column">
+          <button class="button is-rounded is-primary is-strong has-text-white"
+            :class="isLoading ? 'is-loading' : ''"  v-on:click="purchase"><i class="fa fa-dice"></i></button>
+        </div>
+      </div>
+        </div>
+      </div>
     </form>
   </div>
 </template>
+
 <style>
 .donation-info {
   margin-top:40px
 }
 </style>
+
 <script>
 import { stripeKey, stripeOptions } from '../stripeConfig.js'
 import axios from 'axios'
@@ -166,15 +180,20 @@ export default {
               donation: self.donation
             }
           }
-          console.log(data)
           return axios.post('/api/payment/confirm', data)
         })
         .then((response) => {
           return response.data.intent
         })
         .then((result) => {
-          console.log(result)
-          router.push('/donate/confirmation')
+          router.push(
+            { name: 'PaymentConfirmation',
+              params: {
+                donation: self.donation,
+                linkToken: self.linkToken
+              }
+            }
+          )
         })
         .catch((err) => {
           let errorElement = self.$refs.carderrors

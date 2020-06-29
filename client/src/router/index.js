@@ -44,7 +44,8 @@ export default new Router({
     {
       path: '/donate/confirmation',
       name: 'PaymentConfirmation',
-      component: PaymentConfirmation
+      component: PaymentConfirmation,
+      props: true
     },
     {
       path: '/donate/:token',
