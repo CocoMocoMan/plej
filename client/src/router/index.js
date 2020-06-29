@@ -10,6 +10,7 @@ import LinkManager from '@/views/LinkManager'
 import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
+import PrivacyPolicy from '@/views/PrivacyPolicy'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       path: '/termsconditions',
       name: 'TermsConditions',
       component: TermsConditions
+    },
+    {
+      path: '/privacypolicy',
+      name: 'PrivacyPolicy',
+      component: PrivacyPolicy
     }
   ]
 })
