@@ -9,6 +9,7 @@ import PaymentSetup from '@/views/PaymentSetup'
 import LinkManager from '@/views/LinkManager'
 import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
+import TermsConditions from '@/views/TermsConditions'
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ export default new Router({
       path: '/confirmation',
       name: 'PaymentConfirmation',
       component: PaymentConfirmation
+    },
+    {
+      path: '/termsconditions',
+      name: 'TermsConditions',
+      component: TermsConditions
     }
   ]
 })
