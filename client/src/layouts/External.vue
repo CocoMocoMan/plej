@@ -18,7 +18,5 @@
       </div>
     </nav>
     <slot class="body"/>
-    <!--Footer-->
-  
   </div>
 </template>

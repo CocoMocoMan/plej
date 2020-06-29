@@ -174,7 +174,7 @@ export default {
         })
         .then((result) => {
           console.log(result)
-          router.push('/confirmation')
+          router.push('/donate/confirmation')
         })
         .catch((err) => {
           let errorElement = self.$refs.carderrors

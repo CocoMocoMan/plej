@@ -42,6 +42,11 @@ export default new Router({
       component: LinkManager
     },
     {
+      path: '/donate/confirmation',
+      name: 'PaymentConfirmation',
+      component: PaymentConfirmation
+    },
+    {
       path: '/donate/:token',
       name: 'Donate',
       component: Donate
@@ -55,11 +60,6 @@ export default new Router({
       path: '/landing',
       name: 'Landing',
       component: Landing
-    },
-    {
-      path: '/confirmation',
-      name: 'PaymentConfirmation',
-      component: PaymentConfirmation
     },
     {
       path: '/termsconditions',
