@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      donate_url: 'http://localhost:8080/donate/'
+      donate_url: `http://${location.host}/donate/`
     }
   },
   methods: {
