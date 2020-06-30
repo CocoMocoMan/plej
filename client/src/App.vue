@@ -10,13 +10,13 @@
           <p class="copyright-text is-size-6 is-strong">2020 All Rights Reserved by Plej</p>
         </div>
         <div class="column">
-          <a class ="terms-text is-size-6 is-strong" href="/termsconditions"> Terms and Conditions</a>
+          <a class ="terms-text is-size-6 is-strong" href="/termsconditions" target="_blank"> Terms and Conditions</a>
         </div>
         <div class="column">
-          <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy"> Privacy Policy</a>
+          <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy" target="_blank"> Privacy Policy</a>
         </div>
         <div class="column">
-          <a class="is-size-6 is-strong" href="/landing#contact_us"> Contact Us </a>
+          <a class="is-size-6 is-strong" href="/landing#contact_us" target="_blank"> Contact Us </a>
         </div>
       </div>
           <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -70,6 +70,25 @@ footer {
   margin-top: 200px;
   min-width: 100%;
   background-color: $blue;
+}
+#left {
+  float: left;
+  width: 30%;
+  background: $blue;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0.5em;
+}
+#right {
+  float: left;
+  width: 70%;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0.5em;
 }
 .card   {
   margin-top: 25px;
