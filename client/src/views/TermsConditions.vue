@@ -91,3 +91,12 @@
     <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
   </div>
 </template>
+
+<script>
+import ExternalLayout from '../layouts/External'
+export default {
+  created () {
+    this.$emit('update:layout', ExternalLayout)
+  }
+}
+</script>

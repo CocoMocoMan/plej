@@ -134,6 +134,7 @@
         </div>
     </div>
 </section>
+<a id="contact_us"></a>
 <section class="section section-light-grey is-medium">
     <div class="container">
         <div class="title-wrapper has-text-centered">

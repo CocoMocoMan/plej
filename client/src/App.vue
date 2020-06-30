@@ -16,7 +16,7 @@
           <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy"> Privacy Policy</a>
         </div>
         <div class="column">
-          <a class="is-size-6 is-strong" href="/contactus"> Contact Us </a>
+          <a class="is-size-6 is-strong" href="/landing#contact_us"> Contact Us </a>
         </div>
       </div>
           <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
