@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="section">
     <a :href="'https://connect.stripe.com/express/oauth/authorize?client_id=ca_32D88BD1qLklliziD7gYQvctJIhWBSQ7&state={STATE_VALUE}&suggested_capabilities[]=transfers&stripe_user[email]=' + user.email "><img src="../assets/connectstripe.png"></a>
   </div>
 </template>

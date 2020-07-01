@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-centered is-multiline">
+  <div class="columns is-centered is-multiline section">
     <div class="column is-one-quarter">
       <form v-on:submit="register">
         <div class="field">

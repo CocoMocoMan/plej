@@ -11,7 +11,7 @@
                     </h1>
                     <h2 class="subtitle is-5 is-muted"> Providing the link between your supporters and the content they love.</h2>
                     <div class="button-wrap">
-                        <a class="button is-primary is-rounded has-text-white is-strong">
+                        <a class="button is-primary is-rounded has-text-white is-strong" href="#contact_us">
                             Get Started
                         </a>
                     </div>
@@ -48,7 +48,8 @@
                           </figure>
                         </div>
                         <div class="card-text">
-                            <p>This is some cool explanatory text that is on two rows</p>
+                            <p class="subtitle is-6">Plej provides a customized link to the individual content you post,
+                               allowing your audience to support the content they enjoy the most.</p>
                         </div>
                     </div>
                 </div>
@@ -63,7 +64,9 @@
                           </figure>
                         </div>
                         <div class="card-text">
-                            <p>This is some explanatory text that is on two rows</p>
+                            <p class="subtitle is-6">Plej connects all major forms of payment into one single donation page.
+                               By clicking your link, your audience can easily provide support to the content they love
+                               without committing to recurring subscriptions.</p>
                         </div>
                     </div>
                 </div>
@@ -78,7 +81,10 @@
                             </figure>
                         </div>
                         <div class="card-text">
-                            <p>This is some explanatory text that is on two rows</p>
+                            <p class="subtitle is-6">Plej reveals what content is meaningful to your supporters.
+                               Stay up to date with what your viewers enjoy the most
+                               by tracking the total donations that each piece of content
+                               is bringing to your account.</p>
                         </div>
                     </div>
                 </div>
@@ -138,8 +144,8 @@
 <section class="section section-light-grey is-medium">
     <div class="container">
         <div class="title-wrapper has-text-centered">
-            <h2 class="title is-2 is-spaced">Drop us a line or two </h2>
-            <h3 class="subtitle is-5 is-muted">We'd love to hear from You</h3>
+            <h2 class="title is-2 is-spaced">Start using Plej today </h2>
+            <h3 class="subtitle is-5 is-muted">We'll get in touch with you</h3>
             <div class="divider is-centered"></div>
         </div>
 
@@ -165,7 +171,7 @@
                             </div>
                             <div class="column is-12">
                                 <div class="form-footer has-text-right mt-10">
-                                    <button class="button cta is-large primary-btn form-button raised is-clear">Send Message</button>
+                                    <button class="button is-primary is-large is-strong">Send Message</button>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +181,6 @@
         </div>
     </div>
 </section>
-
 </div>
 </template>
 

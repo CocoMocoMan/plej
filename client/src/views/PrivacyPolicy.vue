@@ -1,8 +1,13 @@
 <template>
   <div class="columns">
-    <div class="column is-3" id="left">
+    <div class="column is-4">
+      <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -300 }">
       <br>
+<<<<<<< HEAD
       <p class="is-size-5 is-strong has-text-centered has-text-white">Table of Contents</p>
+=======
+      <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
+>>>>>>> fe1a7693dc53249b184743fb0001ef3d2e52b20c
       <ul class="ml-6 pl-6 pb-6 mb-6">
         <br>
         <li><a class="has-text-white" href="#Preface">Preface</a></li>
@@ -34,8 +39,9 @@
         <br>
         <br>
       </ul>
+      </affix>
     </div>
-    <div class="column is-offset-4 mr-5 pr-5" id="right">
+    <div class="column is-6" id="content">
       <br>
       <h1 class="title is-strong has-text-centered">Privacy Policy</h1>
       <p class="has-text-centered">Last updated: June 29, 2020</p>
@@ -259,7 +265,12 @@
 
 <script>
 import ExternalLayout from '../layouts/External'
+import { Affix } from 'vue-affix'
 export default {
+  name: 'PrivacyPolicy',
+  components: {
+    Affix
+  },
   created () {
     this.$emit('update:layout', ExternalLayout)
   }

@@ -16,7 +16,8 @@
               <div class="column">
                 <a class="button is-primary is-strong" :href= "donate_url + linkToken">Donate Again</a>
               </div>
-            </div>          </div>
+            </div>
+          </div>
           <div class="column is-5">
             <figure class="image is-4by3">
               <img src="../assets/img-landing-1.jpg" alt="Description">
@@ -46,7 +47,9 @@ export default {
   methods: {
     checkValid () {
       if (!(this.linkToken && this.donation)) {
-        router.push('/invalidlink')
+        router.push({
+          name: 'InvalidLink'
+        })
       }
     }
   },

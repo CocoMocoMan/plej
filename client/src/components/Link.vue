@@ -33,9 +33,9 @@
 
 <style scoped>
   a {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 10px
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 1vh;
   }
 </style>
 
@@ -85,7 +85,6 @@ export default {
     calculateBalance: function () {
       let balance = 0
       for (let donation of this.link.donations) {
-        console.log(donation.amount)
         balance += parseInt(donation.amount)
       }
       return balance

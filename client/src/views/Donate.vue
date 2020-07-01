@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-centered has-text-centered">
+  <div class="columns is-centered has-text-centered section">
     <div class="column is-half">
       <div class="card">
         <header class="card-header">
@@ -49,7 +49,9 @@ export default {
                                err.response.status === 500)) {
             console.log(err.response.data.message)
           }
-          router.push('/invalidlink')
+          router.push({
+            name: 'InvalidLink'
+          })
         })
     }
   },
@@ -58,6 +60,7 @@ export default {
   },
   created () {
     this.$emit('update:layout', ExternalLayout)
+    this.$emit('update:useExternalLinks', true)
   }
 }
 </script>

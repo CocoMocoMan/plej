@@ -7,12 +7,12 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="title is-primary is-strong" style="color:#9299DF" :to="{ name: 'Dashboard'}">plej</router-link>
+          <router-link class="title is-primary is-strong" style="color:#f8f8f8; font-size:3em; margin-top: .25vh;" :to="{ name: 'Dashboard'}">plej</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary is-rounded has-text-white" href="#" v-on:click="logout">
+              <a class="button is-white is-rounded is-strong is-medium" href="#" v-on:click="logout">
                 <strong>Logout</strong>
               </a>
             </div>
