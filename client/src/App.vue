@@ -1,7 +1,7 @@
 <template>
   <div>
-    <component :is="layout">
-      <router-view :layout.sync="layout"/>
+    <component :is="layout" :useExternalLinks="useExternalLinks">
+      <router-view :layout.sync="layout" :useExternalLinks.sync="useExternalLinks"/>
     </component>
     <footer class="footer is-vcentered site-footer" style="background-color:#9299DF">
       <div class="columns">
@@ -10,13 +10,13 @@
           <p class="copyright-text is-size-6 is-strong">2020 All Rights Reserved by Plej</p>
         </div>
         <div class="column">
-          <a class ="terms-text is-size-6 is-strong" href="/termsconditions" target="_blank"> Terms and Conditions</a>
+          <a class ="terms-text is-size-6 is-strong" href="/termsconditions" :target="useExternalLinks ? '_blank' : ''"> Terms and Conditions</a>
         </div>
         <div class="column">
-          <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy" target="_blank"> Privacy Policy</a>
+          <a class ="privacy-text is-size-6 is-strong" href="/privacypolicy" :target="useExternalLinks ? '_blank' : ''"> Privacy Policy</a>
         </div>
         <div class="column">
-          <a class="is-size-6 is-strong" href="/landing#contact_us" target="_blank"> Contact Us </a>
+          <a class="is-size-6 is-strong" href="/landing#contact_us" :target="useExternalLinks ? '_blank' : ''"> Contact Us </a>
         </div>
       </div>
           <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -94,7 +94,8 @@ export default {
   name: 'App',
   data () {
     return {
-      layout: 'div'
+      layout: 'div',
+      useExternalLinks: false
     }
   }
 }

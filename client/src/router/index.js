@@ -54,11 +54,6 @@ export default new Router({
       component: Donate
     },
     {
-      path: '/invalidlink',
-      name: 'InvalidLink',
-      component: InvalidLink
-    },
-    {
       path: '/landing',
       name: 'Landing',
       component: Landing
@@ -72,6 +67,11 @@ export default new Router({
       path: '/privacypolicy',
       name: 'PrivacyPolicy',
       component: PrivacyPolicy
+    },
+    {
+      path: '*',
+      name: 'InvalidLink',
+      component: InvalidLink
     }
   ]
 })
