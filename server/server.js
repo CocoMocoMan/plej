@@ -1,7 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const passport = require('passport')
 const passportconfig = require('./config/passport')
 const mongoose = require('mongoose')
@@ -21,6 +21,7 @@ dbconfig(mongoose)
 app.use(bodyParser.json())
 app.use(cookieParser());
 
+//passport/sessions
 app.use(session({ secret: 'secret' }));
 app.use(passport.initialize())
 app.use(passport.session())
@@ -29,6 +30,14 @@ app.use(passport.session())
 authRoutes(app, passport)
 linkRoutes(app)
 paymentRoutes(app)
+
+//Handle production
+if(process.env.NODE_ENV === 'production') {
+  //Static folder
+  app.use(express.static(__dirname + '/public'))
+  //Handle SPA
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
 
 //serve
 app.listen(port, () => console.log(

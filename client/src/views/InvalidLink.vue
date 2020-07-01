@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="section">
     <b> Invalid Link</b>
   </div>
 </template>

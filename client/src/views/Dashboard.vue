@@ -1,5 +1,5 @@
 <template>
-  <div class = "columns is-centered is-multiline has-text-centered">
+  <div class = "columns is-centered is-multiline has-text-centered section">
     <div class = "column is-one-third">
     </div>
     <div class = "column is-one-third">

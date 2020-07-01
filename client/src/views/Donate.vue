@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-centered has-text-centered">
+  <div class="columns is-centered has-text-centered section">
     <div class="column is-half">
       <div class="card">
         <header class="card-header">

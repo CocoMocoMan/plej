@@ -1,8 +1,9 @@
 <template>
   <div class="columns">
-    <div class="column is-3" id="left">
+    <div class="column is-4">
+    <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -300 }">
       <br>
-      <p class="is-size-5 is-strong has-text-centered">Table of Contents</p>
+      <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
       <ul class="ml-6 pl-6 pb-6 mb-6">
         <br>
         <li><a href="#Welcome">Welcome to Plej.link</a></li>
@@ -33,8 +34,9 @@
         <br>
         <br>
       </ul>
+    </affix>
     </div>
-      <div class="column is-offset-4 mr-5 pr-5" id="right">
+    <div class="column is-6" id="content">
       <br>
       <h2 class="title is-strong has-text-centered">Terms and Conditions</h2>
       <a id="Welcome"></a>
@@ -140,7 +142,12 @@
 
 <script>
 import ExternalLayout from '../layouts/External'
+import { Affix } from 'vue-affix'
 export default {
+  name: 'TermsConditions',
+  components: {
+    Affix
+  },
   created () {
     this.$emit('update:layout', ExternalLayout)
   }

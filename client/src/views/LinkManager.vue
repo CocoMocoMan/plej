@@ -1,5 +1,5 @@
 <template>
-    <div class="columns is-centered is-multiline has-text-centered">
+    <div class="columns is-centered is-multiline has-text-centered section">
       <div class="column is-half">
         <h1 class="title">Plej.links</h1>
         <button class="button is-rounded is-white is-strong has-text-grey" v-on:click="generateLinkToken">Generate New Link</button>

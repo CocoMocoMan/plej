@@ -18,6 +18,7 @@
     "sass": "^1.26.8",
     "sass-loader": "^7.3.1",
     "vue": "^2.5.2",
+    "vue-affix": "^0.5.2",
     "vue-cookies": "^1.7.0",
     "vue-input-autowidth": "^1.0.10",
     "vue-router": "^3.0.1",
