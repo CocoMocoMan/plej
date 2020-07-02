@@ -1,40 +1,36 @@
 <template>
   <div class="columns">
     <div class="column is-4">
-      <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -300 }">
+      <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -285 }">
       <br>
-<<<<<<< HEAD
-      <p class="is-size-5 is-strong has-text-centered has-text-white">Table of Contents</p>
-=======
       <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
->>>>>>> fe1a7693dc53249b184743fb0001ef3d2e52b20c
       <ul class="ml-6 pl-6 pb-6 mb-6">
         <br>
-        <li><a class="has-text-white" href="#Preface">Preface</a></li>
+        <li><a href="#Preface">Preface</a></li>
         <br>
-        <li><a class="has-text-white" href="#Interpretation">Interpretation and Definitions</a></li>
+        <li><a href="#Interpretation">Interpretation and Definitions</a></li>
         <br>
-        <li><a class="has-text-white" href="#DataCollection">Collecting and Using Your Personal Data</a></li>
+        <li><a href="#DataCollection">Collecting and Using Your Personal Data</a></li>
         <br>
-        <li><a class="has-text-white" href="#Tracking">Tracking Technologies and Cookies</a></li>
+        <li><a href="#Tracking">Tracking Technologies and Cookies</a></li>
         <br>
-        <li><a class="has-text-white"  href="#Retention">Retention of Your Personal Data</a></li>
+        <li><a href="#Retention">Retention of Your Personal Data</a></li>
         <br>
-        <li><a class="has-text-white" href="#Transfer">Transfer of Your Personal Data</a></li>
+        <li><a href="#Transfer">Transfer of Your Personal Data</a></li>
         <br>
-        <li><a class="has-text-white" href="#Transactions">Business Transactions</a></li>
+        <li><a href="#Transactions">Business Transactions</a></li>
         <br>
-        <li><a class="has-text-white" href="#LawEnforcement">Law Enforcement</a></li>
+        <li><a href="#LawEnforcement">Law Enforcement</a></li>
         <br>
-        <li><a class="has-text-white" href="#Security">Security of Your Personal Data</a></li>
+        <li><a href="#Security">Security of Your Personal Data</a></li>
         <br>
-        <li><a class="has-text-white" href="#CAPrivacyRights">California Privacy Rights</a></li>
+        <li><a href="#CAPrivacyRights">California Privacy Rights</a></li>
         <br>
-        <li><a class="has-text-white" href="#Links">Links to Other Websites</a></li>
+        <li><a href="#Links">Links to Other Websites</a></li>
         <br>
-        <li><a class="has-text-white" href="#Changes">Changes to Privacy Policy</a></li>
+        <li><a href="#Changes">Changes to Privacy Policy</a></li>
         <br>
-        <li><a class="has-text-white" href="#Contact">Contact Us</a></li>
+        <li><a href="#Contact">Contact Us</a></li>
         <br>
         <br>
         <br>
