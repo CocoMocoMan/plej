@@ -3,28 +3,32 @@
     <div class="column is-4">
     <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -300 }">
       <br>
+<<<<<<< HEAD
+      <p class="is-size-5 is-strong has-text-centered has-text-white">Table of Contents</p>
+=======
       <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
+>>>>>>> fe1a7693dc53249b184743fb0001ef3d2e52b20c
       <ul class="ml-6 pl-6 pb-6 mb-6">
         <br>
-        <li><a href="#Welcome">Welcome to Plej.link</a></li>
+        <li><a class="has-text-white" href="#Welcome">Welcome to Plej.link</a></li>
         <br>
-        <li><a href="#Cookies">Cookies</a></li>
+        <li><a class="has-text-white" href="#Cookies">Cookies</a></li>
         <br>
-        <li><a href="#License">License</a></li>
+        <li><a class="has-text-white" href="#License">License</a></li>
         <br>
-        <li><a href="#Hyperlinking">Hyperlinking to Our Content</a></li>
+        <li><a class="has-text-white" href="#Hyperlinking">Hyperlinking to Our Content</a></li>
         <br>
-        <li><a href="#iFrames">iFrames</a></li>
+        <li><a class="has-text-white" href="#iFrames">iFrames</a></li>
         <br>
-        <li><a href="#ContentLiability">Content Liability</a></li>
+        <li><a class="has-text-white" href="#ContentLiability">Content Liability</a></li>
         <br>
-        <li><a href="#Privacy">Your Privacy</a></li>
+        <li><a class="has-text-white" href="#Privacy">Your Privacy</a></li>
         <br>
-        <li><a href="#Rights">Reservation of Rights</a></li>
+        <li><a class="has-text-white" href="#Rights">Reservation of Rights</a></li>
         <br>
-        <li><a href="#Removal">Removal of links from our website</a></li>
+        <li><a class="has-text-white" href="#Removal">Removal of links from our website</a></li>
         <br>
-        <li><a href="#Disclaimer">Disclaimer</a></li>
+        <li><a class="has-text-white" href="#Disclaimer">Disclaimer</a></li>
         <br>
         <br>
         <br>
