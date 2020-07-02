@@ -1,43 +1,69 @@
 <template>
   <div id="payment">
     <form>
-      <div class="columns is-centered">
-        <div class="column is-one-third">
-          <div class="field">
-            <div class="control has-icons-left">
-              <input class ="input is-rounded" type="text" placeholder="From" v-model="donation.from" :disabled="isLoading"/>
-              <span class="icon is-small is-left">
-                <i class="fa fa-paper-plane"></i>
-              </span>
+      <div class="card card-grey" style="padding-left:1rem; padding-right:1rem; padding-top:.3rem; padding-bottom:.3rem;">
+        <div class="card_content">
+          <div class="card">
+            <div class="card-content">
+              <div class="columns has-text-centered">
+                <div class="column">
+                  <linkpreview style="margin-top:3rem" :url="link.link_content"/>
+                </div>
+                <div class="column">
+                  <p class="title tag is-info is-5" style="margin-bottom:.1vh;"> Optional </p>
+                  <div class="card card-grey">
+                  <header class="card-header">
+                    <p class="card-header-title title is-centered is-5">
+                      Personalize Your Plej
+                    </p>
+                  </header>
+                    <div clas="card-content">
+                      <div class="field" style="padding:2rem">
+                        <div class="control has-icons-left">
+                          <input class ="input is-rounded" type="text" placeholder="From" v-model="donation.from" :disabled="isLoading"/>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-paper-plane"></i>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="field" style="padding-left:2rem; padding-right:2rem; padding-top:.3rem; padding-bottom:2rem;">
+                        <div class="control has-icons-left">
+                          <textarea class ="textarea" style="border-radius: 25px;" type="text" placeholder="Message" v-model="donation.message" :disabled="isLoading"/>
+                          <span class="icon is-small is-left">
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-     <div class="columns is-centered">
-        <div class="column is-half">
-          <div class="field">
-            <div class="control">
-              <input class="input button  is-primary is-rounded is-strong has-text-white" v-on:click="updatePaymentAmount(1, $event)" type="submit" value="$1" :disabled="isLoading"/>
-            </div>
-          </div>
-        </div>
-        <div class="column is-half">
-          <div class="field">
-            <div class="control">
-              <input class="input button is-primary is-rounded is-strong has-text-white" v-on:click="updatePaymentAmount(5, $event)" type="submit" value="$5" :disabled="isLoading"/>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="columns is-centered">
-        <div class="column is-half">
+        <div class="column is-one-quarter">
+          <div class="field">
+            <div class="control">
+              <input class="input button is-rounded is-primary is-strong has-text-white" v-on:click="updatePaymentAmount(1, $event)" type="submit" value="$1" :disabled="isLoading"/>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="field">
+            <div class="control">
+              <input class="input button is-rounded is-primary is-strong has-text-white" v-on:click="updatePaymentAmount(5, $event)" type="submit" value="$5" :disabled="isLoading"/>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
           <div class="field">
             <div class="control">
               <input class="input button is-primary is-rounded is-strong has-text-white" v-on:click="updatePaymentAmount(10, $event)" type="submit" value="$10" :disabled="isLoading"/>
             </div>
           </div>
         </div>
-        <div class="column is-half">
+        <div class="column is-one-quarter">
           <div class="field">
             <div class="control">
               <input class="input button is-primary is-rounded is-strong has-text-white" v-on:click="updatePaymentAmount(20, $event)" type="submit" value="$20" :disabled="isLoading"/>
@@ -46,10 +72,10 @@
         </div>
       </div>
       <div class="columns is-centered">
-        <div class="column">
+        <div class="column is-one-quarter">
           <div class="field">
             <div class="control has-icons-left">
-              <input class ="input is-rounded" v-on:input="updatePaymentAmount('custom', $event)" @paste.prevent
+              <input class ="input is-rounded" style="border-color:#d1d1d1" v-on:input="updatePaymentAmount('custom', $event)" @paste.prevent
                 v-on:keypress="numericOnly" type="number" ref="custom" placeholder="Custom Donation" :disabled="isLoading"/>
               <span class="icon is-small is-left">
                 <i class="fa fa-usd"></i>
@@ -103,11 +129,18 @@
 import { stripeKey, stripeOptions } from '../stripeConfig.js'
 import axios from 'axios'
 import router from '../router'
+import linkpreview from './LinkPreview'
 /* eslint-disable no-undef */
 export default {
   name: 'PaymentForm',
+  components: {
+    linkpreview
+  },
   props: {
-    linkToken: ''
+    link: {
+      link_token: '',
+      link_content: ''
+    }
   },
   data () {
     return {
@@ -134,6 +167,7 @@ export default {
       },
       stripe: undefined,
       card: undefined,
+      paymentRequest: undefined,
       lockSubmit: true,
       isLoading: false,
       donation: {
@@ -176,7 +210,7 @@ export default {
             data:
             {
               paymentMethod: paymentMethod.id,
-              token: self.linkToken,
+              token: self.link.link_token,
               donation: self.donation
             }
           }
@@ -190,7 +224,7 @@ export default {
             { name: 'PaymentConfirmation',
               params: {
                 donation: self.donation,
-                linkToken: self.linkToken
+                linkToken: self.link.link_token
               }
             }
           )
@@ -226,6 +260,7 @@ export default {
   },
   mounted () {
     this.stripe = Stripe(this.spk, this.options)
+    // setup stripe elements
     const elements = this.stripe.elements({
       fonts: [
         {
@@ -236,6 +271,15 @@ export default {
     })
     this.card = elements.create('card', this.cardStyle)
     this.card.mount(this.$refs.card)
+    // setup stripe paymentrequest (apply pay, google pay)
+    // this.paymentRequest = this.stripe.paymentRequest({
+    //   country: 'US',
+    //   currency: 'usd',
+    //   total: {
+    //     amount: this.donation.amount,
+    //     label: 'Total'
+    //   }
+    // })
   }
 }
 </script>

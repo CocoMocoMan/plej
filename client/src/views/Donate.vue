@@ -1,13 +1,8 @@
 <template>
-  <div class="columns is-centered has-text-centered section">
+  <div class="columns is-centered section">
     <div class="column is-half">
-      <div class="card">
-        <header class="card-header">
-            <p class="label card-header-title">Donate to {{ creator.name }} </p>
-        </header>
-      </div>
-      <linkpreview :url="link.link_content"/>
-      <paymentform :linkToken="link.link_token"/>
+      <p class="title tag is-primary is-4" style="margin-bottom:.5vh;">@{{ creator.alias }} </p>
+      <paymentform :link="link"/>
     </div>
   </div>
 </template>
@@ -17,12 +12,10 @@ import axios from 'axios'
 import router from '../router'
 import ExternalLayout from '../layouts/External'
 import paymentform from '../components/PaymentForm'
-import linkpreview from '../components/LinkPreview'
 export default {
   name: 'Donate',
   components: {
-    paymentform,
-    linkpreview
+    paymentform
   },
   data () {
     return {

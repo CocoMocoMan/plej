@@ -11,11 +11,6 @@
               You're not supposed to be here.
             </h2>
           </div>
-          <div class="column is-5">
-            <figure class="image is-4by3">
-              <img src="../assets/lost.png" alt="Description">
-            </figure>
-          </div>
         </div>
       </div>
     </div>

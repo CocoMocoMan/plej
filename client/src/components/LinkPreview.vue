@@ -7,7 +7,7 @@
             <img class="card-image" :src="props.img" :alt="props.title" style="max-height:10rem; width: 100%">
             <div class="card-content">
               <h1 class="title is-6 is-spaced">{{props.title}}</h1>
-              <a v-bind:href="props.url" target="_blank" class="button is-primary has-text-white is-rounded is-strong">More</a>
+              <a v-bind:href="props.url" target="_blank" class="button is-info has-text-white is-rounded is-strong">More</a>
             </div>
           </div>
         </template>

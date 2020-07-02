@@ -7,7 +7,7 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-start">
-          <router-link class="title is-primary is-strong" style="color:#f8f8f8; font-size:3em; margin-top: .25vh;" :to="{ name: 'Dashboard'}">plej</router-link>
+          <router-link class="title has-text-primary is-strong" style="font-size:3em; margin-top: .25vh;" :to="{ name: 'Dashboard'}">plej</router-link>
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
