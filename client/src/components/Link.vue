@@ -1,9 +1,13 @@
  <template>
   <div class="card">
     <header class="card-header is-centered">
-      <a type="text" class="link" name="link" :href= "donate_url + link.link_token" target="_blank">
-        {{ donate_url + link.link_token }}
-      </a>
+      <a
+        type="text"
+        class="link"
+        name="link"
+        :href="donate_url + link.link_token"
+        target="_blank"
+      >{{ donate_url + link.link_token }}</a>
     </header>
     <div class="card-body">
       <div v-if="link.link_content" class="card-header-title is-centered">
@@ -12,15 +16,22 @@
       <div v-else class="card-header-title">
         <div class="field has-addons">
           <div class="control has-icons-left">
-            <input class="input is-rounded is-small" type="text" name="title" placeholder="Link to Content" ref="linkContent"/>
+            <input
+              class="input is-rounded is-small"
+              type="text"
+              name="title"
+              placeholder="Link to Content"
+              ref="linkContent"
+            />
             <span class="icon is-small is-left">
-                <i class="fa fa-link"></i>
-              </span>
+              <i class="fa fa-link"></i>
+            </span>
           </div>
           <div class="control">
-            <button class="button is-primary is-strong has-text-white is-rounded is-small" v-on:click="addLinkContent">
-                Add
-            </button>
+            <button
+              class="button is-primary is-strong has-text-white is-rounded is-small"
+              v-on:click="addLinkContent"
+            >Add</button>
           </div>
         </div>
       </div>
@@ -32,11 +43,11 @@
 </template>
 
 <style scoped>
-  a {
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    margin-left: 1vh;
-  }
+a {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: 1vh;
+}
 </style>
 
 <script>
