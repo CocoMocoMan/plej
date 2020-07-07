@@ -26,7 +26,19 @@
         </div>
     </div>
 </section>
-
+<section class="section section-feature-grey is-medium">
+  <div class="container">
+    <div class="title-wrapper has-text-centered">
+      <h2 class="title is-2">What is Plej?</h2>
+      <div class="divider is-centered"></div>
+    </div>
+    <div class="card-text">
+      <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between</p>
+      <p class="subtitle is-5 is-muted has-text-right">the creator and their audience. With our no strings attached model of donating,</p>
+      <p class="subtitle is-5 is-muted has-text-right">giving support to your favorite artists individual content is made simple and easy.</p>
+    </div>
+  </div>
+</section>
 <section class="section section-feature-grey is-medium">
     <div class="container">
         <div class="title-wrapper has-text-centered">
@@ -92,10 +104,10 @@
         </div>
     </div>
 </section>
+<!--
 <section class="section is-medium  has-background-image" data-background="https://source.unsplash.com/g30P1zcOzXo/1600x900" data-color="#4FC1EA" data-color-opacity=".6">
     <div class="overlay"></div>
     <div class="container">
-
         <div class="title-wrapper has-text-centered">
             <h2 class="title is-2 light-text is-spaced">Our clients love us</h2>
             <h3 class="subtitle is-5 light-text">Look at what they say about us</h3>
@@ -140,6 +152,7 @@
         </div>
     </div>
 </section>
+-->
 <a id="contact_us"></a>
 <section class="section section-light-grey is-medium">
     <div class="container">
