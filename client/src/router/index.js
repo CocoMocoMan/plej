@@ -23,11 +23,6 @@ export default new Router({
       component: Landing
     },
     {
-      path: '/landing',
-      name: 'Landing',
-      component: Landing
-    },
-    {
       path: '/login',
       name: 'Login',
       component: Login

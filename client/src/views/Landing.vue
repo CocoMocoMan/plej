@@ -151,26 +151,37 @@
         <div class="content-wrapper">
           <div class="columns">
             <div class="column is-6 is-offset-3">
-              <form>
+              <form v-on:submit="sendMessage">
                 <div class="columns is-multiline">
                   <div class="column is-6">
-                    <input class="input is-medium" type="text" placeholder="First Name *" />
+                    <input
+                      class="input is-medium"
+                      name="fName"
+                      type="text"
+                      placeholder="First Name *"
+                    />
                   </div>
                   <div class="column is-6">
-                    <input class="input is-medium" type="text" placeholder="Last Name *" />
+                    <input
+                      class="input is-medium"
+                      name="lName"
+                      type="text"
+                      placeholder="Last Name *"
+                    />
                   </div>
                   <div class="column is-6">
-                    <input class="input is-medium" type="text" placeholder="Email *" />
+                    <input class="input is-medium" name="email" type="text" placeholder="Email *" />
                   </div>
                   <div class="column is-12">
-                    <textarea class="textarea" rows="6" placeholder="Message"></textarea>
+                    <textarea class="textarea" name="message" rows="6" placeholder="Message"></textarea>
                   </div>
                   <div class="column is-12">
                     <div class="form-footer has-text-right mt-10">
-                      <button
+                      <input
                         class="button is-primary is-large is-strong"
-                        v-on:click="sendMessage"
-                      >Send Message</button>
+                        type="submit"
+                        value="Send Message"
+                      />
                     </div>
                   </div>
                 </div>
@@ -184,6 +195,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import ExternalLayout from '../layouts/External'
 export default {
   name: 'Landing',
@@ -191,7 +203,22 @@ export default {
     this.$emit('update:layout', ExternalLayout)
   },
   methods: {
-    sendMessage () {}
+    sendMessage (e) {
+      let fName = e.target.elements.fName.value
+      let lName = e.target.elements.lName.value
+      let email = e.target.elements.email.value
+      let message = e.target.elements.message.value
+      let sendMessage = () => {
+        let data = {
+          fName: fName,
+          lName: lName,
+          email: email,
+          message: message
+        }
+        axios.post('', data)
+      }
+      sendMessage()
+    }
   }
 }
 </script>
