@@ -43,7 +43,7 @@ $primary: $salmon;
 $info: $lightgreen;
 $light: $lightgrey;
 $family-primary: Hind Siliguri, sans-serif;
-$input-border-color: $lightgrey;
+$input-border-color: #d1d1d1;
 
 @import './../node_modules/bulma/css/bulma.css';
 @import "../node_modules/bulma/sass/utilities/_all.sass";
@@ -86,7 +86,7 @@ html {
   margin-top: 2vh;
   margin-bottom: 2vh;
   background-color: $white;
-  border-radius: 25px;
+  border-radius: 5px;
   .has-text-centered {
     .card-header,
     .card-content,
@@ -102,11 +102,11 @@ html {
 }
 
 .card-header {
-    border-radius: 25px;
+    border-radius: 5px;
 }
 
 .card-image {
-    border-radius: 25px;
+    border-radius: 5px;
 }
 </style>
 

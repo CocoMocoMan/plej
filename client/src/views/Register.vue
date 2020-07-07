@@ -5,7 +5,7 @@
         <div class="field">
           <label class="label">Name</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="text" name="name" placeholder="Name" />
+            <input class="input is-rounded" type="text" name="name" placeholder="Name" />
             <span class="icon is-small is-left">
               <i class="fa fa-user"></i>
             </span>
@@ -14,7 +14,7 @@
         <div class="field">
           <label class="label">Alias</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="text" name="alias" placeholder="Alias" />
+            <input class="input is-rounded" type="text" name="alias" placeholder="Alias" />
             <span class="icon is-small is-left">
               <i class="fa fa-user-secret"></i>
             </span>
@@ -23,7 +23,7 @@
         <div class="field">
           <label class="label">Email</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="text" name="email" placeholder="Email" />
+            <input class="input is-rounded" type="text" name="email" placeholder="Email" />
             <span class="icon is-small is-left">
               <i class="fa fa-envelope"></i>
             </span>
@@ -32,15 +32,19 @@
         <div class="field">
           <label class="label">Password</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="password" name="password" placeholder="Password"/>
-             <span class="icon is-small is-left">
+            <input class="input is-rounded" type="password" name="password" placeholder="Password" />
+            <span class="icon is-small is-left">
               <i class="fa fa-lock"></i>
             </span>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input button is-primary is-rounded is-strong has-text-white" type="submit" value="Sign Up" />
+            <input
+              class="input button is-primary is-rounded is-strong has-text-white"
+              type="submit"
+              value="Sign Up"
+            />
           </div>
         </div>
       </form>
@@ -104,7 +108,7 @@ export default {
 </script>
 
 <style>
-  .is-strong {
-    font-weight: bold
-  }
+.is-strong {
+  font-weight: bold;
+}
 </style>

@@ -1,9 +1,5 @@
 version: '3'
 services: 
-  client: 
-    container_name: client 
-    build: ./client
-    image: oakel/plej-client
   server: 
     container_name: server
     restart: always
@@ -11,13 +7,11 @@ services:
     image: oakel/plej-server
     environment: 
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=80
     ports: 
-      - "3000:3000"
+      - "80:80"
     links:
       - mongo
-    depends_on:
-      - client
   mongo:
     container_name: mongo
     image: mongo

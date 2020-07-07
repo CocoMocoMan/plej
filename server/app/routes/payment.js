@@ -1,6 +1,7 @@
 const User = require('../models/Users')
+const stripeconfig = require('../../config/stripe.js') 
 
-const stripe = require('stripe')('sk_test_51GqsuDEBGViFyBImr9whAxh3oeFgJ7mqqW9O2O48K5QuOiKi0RGYgUjeRNe6I7uIA28Mz2oyqDR5uUCbqiNMQnU700VPYkm0WM')
+const stripe = require('stripe')(stripeconfig.secretKey)
 
 module.exports = function(app) {
   app.get('/api/payment/secret/', async (req, res) => {
@@ -17,6 +18,10 @@ module.exports = function(app) {
         return res.status(200).json({ intent: intent })
       })
     )
+  })
+
+  app.get('/api/payment/config', (req, res) => {
+    return res.status(200).json({ publicKey: stripeconfig.publicKey, options: stripeconfig.options})
   })
 
   app.post('/api/payment/confirm', async (req, res) => {

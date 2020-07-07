@@ -1,14 +1,19 @@
 <template>
-  <div class = "columns is-centered is-multiline has-text-centered section">
-    <div class = "column is-one-third">
-    </div>
-    <div class = "column is-one-third">
+  <div class="columns is-centered is-multiline has-text-centered section">
+    <div class="column is-one-third"></div>
+    <div class="column is-one-third">
       <h1 class="title">Dashboard</h1>
-      <p class="label">Welcome, {{ user.name }} </p>
-      <br>
+      <p class="label">Welcome, {{ user.name }}</p>
+      <br />
       <div>
-        <router-link class="button is-white is-rounded is-strong has-text-grey" :to="{ name: 'PaymentSetup'}">Payment Setup</router-link>
-        <router-link class="button is-primary is-rounded has-text-white is-strong" :to="{ name: 'LinkManager'}">Manage Links</router-link>
+        <router-link
+          class="button is-white is-rounded is-strong has-text-grey"
+          :to="{ name: 'PaymentSetup'}"
+        >Payment Setup</router-link>
+        <router-link
+          class="button is-primary is-rounded has-text-white is-strong"
+          :to="{ name: 'LinkManager'}"
+        >Manage Links</router-link>
       </div>
     </div>
     <div class="column is-one-third"></div>
@@ -42,8 +47,8 @@ export default {
         .catch((err) => {
           if (err.response && err.response.status === 401) {
             console.log(err.response.data.message)
+            router.push('/login')
           }
-          router.push('/')
         })
     }
   },

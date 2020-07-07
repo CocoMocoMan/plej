@@ -19,6 +19,16 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Landing',
+      component: Landing
+    },
+    {
+      path: '/landing',
+      name: 'Landing',
+      component: Landing
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: Login
     },
@@ -52,11 +62,6 @@ export default new Router({
       path: '/donate/:token',
       name: 'Donate',
       component: Donate
-    },
-    {
-      path: '/landing',
-      name: 'Landing',
-      component: Landing
     },
     {
       path: '/termsconditions',

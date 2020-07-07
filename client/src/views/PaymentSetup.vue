@@ -29,8 +29,8 @@ export default {
         .catch((err) => {
           if (err.response && err.response.status === 401) {
             console.log(err.response.data.message)
+            router.push('/login')
           }
-          router.push('/')
         })
     },
     getStripeStateValue: function () {

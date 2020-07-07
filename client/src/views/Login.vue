@@ -5,7 +5,7 @@
         <div class="field">
           <label class="label">Email</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="text" name="email" placeholder="Email" />
+            <input class="input is-rounded" type="text" name="email" placeholder="Email" />
             <span class="icon is-small is-left">
               <i class="fa fa-envelope"></i>
             </span>
@@ -14,15 +14,19 @@
         <div class="field">
           <label class="label">Password</label>
           <div class="control has-icons-left">
-            <input class ="input is-rounded" type="password" name="password" placeholder="Password"/>
-             <span class="icon is-small is-left">
+            <input class="input is-rounded" type="password" name="password" placeholder="Password" />
+            <span class="icon is-small is-left">
               <i class="fa fa-lock"></i>
             </span>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input button is-primary is-rounded is-strong has-text-white" type="submit" value="Log In" />
+            <input
+              class="input button is-primary is-rounded is-strong has-text-white"
+              type="submit"
+              value="Log In"
+            />
           </div>
         </div>
       </form>

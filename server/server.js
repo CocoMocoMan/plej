@@ -31,6 +31,10 @@ authRoutes(app, passport)
 linkRoutes(app)
 paymentRoutes(app)
 
+//Apple pay verification
+app.use(express.static(__dirname + '/.well-known'))
+app.get('/.well-known/apple-developer-merchantid-domain-association', (req, res) => res.sendFile(__dirname + '/.well-known/apple-developer-merchantid-domain-association'))
+
 //Handle production
 if(process.env.NODE_ENV === 'production') {
   //Static folder

@@ -1,15 +1,16 @@
 <template>
-   <div class="columns is-centered">
-    <div class="column is-half">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-two-thirds">
       <linkprevue :url="this.url">
         <template slot-scope="props">
-          <div class="card" style="max-height:20rem">
-            <img class="card-image" :src="props.img" :alt="props.title" style="max-height:10rem; width: 100%">
-            <div class="card-content">
-              <h1 class="title is-6 is-spaced">{{props.title}}</h1>
-              <a v-bind:href="props.url" target="_blank" class="button is-info has-text-white is-rounded is-strong">More</a>
+          <a v-bind:href="props.url" target="_blank">
+            <div class="card card-grey" style>
+              <img class="card-image" :src="props.img" :alt="props.title" style="width:100%" />
+              <div class="card-content">
+                <h1 class="title is-6 is-spaced">{{props.title}}</h1>
+              </div>
             </div>
-          </div>
+          </a>
         </template>
       </linkprevue>
     </div>
