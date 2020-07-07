@@ -1,5 +1,5 @@
 <template>
-  <div class="columns">
+  <div class="columns section">
     <div class="column is-4">
       <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -300 }">
         <br />
