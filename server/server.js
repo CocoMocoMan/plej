@@ -9,6 +9,7 @@ const dbconfig = require('./config/database')
 const authRoutes = require('./app/routes/auth')
 const linkRoutes = require('./app/routes/link')
 const paymentRoutes = require('./app/routes/payment')
+const notifyRoutes = require('./app/routes/notify')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -30,13 +31,14 @@ app.use(passport.session())
 authRoutes(app, passport)
 linkRoutes(app)
 paymentRoutes(app)
+notifyRoutes(app)
 
 //Apple pay verification
 app.use(express.static(__dirname + '/.well-known'))
 app.get('/.well-known/apple-developer-merchantid-domain-association', (req, res) => res.sendFile(__dirname + '/.well-known/apple-developer-merchantid-domain-association'))
 
 //Handle production
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   //Static folder
   app.use(express.static(__dirname + '/public'))
   //Handle SPA
