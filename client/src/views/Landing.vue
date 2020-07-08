@@ -156,6 +156,7 @@
                   <div class="column is-6">
                     <input
                       class="input is-medium"
+                      :class="errors.fName ? 'is-danger' : ''"
                       name="fName"
                       type="text"
                       placeholder="First Name *"
@@ -164,17 +165,26 @@
                   <div class="column is-6">
                     <input
                       class="input is-medium"
+                      :class="errors.lName ? 'is-danger' : ''"
                       name="lName"
                       type="text"
                       placeholder="Last Name *"
                     />
                   </div>
                   <div class="column is-6">
-                    <input class="input is-medium" name="email" type="text" placeholder="Email *" />
+                    <input
+                      class="input is-medium"
+                      :class="errors.email ? 'is-danger' : ''"
+                      name="email"
+                      type="text"
+                      placeholder="Email *"
+                    />
                   </div>
                   <div class="column is-12">
                     <textarea class="textarea" name="message" rows="6" placeholder="Message"></textarea>
                   </div>
+                  <div ref="success" class="has-text-success subtitle is-6"></div>
+                  <div ref="errors" class="has-text-danger subtitle is-6"></div>
                   <div class="column is-12">
                     <div class="form-footer has-text-right mt-10">
                       <input
@@ -199,15 +209,48 @@ import axios from 'axios'
 import ExternalLayout from '../layouts/External'
 export default {
   name: 'Landing',
+  data () {
+    return {
+      errors: {
+        fName: false,
+        lName: false,
+        email: false
+      }
+    }
+  },
   created () {
     this.$emit('update:layout', ExternalLayout)
   },
   methods: {
-    sendMessage (e) {
+    clearContactForm: function (e, success) {
+      this.errors.fName = false
+      this.errors.lName = false
+      this.errors.email = false
+      this.$refs.errors.textContent = ''
+      this.$refs.success.textContent = ''
+      if (success) {
+        e.target.elements.fName.value = ''
+        e.target.elements.lName.value = ''
+        e.target.elements.email.value = ''
+        e.target.elements.message.value = ''
+      }
+    },
+    sendMessage: function (e) {
+      e.preventDefault()
+      this.clearContactForm(e, false)
+      let self = this
       let fName = e.target.elements.fName.value
       let lName = e.target.elements.lName.value
       let email = e.target.elements.email.value
       let message = e.target.elements.message.value
+      if (!fName || !lName || !email) {
+        self.errors.fName = !fName
+        self.errors.lName = !lName
+        self.errors.email = !email
+        let errorElement = self.$refs.errors
+        errorElement.textContent = '* Please enter required fields'
+        return
+      }
       let sendMessage = () => {
         let data = {
           fName: fName,
@@ -215,7 +258,16 @@ export default {
           email: email,
           message: message
         }
-        axios.post('', data)
+        axios.post('/api/notify/contactus', data)
+          .then(() => {
+            self.clearContactForm(e, true)
+            let successElement = self.$refs.success
+            successElement.textContent = 'Thanks! A member of the Plej Team will reach out to you soon!'
+          })
+          .catch(err => {
+            let errorElement = self.$refs.errors
+            errorElement.textContent = '* ' + err.response.data.message
+          })
       }
       sendMessage()
     }
