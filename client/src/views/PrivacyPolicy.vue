@@ -1,7 +1,11 @@
 <template>
   <div class="columns section">
     <div class="column is-4">
-      <affix relative-element-selector="#content" :offset="{ top: 40, bottom: -285 }">
+      <affix
+        class="is-hidden-touch"
+        relative-element-selector="#content"
+        :offset="{ top: 40, bottom: -285 }"
+      >
         <br />
         <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
         <ul class="ml-6 pl-6 pb-6 mb-6">
