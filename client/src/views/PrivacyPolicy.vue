@@ -7,8 +7,8 @@
         :offset="{ top: 40, bottom: -285 }"
       >
         <br />
-        <p class="is-size-5 is-strong ml-6 pl-6">Table of Contents</p>
-        <ul class="ml-6 pl-6 pb-6 mb-6">
+        <p class="is-size-5 is-strong ml-3 pl-3">Table of Contents</p>
+        <ul class="ml-3 pl-3 pb-6 mb-6">
           <br />
           <li>
             <a href="#Preface">Preface</a>
@@ -67,7 +67,7 @@
         </ul>
       </affix>
     </div>
-    <div class="column is-6" id="content">
+    <div class="column is-7" id="content">
       <br />
       <h1 class="title is-strong has-text-centered">Privacy Policy</h1>
       <p class="has-text-centered">Last updated: June 29, 2020</p>
