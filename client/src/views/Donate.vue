@@ -8,7 +8,7 @@
         <div class="card-header-title is-centered">
           <LinkPreview :url="link.link_content" style="margin-bottom:0vh;" />
         </div>
-        <div v-if="stage.id===3">
+        <div v-if="stage.id===3" style="margin-bottom:5vh">
           <div class="card card-grey" style="margin-top:0vh;">
             <header class="card-header">
               <p class="card-header-title title is-centered is-5">Plej Summary</p>

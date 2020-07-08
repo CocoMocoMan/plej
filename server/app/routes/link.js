@@ -2,7 +2,7 @@ const authMiddleware = require('../../utils/auth.js')
 const User = require('../models/Users')
 const validator = require('../../utils/validator')
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get('/api/link/generatelinktoken', authMiddleware, (req, res) => {
     let user = req.user
     const linkToken = user.generateToken()
@@ -21,13 +21,13 @@ module.exports = function(app) {
 
   app.get('/api/link/creator/:token', (req, res) => {
     const token = req.params.token
-    User.findOne({ 'links.link_token': token})
+    User.findOne({ 'links.link_token': token })
       .then(creator => {
         if (!creator) {
           return res.status(400).json({ message: 'Invalid Link' })
         }
         creator = creator.publicData()
-        const link = creator.links.find(link => {return link.link_token === token})
+        const link = creator.links.find(link => { return link.link_token === token })
         return res.status(200).json({ creator: creator, link: link })
       })
       .catch(err => {
@@ -47,11 +47,11 @@ module.exports = function(app) {
           'links.$.link_content': link_content
         }
       },
-      {new: true}
+      { new: true }
     )
       .then((user) => {
-        const link = user.links.find(link => {return link.link_token === token})
-        return res.status(200).send({ link: link} )
+        const link = user.links.find(link => { return link.link_token === token })
+        return res.status(200).send({ link: link })
       })
       .catch((err) => {
         console.log(err)

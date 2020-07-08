@@ -1,5 +1,5 @@
 <template>
-  <section class="hero is-fullheight is-default is-bold">
+  <section class="hero is-big is-default is-bold">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
@@ -12,7 +12,10 @@
             </div>
             <div class="columns">
               <div class="column">
-                <a class="button is-primary is-strong" :href="donate_url + linkToken">Donate Again</a>
+                <router-link
+                  class="button is-primary is-strong"
+                  :to="{ path: '/donate/' + linkToken}"
+                >Donate Again</router-link>
               </div>
             </div>
           </div>

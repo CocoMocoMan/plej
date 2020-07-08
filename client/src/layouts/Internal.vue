@@ -8,8 +8,8 @@
           style="margin:1.2rem"
         >
           <div class="level is-vcentered is-centered">
-            <img src="../assets/logo.png" style="width:2rem; height: auto; margin-right:.5rem" />
-            <h3 class="title has-text-primary" style="font-size:2rem">plej</h3>
+            <img src="../assets/logo.png" style="width:3rem; height: auto; margin-right:.5rem" />
+            <h3 class="title has-text-primary is-hidden-touch" style="font-size:3rem">plej</h3>
           </div>
         </router-link>
         <a
