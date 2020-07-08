@@ -37,7 +37,7 @@
     <div class="card-text">
       <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between</p>
       <p class="subtitle is-5 is-muted has-text-right">the creator and their audience. With our no strings attached model of donating,</p>
-      <p class="subtitle is-5 is-muted has-text-right">giving support to your favorite artists individual content is made simple and easy.</p>
+      <p class="subtitle is-5 is-muted has-text-right">giving support to your favorite artist's individual content is made simple and easy.</p>
     </div>
   </div>
 </section>
