@@ -44,6 +44,9 @@ export default {
       from: '',
       message: ''
     }
+  },
+  mounted () {
+    this.$emit('update:lockNext', false)
   }
 }
 </script>

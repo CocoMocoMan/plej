@@ -1,27 +1,27 @@
 const User = require('../models/Users')
-const stripeconfig = require('../../config/stripe.js') 
+const stripeconfig = require('../../config/stripe.js')
 
 const stripe = require('stripe')(stripeconfig.secretKey)
 
-module.exports = function(app) {
-  app.get('/api/payment/secret/', async (req, res) => {
-    stripe.setupIntents.create(
-      {
-        // Verify your integration in this guide by including this parameter
-        metadata: {integration_check: 'accept_a_payment'}
-      },
-      ((err, intent) => {
-        if (err) {
-          console.log(err.message)
-          return res.status(500).json({ message: err.message })
-        }
-        return res.status(200).json({ intent: intent })
-      })
-    )
-  })
+module.exports = function (app) {
+  // app.get('/api/payment/secret/', async (req, res) => {
+  //   stripe.setupIntents.create(
+  //     {
+  //       // Verify your integration in this guide by including this parameter
+  //       metadata: {integration_check: 'accept_a_payment'}
+  //     },
+  //     ((err, intent) => {
+  //       if (err) {
+  //         console.log(err.message)
+  //         return res.status(500).json({ message: err.message })
+  //       }
+  //       return res.status(200).json({ intent: intent })
+  //     })
+  //   )
+  // })
 
   app.get('/api/payment/config', (req, res) => {
-    return res.status(200).json({ publicKey: stripeconfig.publicKey, options: stripeconfig.options})
+    return res.status(200).json({ publicKey: stripeconfig.publicKey, options: stripeconfig.options })
   })
 
   app.post('/api/payment/confirm', async (req, res) => {
@@ -29,16 +29,18 @@ module.exports = function(app) {
     const amountInCents = donation.amount * 100.0
     const paymentMethod = req.body.data.paymentMethod
     const token = req.body.data.token
+    const email = req.body.data.email
+    console.log(email)
     stripe.paymentIntents.create(
       {
         amount: amountInCents,
         currency: 'usd',
-        confirm: true, 
+        confirm: true,
         payment_method: paymentMethod,
-        receipt_email: 'othman@plej.link',
+        receipt_email: email,
         metadata: { link: token }
       },
-      ((err, intent) => {           
+      ((err, intent) => {
         if (err) {
           console.log(err.message)
           return res.status(500).json({ message: err.message })

@@ -58,7 +58,7 @@ $light: $lightgrey;
 $family-primary: Hind Siliguri, sans-serif;
 $input-border-color: #d1d1d1;
 
-@import "./../node_modules/bulma/css/bulma.css";
+@import "../node_modules/bulma/css/bulma.css";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/helpers/_all.sass";
@@ -71,6 +71,7 @@ $input-border-color: #d1d1d1;
 @import "../node_modules/bulma/sass/layout/section.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
 @import "@creativebulma/bulma-divider";
+@import "@creativebulma/bulma-tooltip";
 
 html {
   background-color: $white;

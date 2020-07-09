@@ -1,10 +1,10 @@
 <template>
   <div id="payment">
     <form>
-      <div ref="prbutton">
+      <div ref="prbutton" disabled>
         <!-- A Stripe Element will be inserted here. -->
       </div>
-      <div v-if="hasPR" class="divider" value="OR">OR</div>
+      <div v-if="hasPR" class="divider">OR</div>
       <div class="card has-text-centered card-grey">
         <header class="card-header">
           <p class="card-header-title">Credit Card</p>
@@ -54,6 +54,9 @@ export default {
       amount: '',
       from: '',
       message: ''
+    },
+    email: {
+      value: ''
     }
   },
   data () {
@@ -94,7 +97,8 @@ export default {
         {
           paymentMethod: paymentMethod.id,
           token: this.link.link_token,
-          donation: this.donation
+          donation: this.donation,
+          email: this.email.value
         }
       }
       return axios.post('/api/payment/confirm', data)

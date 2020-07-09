@@ -271,9 +271,6 @@ export default {
           })
       }
       sendMessage()
-    },
-    scrollFix: function (hashbang) {
-      location.href = hashbang
     }
   }
 }

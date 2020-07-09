@@ -30,7 +30,11 @@
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">
             <div class="buttons">
-              <a class="button is-white is-rounded is-strong" href="#" v-on:click="logout">
+              <a
+                class="button is-white is-rounded is-strong is-medium"
+                href="#"
+                v-on:click="logout"
+              >
                 <strong>Logout</strong>
               </a>
             </div>

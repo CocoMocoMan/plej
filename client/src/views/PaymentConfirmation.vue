@@ -32,6 +32,7 @@
 
 <script>
 import router from '../router'
+import ExternalLayout from '../layouts/External'
 export default {
   name: 'PaymentForm',
   props: {
@@ -53,6 +54,10 @@ export default {
         })
       }
     }
+  },
+  created () {
+    this.$emit('update:layout', ExternalLayout)
+    this.$emit('update:useExternalLinks', false)
   },
   mounted () {
     this.checkValid()
