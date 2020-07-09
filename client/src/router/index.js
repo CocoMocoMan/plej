@@ -20,58 +20,91 @@ export default new Router({
     {
       path: '/',
       name: 'Landing',
-      component: Landing
+      component: Landing,
+      meta: {
+        title: 'Plej'
+      }
     },
     {
       path: '/login',
       name: 'Login',
-      component: Login
+      component: Login,
+      meta: {
+        title: 'Login - Plej'
+      }
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register
+      component: Register,
+      meta: {
+        title: 'Sign Up - Plej'
+      }
     },
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard
+      component: Dashboard,
+      meta: {
+        title: 'Dashboard - Plej'
+      }
     },
     {
       path: '/paymentsetup',
       name: 'PaymentSetup',
-      component: PaymentSetup
+      component: PaymentSetup,
+      meta: {
+        title: 'Setup Payments - Plej'
+      }
     },
     {
       path: '/linkmanager',
       name: 'LinkManager',
-      component: LinkManager
+      component: LinkManager,
+      meta: {
+        title: 'Manage Links - Plej'
+      }
     },
     {
       path: '/donate/confirmation',
       name: 'PaymentConfirmation',
       component: PaymentConfirmation,
-      props: true
+      props: true,
+      meta: {
+        title: 'Confirmation - Plej'
+      }
     },
     {
       path: '/donate/:token',
       name: 'Donate',
-      component: Donate
+      component: Donate,
+      meta: {
+        title: 'Donate - Plej'
+      }
     },
     {
       path: '/termsconditions',
       name: 'TermsConditions',
-      component: TermsConditions
+      component: TermsConditions,
+      meta: {
+        title: 'Terms and Conditons - Plej'
+      }
     },
     {
       path: '/privacypolicy',
       name: 'PrivacyPolicy',
-      component: PrivacyPolicy
+      component: PrivacyPolicy,
+      meta: {
+        title: 'Privacy Policy - Plej'
+      }
     },
     {
       path: '*',
       name: 'InvalidLink',
-      component: InvalidLink
+      component: InvalidLink,
+      meta: {
+        title: 'Oops - Plej'
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {

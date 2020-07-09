@@ -137,12 +137,21 @@ export default {
   methods: {
     scrollFix: function (hashbang) {
       location.href = hashbang
+    },
+    setTitle: function () {
+      document.title = this.$route.meta.title
     }
   },
   mounted () {
     if (this.$route.hash) {
       setTimeout(() => this.scrollFix(this.$route.hash), 1)
     }
+  },
+  created () {
+    this.setTitle()
+  },
+  watch: {
+    '$route': 'setTitle'
   }
 }
 </script>
