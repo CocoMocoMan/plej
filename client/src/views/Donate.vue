@@ -28,6 +28,16 @@
               </li>
               <li class="title is-5">
                 <span class="tag is-primary">
+                  <i class="fa fa-envelope"></i>
+                  &nbsp;Email
+                </span>
+                {{ email.value }}
+                <a v-on:click="setStage(2)">
+                  <i class="fa fa-pencil-square-o"></i>
+                </a>
+              </li>
+              <li class="title is-5">
+                <span class="tag is-primary">
                   <i class="fa fa-paper-plane"></i>
                   &nbsp;From
                 </span>
@@ -45,16 +55,6 @@
                 <span v-if="!donation.message">None</span>
                 {{ donation.message }}
                 <a v-on:click="setStage(1)">
-                  <i class="fa fa-pencil-square-o"></i>
-                </a>
-              </li>
-              <li class="title is-5">
-                <span class="tag is-primary">
-                  <i class="fa fa-envelope"></i>
-                  &nbsp;Email
-                </span>
-                {{ email.value }}
-                <a v-on:click="setStage(2)">
                   <i class="fa fa-pencil-square-o"></i>
                 </a>
               </li>

@@ -141,7 +141,7 @@
       </div>
     </section>-->
     <a id="contact_us">
-      <section class="section section-light-grey is-medium">
+      <section class="section section-light-grey is-medium" style="margin-bottom: 12vh">
         <div class="container">
           <div class="title-wrapper has-text-centered">
             <h2 class="title is-2 is-spaced">Start using Plej today</h2>
@@ -181,7 +181,7 @@
                       />
                     </div>
                     <div class="column is-12">
-                      <textarea class="textarea" name="message" rows="6" placeholder="Message"></textarea>
+                      <textarea class="textarea" name="message" rows="5" placeholder="Message"></textarea>
                     </div>
                     <div ref="success" class="has-text-success subtitle is-6"></div>
                     <div ref="errors" class="has-text-danger subtitle is-6"></div>

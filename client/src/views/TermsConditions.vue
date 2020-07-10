@@ -146,7 +146,9 @@
         <h3 class="is-size-5 is-strong">Your Privacy</h3>
         <p>
           Please read
-          <a class="link" href="/privacypolicy">Privacy Policy</a>
+          <router-link class="link" :to="{ name: 'PrivacyPolicy' }">
+            <u>Privacy Policy</u>
+          </router-link>
         </p>
         <br />
       </a>

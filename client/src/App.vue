@@ -123,6 +123,12 @@ html {
 .card-image {
   border-radius: 5px;
 }
+
+a:not([href]) {
+  cursor: auto;
+  color: inherit;
+  text-decoration: inherit;
+}
 </style>
 
 <script>
