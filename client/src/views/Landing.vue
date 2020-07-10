@@ -34,10 +34,25 @@
       <h2 class="title is-2">What is Plej?</h2>
       <div class="divider is-centered"></div>
     </div>
-    <div class="card-text">
-      <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between</p>
-      <p class="subtitle is-5 is-muted has-text-right">the creator and their audience. With our no strings attached model of donating,</p>
-      <p class="subtitle is-5 is-muted has-text-right">giving support to your favorite artist's individual content is made simple and easy.</p>
+    <br>
+    <div class="columns">
+      <div class="column">
+        <figure class="image is-4by3">
+          <img src="../assets/about.png" />
+        </figure>
+      </div>
+      <div class="card-text">
+        <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between</p>
+        <p class="subtitle is-5 is-muted has-text-right">the creator and their audience. With our no strings attached model of donating, giving</p>
+        <p class="subtitle is-5 is-muted has-text-right">support to your favorite artist's individual content is made simple and easy. At Plej our</p>
+        <p class="subtitle is-5 is-muted has-text-right">focus is to supply the necessary tools to succeed and thrive for all partnered creatives,</p>
+        <p class="subtitle is-5 is-muted has-text-right">big and small. We also work to create an avenue for the voices of their fandoms to be</p>
+        <p class="subtitle is-5 is-muted has-text-right">heard and acknowledged. Our mission is to lift up artists and give power back to the</p>
+        <p class="subtitle is-5 is-muted has-text-right">people that deserve it by allowing financial independence so that the creator may express</p>
+        <p class="subtitle is-5 is-muted has-text-right">their true vision in it's purest form. We understand the importance of standing up for those</p>
+        <p class="subtitle is-5 is-muted has-text-right">who need it most. We all want to make a change in this world so get involved, do your part and </p>
+        <p class="subtitle is-3 is-muted has-text-centered">Become a Plej today!</p>
+      </div>
     </div>
   </div>
 </section>
@@ -55,12 +70,14 @@
                 <div class="card-title">
                   <h4 class="title is-5">Empower your creations</h4>
                 </div>
+                <br>
                 <div class="card-icon">
                   <figure class="image is-4by3">
-                    <img src="../assets/Empower_Creation.png" />
+                    <img src="../assets/Empower.png" />
                   </figure>
                 </div>
                 <div class="card-text">
+                  <br>
                   <p
                     class="subtitle is-6"
                   >Plej provides a customized link to the individual content you post, allowing your audience to support the content they enjoy the most.</p>
@@ -72,12 +89,14 @@
                 <div class="card-title">
                   <h4 class="title is-5">Simplify support</h4>
                 </div>
+                <br>
                 <div class="card-icon">
                   <figure class="image is-4by3">
-                    <img src="../assets/Simplify_Support.jpg" />
+                    <img src="../assets/Simple_Support.png" />
                   </figure>
                 </div>
                 <div class="card-text">
+                  <br>
                   <p
                     class="subtitle is-6"
                   >Plej connects all major forms of payment into one single donation page. By clicking your link, your audience can easily provide support to the content they love without committing to recurring subscriptions.</p>
@@ -89,12 +108,14 @@
                 <div class="card-title">
                   <h4 class="title is-5">Uncover your worth</h4>
                 </div>
+                <br>
                 <div class="card-icon">
                   <figure class="image is-4by3">
-                    <img src="../assets/Uncoveryourworth.jpg" />
+                    <img src="../assets/Uncover_Worth.png" />
                   </figure>
                 </div>
                 <div class="card-text">
+                  <br>
                   <p
                     class="subtitle is-6"
                   >Plej reveals what content is meaningful to your supporters. Stay up to date with what your viewers enjoy the most by tracking the total donations that each piece of content is bringing to your account.</p>
