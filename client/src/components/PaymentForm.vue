@@ -18,6 +18,15 @@
       <div ref="carderrors" class="has-text-danger subtitle is-6">
         <!-- Used to display Element errors. -->
       </div>
+      <p class="subtitle is-6 has-text-weight-light is-italic">
+        By continuing, you accept the
+        <router-link class="link" :to="{ name: 'TermsConditions' }" target="_blank">
+          <u>Terms</u>
+        </router-link>&nbsp;&
+        <router-link class="link" :to="{ name: 'PrivacyPolicy' }" target="_blank">
+          <u>Privacy Policy</u>
+        </router-link>&nbsp;
+      </p>
       <div class="level is-mobile">
         <div class="level-item">
           <button
@@ -57,6 +66,9 @@ export default {
     },
     email: {
       value: ''
+    },
+    creator: {
+      alias: ''
     }
   },
   data () {
@@ -123,16 +135,16 @@ export default {
           }
         })
         .then(paymentMethod => self.purchase(paymentMethod))
-        .then(() => self.handleSuccess())
+        .then((intent) => self.handleSuccess(intent))
         .catch(err => self.handleError(err))
     },
     handlePRPayment: function () {
       let self = this
       self.paymentRequest.on('paymentmethod',
         ev => self.purchase(ev.paymentMethod)
-          .then(() => {
+          .then((intent) => {
             ev.complete('success')
-            self.handleSuccess()
+            self.handleSuccess(intent)
           })
           .catch((err) => {
             ev.complete('fail')
@@ -182,12 +194,16 @@ export default {
         }
       })
     },
-    handleSuccess: function () {
+    handleSuccess: function (intent) {
+      console.log(intent)
       router.push(
         { name: 'PaymentConfirmation',
           params: {
             donation: this.donation,
-            linkToken: this.link.link_token
+            linkToken: this.link.link_token,
+            creator: this.creator,
+            email: this.email.value,
+            paymentIntent: intent
           }
         }
       )

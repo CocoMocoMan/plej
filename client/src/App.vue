@@ -129,6 +129,12 @@ a:not([href]) {
   color: inherit;
   text-decoration: inherit;
 }
+
+hr {
+  height: 1px;
+  background-color: #7a7a7a;
+  opacity: 30%;
+}
 </style>
 
 <script>

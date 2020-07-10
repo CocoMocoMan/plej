@@ -146,7 +146,9 @@
           <div class="title-wrapper has-text-centered">
             <h2 class="title is-2 is-spaced">Start using Plej today</h2>
             <h3 class="subtitle is-5 is-muted">We'll get in touch with you</h3>
-            <div class="divider is-centered"></div>
+            <div class="divider">
+              <img src="../assets/logo.png" style="width:2rem; height: auto;" />
+            </div>
           </div>
           <div class="content-wrapper">
             <div class="columns">

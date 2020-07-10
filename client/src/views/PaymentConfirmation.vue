@@ -1,28 +1,71 @@
 <template>
-  <section class="hero is-big is-default is-bold">
+  <section class="hero is-medium is-default is-bold">
     <div class="hero-body">
       <div class="container">
-        <div class="columns is-vcentered">
-          <div class="column is-5 is-offset-1 landing-caption">
-            <h1 class="title is-1 is-bold is-spaced">Thanks for your plej!</h1>
-            <div class="columns">
-              <div class="column">
-                <p>Plej Amount: ${{ donation.amount }}</p>
+        <div class="columns is-centered">
+          <div class="column is-narrow landing-caption">
+            <h1 class="title is-1 is-bold is-spaced">Thanks for your Plej!</h1>
+            <p class="subtitle is-5 has-text-weight-light">
+              A receipt has been emailed to you at
+              <b>{{ email }}</b>
+            </p>
+            <a
+              class="link is-size-6"
+              :href="paymentIntent.charges.data[0].receipt_url"
+              target="_blank"
+            >
+              <u>View Receipt</u>
+            </a>
+            <div class="divider">
+              <img src="../assets/logo.png" style="width:2rem; height: auto;" />
+            </div>
+            <div class="level is-mobile" style="margin-bottom:2.5rem; margin-top:1.5rem;">
+              <div class="level-item">
+                <div class="title is-5">
+                  <span class="tag is-primary">
+                    <i class="fa fa-usd"></i>
+                    &nbsp;Amount
+                  </span>
+                  ${{ donation.amount }}
+                </div>
+              </div>
+              <div class="level-item">
+                <div class="title is-5">
+                  <span class="tag is-primary">
+                    <i class="fa fa-paper-plane"></i>
+                    &nbsp;From
+                  </span>
+                  <span v-if="!donation.from">None</span>
+                  {{ donation.from }}
+                </div>
+              </div>
+              <div class="level-item">
+                <div class="title is-5">
+                  <span class="tag is-primary">
+                    <i class="fa fa-paper-plane"></i>
+                    &nbsp;To
+                  </span>
+                  {{ creator.alias }}
+                </div>
               </div>
             </div>
-            <div class="columns">
-              <div class="column">
+            <hr />
+            <div class="columns is-centered is-mobile">
+              <div class="column is-narrow">
                 <router-link
-                  class="button is-primary is-strong"
+                  class="button is-primary is-rounded is-strong is-centered"
+                  style="margin-top:1rem;"
                   :to="{ path: '/donate/' + linkToken}"
                 >Donate Again</router-link>
               </div>
+              <!-- <div class="column is-narrow">
+                <router-link
+                  class="button is-primary is-rounded is-strong is-centered is-small"
+                  style="margin-top:1rem;"
+                  :to="{ name: 'Landing' }"
+                >Learn More</router-link>
+              </div>-->
             </div>
-          </div>
-          <div class="column is-5">
-            <figure class="image is-4by3">
-              <img src="../assets/img-landing-1.jpg" alt="Description" />
-            </figure>
           </div>
         </div>
       </div>
@@ -38,7 +81,20 @@ export default {
   props: {
     linkToken: '',
     donation: {
-      amount: ''
+      amount: '',
+      from: '',
+      message: ''
+    },
+    creator: {
+      alias: ''
+    },
+    email: '',
+    paymentIntent: {
+      charges: {
+        data: {
+          receipt_url: ''
+        }
+      }
     }
   },
   data () {
@@ -48,7 +104,7 @@ export default {
   },
   methods: {
     checkValid () {
-      if (!(this.linkToken && this.donation)) {
+      if (!(this.linkToken && this.donation && this.email)) {
         router.push({
           name: 'InvalidLink'
         })

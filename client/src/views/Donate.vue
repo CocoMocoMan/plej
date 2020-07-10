@@ -65,9 +65,10 @@
           style="margin-top:0vh;"
           :is="stage.component"
           :donation.sync="donation"
-          :link="link"
           :email.sync="email"
           :lockNext.sync="lockNext"
+          :link="link"
+          :creator="creator"
         />
         <div class="level is-mobile">
           <div class="level-item">
@@ -121,7 +122,6 @@ export default {
       lockNext: true,
       isLoading: false,
       creator: {
-        name: '',
         alias: ''
       },
       link: {
