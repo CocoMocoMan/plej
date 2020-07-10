@@ -368,9 +368,9 @@
         <ul>
           <li>
             By visiting this
-            <a href="/#contact_us" target="_blank">
+            <router-link :to="{ name: 'Landing', hash: '#contact_us'}">
               <u>link</u>
-            </a>.
+            </router-link>.
           </li>
         </ul>
       </a>
