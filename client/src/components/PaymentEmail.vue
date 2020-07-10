@@ -29,7 +29,7 @@
       </div>
       <div class="column">
         <span
-          class="has-tooltip-arrow has-tooltip-info has-text-info has-tooltip-top has-tooltip-left-mobile has-tooltip-multiline"
+          class="has-tooltip-arrow has-tooltip-info has-text-info has-tooltip-left-mobile has-tooltip-multiline"
           data-tooltip="Email is required to send a receipt for your Plej. Plej does not store or share your email with anybody."
         >
           <i class="fa fa-info-circle"></i>

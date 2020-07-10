@@ -19,33 +19,35 @@
             <div class="divider">
               <img src="../assets/logo.png" style="width:2rem; height: auto;" />
             </div>
-            <div class="level is-mobile" style="margin-bottom:2.5rem; margin-top:1.5rem;">
-              <div class="level-item">
-                <div class="title is-5">
-                  <span class="tag is-primary">
+            <div class="level">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading has-text-primary has-text-weight-bold">
                     <i class="fa fa-usd"></i>
                     &nbsp;Amount
-                  </span>
-                  ${{ donation.amount }}
+                  </p>
+                  <p class="title is-4">${{ donation.amount }}</p>
                 </div>
               </div>
-              <div class="level-item">
-                <div class="title is-5">
-                  <span class="tag is-primary">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading has-text-primary has-text-weight-bold">
                     <i class="fa fa-paper-plane"></i>
                     &nbsp;From
-                  </span>
-                  <span v-if="!donation.from">None</span>
-                  {{ donation.from }}
+                  </p>
+                  <p class="title is-4">
+                    <span v-if="!donation.from">None</span>
+                    {{ donation.from }}
+                  </p>
                 </div>
               </div>
-              <div class="level-item">
-                <div class="title is-5">
-                  <span class="tag is-primary">
-                    <i class="fa fa-paper-plane"></i>
-                    &nbsp;To
-                  </span>
-                  {{ creator.alias }}
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading has-text-primary has-text-weight-bold">
+                    <i class="fa fa-paint-brush"></i>
+                    &nbsp;Creator
+                  </p>
+                  <p class="title is-4">{{ creator.alias }}</p>
                 </div>
               </div>
             </div>

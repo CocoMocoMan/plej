@@ -124,7 +124,7 @@ html {
   border-radius: 5px;
 }
 
-a:not([href]) {
+a:not([href]):not(.linky) {
   cursor: auto;
   color: inherit;
   text-decoration: inherit;

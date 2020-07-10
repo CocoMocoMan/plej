@@ -22,7 +22,7 @@
                   &nbsp;Amount
                 </span>
                 ${{ donation.amount }}
-                <a v-on:click="setStage(0)">
+                <a v-on:click="setStage(0)" class="linky">
                   <i class="fa fa-pencil-square-o"></i>
                 </a>
               </li>
@@ -32,7 +32,7 @@
                   &nbsp;Email
                 </span>
                 {{ email.value }}
-                <a v-on:click="setStage(2)">
+                <a v-on:click="setStage(2)" class="linky">
                   <i class="fa fa-pencil-square-o"></i>
                 </a>
               </li>
@@ -43,7 +43,7 @@
                 </span>
                 <span v-if="!donation.from">None</span>
                 {{ donation.from }}
-                <a v-on:click="setStage(1)">
+                <a v-on:click="setStage(1)" class="linky">
                   <i class="fa fa-pencil-square-o"></i>
                 </a>
               </li>
@@ -54,7 +54,7 @@
                 </span>
                 <span v-if="!donation.message">None</span>
                 {{ donation.message }}
-                <a v-on:click="setStage(1)">
+                <a v-on:click="setStage(1)" class="linky">
                   <i class="fa fa-pencil-square-o"></i>
                 </a>
               </li>
