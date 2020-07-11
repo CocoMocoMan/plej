@@ -42,15 +42,15 @@
         </figure>
       </div>
       <div class="card-text">
-        <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between</p>
-        <p class="subtitle is-5 is-muted has-text-right">the creator and their audience. With our no strings attached model of donating, giving</p>
-        <p class="subtitle is-5 is-muted has-text-right">support to your favorite artist's individual content is made simple and easy. At Plej our</p>
-        <p class="subtitle is-5 is-muted has-text-right">focus is to supply the necessary tools to succeed and thrive for all partnered creatives,</p>
-        <p class="subtitle is-5 is-muted has-text-right">big and small. We also work to create an avenue for the voices of their fandoms to be</p>
-        <p class="subtitle is-5 is-muted has-text-right">heard and acknowledged. Our mission is to lift up artists and give power back to the</p>
-        <p class="subtitle is-5 is-muted has-text-right">people that deserve it by allowing financial independence so that the creator may express</p>
-        <p class="subtitle is-5 is-muted has-text-right">their true vision in it's purest form. We understand the importance of standing up for those</p>
-        <p class="subtitle is-5 is-muted has-text-right">who need it most. We all want to make a change in this world so get involved, do your part and </p>
+        <p class="subtitle is-5 is-muted has-text-right">Plej is a community powered donation service that provides a direct connection between the</p>
+        <p class="subtitle is-5 is-muted has-text-right">creator and their audience. With our no strings attached model of donating, giving support</p>
+        <p class="subtitle is-5 is-muted has-text-right">to your favorite artist's individual content is made simple and easy. At Plej our focus is to</p>
+        <p class="subtitle is-5 is-muted has-text-right">supply the necessary tools to succeed and thrive for all partnered creatives, big and small.</p>
+        <p class="subtitle is-5 is-muted has-text-right">We also work to create an avenue for the voices of their fandoms to be heard and</p>
+        <p class="subtitle is-5 is-muted has-text-right"> acknowledged. Our mission is to lift up artists and give power back to the people that deserve</p>
+        <p class="subtitle is-5 is-muted has-text-right">it by providing the ability for creators to achieve financial independence and realize their</p>
+        <p class="subtitle is-5 is-muted has-text-right">true vision in its purest form. We understand the importance of creative freedom and creative</p>
+        <p class="subtitle is-5 is-muted has-text-right">freedom and individual expression. Let's shape the internet and drive good content, do your part and </p>
         <p class="subtitle is-3 is-muted has-text-centered">Become a Plej today!</p>
       </div>
     </div>
