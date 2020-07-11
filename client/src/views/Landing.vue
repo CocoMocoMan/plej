@@ -168,70 +168,72 @@
             </div>
           </div>
         </div>
-    </div>
-</section>
--->
-<a id="contact_us"></a>
-<section class="section section-light-grey is-medium">
-    <div class="container">
-        <div class="title-wrapper has-text-centered">
-          <h2 class="title is-2 is-spaced">Start using Plej today</h2>
-          <h3 class="subtitle is-5 is-muted">We'll get in touch with you</h3>
-          <div class="divider is-centered"></div>
-        </div>
-        <div class="content-wrapper">
-          <div class="columns">
-            <div class="column is-6 is-offset-3">
-              <form v-on:submit="sendMessage">
-                <div class="columns is-multiline">
-                  <div class="column is-6">
-                    <input
-                      class="input is-medium"
-                      :class="errors.fName ? 'is-danger' : ''"
-                      name="fName"
-                      type="text"
-                      placeholder="First Name *"
-                    />
-                  </div>
-                  <div class="column is-6">
-                    <input
-                      class="input is-medium"
-                      :class="errors.lName ? 'is-danger' : ''"
-                      name="lName"
-                      type="text"
-                      placeholder="Last Name *"
-                    />
-                  </div>
-                  <div class="column is-6">
-                    <input
-                      class="input is-medium"
-                      :class="errors.email ? 'is-danger' : ''"
-                      name="email"
-                      type="text"
-                      placeholder="Email *"
-                    />
-                  </div>
-                  <div class="column is-12">
-                    <textarea class="textarea" name="message" rows="6" placeholder="Message"></textarea>
-                  </div>
-                  <div ref="success" class="has-text-success subtitle is-6"></div>
-                  <div ref="errors" class="has-text-danger subtitle is-6"></div>
-                  <div class="column is-12">
-                    <div class="form-footer has-text-right mt-10">
+      </div>
+    </section>-->
+    <a id="contact_us">
+      <section class="section section-light-grey is-medium" style="margin-bottom: 12vh">
+        <div class="container">
+          <div class="title-wrapper has-text-centered">
+            <h2 class="title is-2 is-spaced">Start using Plej today</h2>
+            <h3 class="subtitle is-5 is-muted">We'll get in touch with you</h3>
+            <div class="divider">
+              <img src="../assets/logo.png" style="width:2rem; height: auto;" />
+            </div>
+          </div>
+          <div class="content-wrapper">
+            <div class="columns">
+              <div class="column is-6 is-offset-3">
+                <form v-on:submit="sendMessage">
+                  <div class="columns is-multiline">
+                    <div class="column is-6">
                       <input
-                        class="button is-primary is-large is-strong"
-                        type="submit"
-                        value="Send Message"
+                        class="input is-medium"
+                        :class="errors.fName ? 'is-danger' : ''"
+                        name="fName"
+                        type="text"
+                        placeholder="First Name *"
                       />
                     </div>
+                    <div class="column is-6">
+                      <input
+                        class="input is-medium"
+                        :class="errors.lName ? 'is-danger' : ''"
+                        name="lName"
+                        type="text"
+                        placeholder="Last Name *"
+                      />
+                    </div>
+                    <div class="column is-6">
+                      <input
+                        class="input is-medium"
+                        :class="errors.email ? 'is-danger' : ''"
+                        name="email"
+                        type="text"
+                        placeholder="Email *"
+                      />
+                    </div>
+                    <div class="column is-12">
+                      <textarea class="textarea" name="message" rows="5" placeholder="Message"></textarea>
+                    </div>
+                    <div ref="success" class="has-text-success subtitle is-6"></div>
+                    <div ref="errors" class="has-text-danger subtitle is-6"></div>
+                    <div class="column is-12">
+                      <div class="form-footer has-text-right mt-10">
+                        <input
+                          class="button is-primary is-large is-strong"
+                          type="submit"
+                          value="Send Message"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </a>
   </div>
 </template>
 

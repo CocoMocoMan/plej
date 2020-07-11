@@ -8,8 +8,8 @@
           style="margin:1.2rem"
         >
           <div class="level is-vcentered is-centered">
-            <img src="../assets/logo.png" style="width:2rem; height: auto; margin-right:.5rem" />
-            <h3 class="title has-text-primary" style="font-size:2rem">plej</h3>
+            <img src="../assets/logo.png" style="width:3rem; height: auto; margin-right:.5rem" />
+            <h3 class="title has-text-primary is-hidden-touch" style="font-size:3rem">plej</h3>
           </div>
         </router-link>
         <a
@@ -30,7 +30,11 @@
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">
             <div class="buttons">
-              <a class="button is-white is-rounded is-strong" href="#" v-on:click="logout">
+              <a
+                class="button is-white is-rounded is-strong is-medium"
+                href="#"
+                v-on:click="logout"
+              >
                 <strong>Logout</strong>
               </a>
             </div>

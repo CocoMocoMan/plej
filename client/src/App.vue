@@ -6,34 +6,32 @@
     <footer class="footer is-vcentered site-footer">
       <div class="columns is-centered has-text-centered">
         <div class="column is-one-third">
-          <a
-            class="terms-text is-size-6 is-strong"
-            style="color: #fff;"
-            href="/termsconditions"
+          <router-link
+            class="terms-text is-size-6 is-strong has-text-white"
+            :to="{ name: 'TermsConditions'}"
             :target="useExternalLinks ? '_blank' : ''"
-          >Terms and Conditions</a>
+          >Terms and Conditions</router-link>
         </div>
         <div class="column is-one-third">
-          <a
-            class="privacy-text is-size-6 is-strong"
-            style="color: #fff;"
-            href="/privacypolicy"
+          <router-link
+            class="privacy-text is-size-6 is-strong has-text-white"
+            :to="{ name: 'PrivacyPolicy'}"
             :target="useExternalLinks ? '_blank' : ''"
-          >Privacy Policy</a>
+          >Privacy Policy</router-link>
         </div>
         <div class="column is-one-third">
-          <a
-            class="is-size-6 is-strong"
-            href="/#contact_us"
-            style="color: #fff;"
+          <router-link
+            class="is-size-6 is-strong has-text-white"
+            :to="{ name: 'Landing', hash: '#contact_us'}"
             :target="useExternalLinks ? '_blank' : ''"
-          >Contact Us</a>
+            @click.native="scrollFix('#contact_us')"
+          >Contact Us</router-link>
         </div>
       </div>
       <div class="columns is-centered has-text-centered">
         <div class="column">
-          <p class="copyright-text is-size-8" style="color: #fff;">Copyright &copy; Plej.link</p>
-          <p class="copyright-text is-size-8" style="color: #fff;">2020 All Rights Reserved by Plej</p>
+          <p class="copyright-text is-size-8 has-text-white">Copyright &copy; Plej.link</p>
+          <p class="copyright-text is-size-8 has-text-white">2020 All Rights Reserved by Plej</p>
         </div>
       </div>
       <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
@@ -60,7 +58,7 @@ $light: $lightgrey;
 $family-primary: Hind Siliguri, sans-serif;
 $input-border-color: #d1d1d1;
 
-@import "./../node_modules/bulma/css/bulma.css";
+@import "../node_modules/bulma/css/bulma.css";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 @import "../node_modules/bulma/sass/helpers/_all.sass";
@@ -72,6 +70,8 @@ $input-border-color: #d1d1d1;
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "@creativebulma/bulma-divider";
+@import "@creativebulma/bulma-tooltip";
 
 html {
   background-color: $white;
@@ -123,6 +123,18 @@ html {
 .card-image {
   border-radius: 5px;
 }
+
+a:not([href]):not(.linky) {
+  cursor: auto;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+hr {
+  height: 1px;
+  background-color: #7a7a7a;
+  opacity: 30%;
+}
 </style>
 
 <script>
@@ -133,6 +145,25 @@ export default {
       layout: 'div',
       useExternalLinks: false
     }
+  },
+  methods: {
+    scrollFix: function (hashbang) {
+      location.href = hashbang
+    },
+    setTitle: function () {
+      document.title = this.$route.meta.title
+    }
+  },
+  mounted () {
+    if (this.$route.hash) {
+      setTimeout(() => this.scrollFix(this.$route.hash), 1)
+    }
+  },
+  created () {
+    this.setTitle()
+  },
+  watch: {
+    '$route': 'setTitle'
   }
 }
 </script>

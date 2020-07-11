@@ -1,9 +1,10 @@
 <template>
   <div id="payment">
     <form>
-      <div ref="prbutton">
+      <div ref="prbutton" disabled>
         <!-- A Stripe Element will be inserted here. -->
       </div>
+      <div v-if="hasPR" class="divider">OR</div>
       <div class="card has-text-centered card-grey">
         <header class="card-header">
           <p class="card-header-title">Credit Card</p>
@@ -13,19 +14,26 @@
             <!-- A Stripe Element will be inserted here. -->
           </div>
         </div>
-        <div class="card-footer">
-          <div ref="carderrors">
-            <!-- Used to display Element errors. -->
-          </div>
-        </div>
       </div>
+      <div ref="carderrors" class="has-text-danger subtitle is-6">
+        <!-- Used to display Element errors. -->
+      </div>
+      <p class="subtitle is-6 has-text-weight-light is-italic">
+        By continuing, you accept the
+        <router-link class="link" :to="{ name: 'TermsConditions' }" target="_blank">
+          <u>Terms</u>
+        </router-link>&nbsp;&
+        <router-link class="link" :to="{ name: 'PrivacyPolicy' }" target="_blank">
+          <u>Privacy Policy</u>
+        </router-link>&nbsp;
+      </p>
       <div class="level is-mobile">
         <div class="level-item">
           <button
             class="button is-rounded is-primary is-strong has-text-white"
             :class="isLoading ? 'is-loading' : ''"
             :disabled="lockSubmit"
-            v-on:click="purchase"
+            v-on:click="handleCardPayment"
           >
             Donate
             <div v-if="donation.amount">&nbsp;${{ donation.amount }}</div>
@@ -55,6 +63,12 @@ export default {
       amount: '',
       from: '',
       message: ''
+    },
+    email: {
+      value: ''
+    },
+    creator: {
+      alias: ''
     }
   },
   data () {
@@ -84,11 +98,27 @@ export default {
       elements: undefined,
       card: undefined,
       paymentRequest: undefined,
-      prButton: undefined
+      prButton: undefined,
+      hasPR: false
     }
   },
   methods: {
-    purchase: function (e) {
+    purchase: function (paymentMethod) {
+      const data = {
+        data:
+        {
+          paymentMethod: paymentMethod.id,
+          token: this.link.link_token,
+          donation: this.donation,
+          email: this.email.value
+        }
+      }
+      return axios.post('/api/payment/confirm', data)
+        .then((response) => {
+          return response.data.intent
+        })
+    },
+    handleCardPayment: function (e) {
       e.preventDefault()
       let self = this
       self.lockSubmit = true
@@ -104,37 +134,23 @@ export default {
             return result.paymentMethod
           }
         })
-        .then((paymentMethod) => {
-          const data = {
-            data:
-            {
-              paymentMethod: paymentMethod.id,
-              token: self.link.link_token,
-              donation: self.donation
-            }
-          }
-          return axios.post('/api/payment/confirm', data)
-        })
-        .then((response) => {
-          return response.data.intent
-        })
-        .then((result) => {
-          router.push(
-            { name: 'PaymentConfirmation',
-              params: {
-                donation: self.donation,
-                linkToken: self.link.link_token
-              }
-            }
-          )
-        })
-        .catch((err) => {
-          let errorElement = self.$refs.carderrors
-          if (err.response) errorElement.textContent = err.response.data.message
-          else errorElement.textContent = err.message
-          self.lockSubmit = false
-          self.isLoading = false
-        })
+        .then(paymentMethod => self.purchase(paymentMethod))
+        .then((intent) => self.handleSuccess(intent))
+        .catch(err => self.handleError(err))
+    },
+    handlePRPayment: function () {
+      let self = this
+      self.paymentRequest.on('paymentmethod',
+        ev => self.purchase(ev.paymentMethod)
+          .then((intent) => {
+            ev.complete('success')
+            self.handleSuccess(intent)
+          })
+          .catch((err) => {
+            ev.complete('fail')
+            self.handleError(err)
+          })
+      )
     },
     getStripeConfig () { // use this declaration syntax to access in other component methods
       return axios.get('/api/payment/config')
@@ -172,8 +188,32 @@ export default {
       this.prButton = this.elements.create('paymentRequestButton', { paymentRequest: this.paymentRequest })
       const self = this
       this.paymentRequest.canMakePayment().then(function (result) {
-        if (result) self.prButton.mount(self.$refs.prbutton)
+        if (result) {
+          self.prButton.mount(self.$refs.prbutton)
+          self.hasPR = true
+        }
       })
+    },
+    handleSuccess: function (intent) {
+      console.log(intent)
+      router.push(
+        { name: 'PaymentConfirmation',
+          params: {
+            donation: this.donation,
+            linkToken: this.link.link_token,
+            creator: this.creator,
+            email: this.email.value,
+            paymentIntent: intent
+          }
+        }
+      )
+    },
+    handleError: function (err) {
+      let errorElement = this.$refs.carderrors
+      if (err.response) errorElement.textContent = '* ' + err.response.data.message
+      else errorElement.textContent = '* ' + err.message
+      this.lockSubmit = false
+      this.isLoading = false
     }
   },
   mounted () {
@@ -182,6 +222,7 @@ export default {
         this.createPaymentCard()
         this.createPaymentRequestButton()
       })
+      .then(() => this.handlePRPayment())
   }
 }
 </script>

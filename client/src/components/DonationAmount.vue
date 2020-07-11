@@ -83,7 +83,7 @@
 
 <script>
 export default {
-  name: 'DonationPersonalization',
+  name: 'DonationAmount',
   props: {
     donation: {
       amount: '',
