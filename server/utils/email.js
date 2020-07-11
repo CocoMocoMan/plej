@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer')
+const ejs = require("ejs");
 
 const fromEmail = 'support@plej.link'
 const fromPassword = 'Support2020!'

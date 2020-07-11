@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <router-link
           :to="{ name: 'Landing'}"
@@ -14,7 +14,7 @@
         </router-link>
         <a
           role="button"
-          class="navbar-burger"
+          class="navbar-burger burger"
           :class="isActive ? 'is-active' : ''"
           data-target="navMenu"
           aria-label="menu"
@@ -29,18 +29,19 @@
       <div class="navbar-menu" id="navMenu" :class="isActive ? 'is-active' : ''">
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">
-            <div class="buttons">
-              <router-link
-                class="button is-white is-rounded is-strong navbar-item is-medium"
-                :to="{ name: 'Login'}"
-                :target="useExternalLinks ? '_blank' : ''"
-              >Log In</router-link>
-              <router-link
-                class="button is-primary is-rounded is-strong navbar-item is-medium"
-                :to="{ name: 'Register'}"
-                :target="useExternalLinks ? '_blank' : ''"
-              >Sign up</router-link>
-            </div>
+            <router-link
+              class="button is-white is-rounded is-strong is-medium"
+              :to="{ name: 'Login'}"
+              :target="useExternalLinks ? '_blank' : ''"
+              v-on:click.native="toggleActive"
+            >Log In</router-link>
+
+            <router-link
+              class="button is-primary is-rounded is-strong is-medium"
+              :to="{ name: 'Register'}"
+              :target="useExternalLinks ? '_blank' : ''"
+              v-on:click.native="toggleActive"
+            >Sign up</router-link>
           </div>
         </div>
       </div>

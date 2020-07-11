@@ -48,7 +48,6 @@ export default {
           router.push('/dashboard')
         })
         .catch((err) => {
-          console.log(err.response)
           if (err.response && err.response.status === 401) {
             console.log(err.response.data.message)
           }
@@ -65,7 +64,6 @@ export default {
         }
         axios.post('/api/auth/login', data)
           .then((response) => {
-            console.log(response.data.success)
             router.push('/dashboard')
           })
           .catch((err) => {
