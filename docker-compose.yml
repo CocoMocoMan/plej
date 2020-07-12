@@ -8,12 +8,40 @@ services:
     environment: 
       - NODE_ENV=production
       - PORT=80
-    ports: 
-      - "80:80"
+    ports:
+      - 80:80
+      - "443:443"
+    volumes:
+      - certbot-webroot-plej:/app/public/.well-known
+      - certbot-letsencrypt:/etc/letsencrypt
     links:
       - mongo
+  certbot:
+    build: ./certbot
+    container_name: certbot
+    image: oakel/plej-certbot
+    restart: always
+    volumes:
+      - certbot-webroot-plej:/webroots/plej.link/.well-known
+      - certbot-letsencrypt:/etc/letsencrypt
+  # nginx:
+  #   build: ./nginx
+  #   container_name: nginx
+  #   image: oakel/plej-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   restart: always
+  #   volumes:
+  #     - certbot-webroot-plej:/webroots/plej.link/.well-known
+  #     - certbot-letsencrypt:/etc/letsencrypt
+    links:
+      - server
   mongo:
     container_name: mongo
     image: mongo
     ports: 
       - "27017:27017"
+volumes:
+  certbot-webroot-plej:
+  certbot-letsencrypt:

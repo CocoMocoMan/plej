@@ -1,12 +1,8 @@
 <template>
   <div class="layout">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <router-link
-          :to="{ name: 'Landing'}"
-          :target="useExternalLinks ? '_blank' : ''"
-          style="margin:1.2rem"
-        >
+        <router-link :to="{ name: 'Landing'}" style="margin:1.2rem">
           <div class="level is-vcentered is-centered">
             <img src="../assets/logo.png" style="width:3rem; height: auto; margin-right:.5rem" />
             <h3 class="title has-text-primary is-hidden-touch" style="font-size:3rem">plej</h3>
@@ -14,7 +10,7 @@
         </router-link>
         <a
           role="button"
-          class="navbar-burger"
+          class="navbar-burger burger"
           :class="isActive ? 'is-active' : ''"
           data-target="navMenu"
           aria-label="menu"
@@ -29,15 +25,9 @@
       <div class="navbar-menu" id="navMenu" :class="isActive ? 'is-active' : ''">
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">
-            <div class="buttons">
-              <a
-                class="button is-white is-rounded is-strong is-medium"
-                href="#"
-                v-on:click="logout"
-              >
-                <strong>Logout</strong>
-              </a>
-            </div>
+            <a class="button is-white is-rounded is-strong is-medium" href="#" v-on:click="logout">
+              <strong>Logout</strong>
+            </a>
           </div>
         </div>
       </div>
@@ -60,6 +50,7 @@ export default {
     logout: function (e) {
       axios.get('/api/auth/logout')
         .then(() => {
+          this.toggleActive()
           router.push('/')
         })
     },
