@@ -1,5 +1,0 @@
-#!/bin/sh
-cd client
-npm run build 
-cd ..
-docker-compose build
