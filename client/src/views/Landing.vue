@@ -28,37 +28,39 @@
             </div>
           </div>
         </div>
-    </div>
-</section>
-<section class="section section-feature-grey is-medium">
-  <div class="container">
-    <div class="title-wrapper has-text-centered">
-      <h2 class="title is-2">What is Plej?</h2>
-      <div class="divider is-centered"></div>
-    </div>
-    <br>
-    <div class="columns">
-      <div class="column is-5">
-        <figure class="image is-4by3">
-          <img src="../assets/about.png" />
-        </figure>
       </div>
-      <div class="column">
-        <div class="card-text">
-          <p class="subtitle is-5 is-muted has-text-left pt-2">Plej is a community powered donation service that provides a direct connection between
-          <p class="subtitle is-5 is-muted has-text-left">the creator and their audience. With our no strings attached model of donating, giving</p>
-          <p class="subtitle is-5 is-muted has-text-left">support to your favorite artist's individual content is made simple and easy. At Plej our</p>
-          <p class="subtitle is-5 is-muted has-text-left">focus is to supply the necessary tools to succeed and thrive for all partnered creatives, big</p>
-          <p class="subtitle is-5 is-muted has-text-left">and small. We also work to create an avenue for the voices of their fandoms to be heard</p>
-          <p class="subtitle is-5 is-muted has-text-left">and acknowledged. Our mission is to lift up artists and give power back to the people that</p>
-          <p class="subtitle is-5 is-muted has-text-left">deserve it by providing the ability for creators to achieve financial independence and</p>
-          <p class="subtitle is-5 is-muted has-text-left">realize their true vision in its purest form. We understand the importance of creative </p>
-          <p class="subtitle is-5 is-muted has-text-left">freedom and individual expression. Let's shape the internet and drive great content, </p>
-          <p class="subtitle is-5 is-muted has-text-left">so do your part and...</p>
-          <p class="subtitle is-3 is-muted has-text-centered">Become a Plej today!</p>
+    </section>
+    <section class="section section-feature-grey is-medium">
+      <div class="container">
+       <div class="title-wrapper has-text-centered">
+        <h2 class="title is-2">What is Plej?</h2>
+        <div class="divider is-centered"></div>
+      </div>
+      <br>
+      <div class="columns">
+        <div class="column is-5">
+          <figure class="image is-4by3">
+            <img src="../assets/about.png" />
+          </figure>
+        </div>
+        <div class="column">
+          <div class="card-text">
+            <p class="subtitle is-5 is-muted has-text-left pt-2">Plej is a community powered donation service that provides a direct connection between
+            <p class="subtitle is-5 is-muted has-text-left">the creator and their audience. With our no strings attached model of donating, giving</p>
+            <p class="subtitle is-5 is-muted has-text-left">support to your favorite artist's individual content is made simple and easy. At Plej our</p>
+            <p class="subtitle is-5 is-muted has-text-left">focus is to supply the necessary tools to succeed and thrive for all partnered creatives, big</p>
+            <p class="subtitle is-5 is-muted has-text-left">and small. We also work to create an avenue for the voices of their fandoms to be heard</p>
+            <p class="subtitle is-5 is-muted has-text-left">and acknowledged. Our mission is to lift up artists and give power back to the people that</p>
+            <p class="subtitle is-5 is-muted has-text-left">deserve it by providing the ability for creators to achieve financial independence and</p>
+            <p class="subtitle is-5 is-muted has-text-left">realize their true vision in its purest form. We understand the importance of creative </p>
+            <p class="subtitle is-5 is-muted has-text-left">freedom and individual expression. Let's shape the internet and drive great content, </p>
+            <p class="subtitle is-5 is-muted has-text-left">so do your part and...</p>
+            <p class="subtitle is-3 is-muted has-text-centered">Become a Plej today!</p>
+          </div>
         </div>
       </div>
-    </section>-->
+      </div>
+    </section>
     <section class="section section-feature-grey is-medium">
       <div class="container">
         <div class="title-wrapper has-text-centered">
