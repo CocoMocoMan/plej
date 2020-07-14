@@ -5,21 +5,21 @@
     </component>
     <footer class="footer is-vcentered site-footer">
       <div class="columns is-centered has-text-centered">
-        <div class="column is-one-third">
+        <div class="column is-4">
           <router-link
             class="terms-text is-size-6 is-strong has-text-white"
             :to="{ name: 'TermsConditions'}"
             :target="useExternalLinks ? '_blank' : ''"
           >Terms and Conditions</router-link>
         </div>
-        <div class="column is-one-third">
+        <div class="column is-4">
           <router-link
             class="privacy-text is-size-6 is-strong has-text-white"
             :to="{ name: 'PrivacyPolicy'}"
             :target="useExternalLinks ? '_blank' : ''"
           >Privacy Policy</router-link>
         </div>
-        <div class="column is-one-third">
+        <div class="column is-4">
           <router-link
             class="is-size-6 is-strong has-text-white"
             :to="{ name: 'Landing', hash: '#contact_us'}"
@@ -32,11 +32,28 @@
         <div class="column">
           <p class="copyright-text is-size-8 has-text-white">Copyright &copy; Plej.link</p>
           <p class="copyright-text is-size-8 has-text-white">2020 All Rights Reserved by Plej</p>
+          <div style="margin-top:3rem;">
+            <a class="twitter has-text-white" href="https://twitter.com/PlejLink" target="_blank">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a
+              class="instagram has-text-white"
+              style="margin-right:2.5rem; margin-left:2.5rem;"
+              href="https://www.instagram.com/plej.link"
+              target="_blank"
+            >
+              <i class="fa fa-instagram"></i>
+            </a>
+            <a
+              class="linkedin has-text-white"
+              href="https://www.linkedin.com/company/plej"
+              target="_blank"
+            >
+              <i class="fa fa-linkedin"></i>
+            </a>
+          </div>
         </div>
       </div>
-      <!--<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-          <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
-      <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>-->
     </footer>
   </div>
 </template>
