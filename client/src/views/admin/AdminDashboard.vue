@@ -2,18 +2,13 @@
   <div class="columns is-centered is-multiline has-text-centered section">
     <div class="column is-one-third"></div>
     <div class="column is-one-third">
-      <h1 class="title">Dashboard</h1>
-      <p class="label">Welcome, {{ user.name }}</p>
+      <h1 class="title">Admin Dashboard</h1>
       <br />
       <div>
         <router-link
-          class="button is-white is-rounded is-strong has-text-grey"
-          :to="{ name: 'PaymentSetup'}"
-        >Payment Setup</router-link>
-        <router-link
           class="button is-primary is-rounded has-text-white is-strong"
-          :to="{ name: 'LinkManager'}"
-        >Manage Links</router-link>
+          :to="{ name: 'UserManager'}"
+        >Manage Users</router-link>
       </div>
     </div>
     <div class="column is-one-third"></div>
@@ -22,16 +17,14 @@
 
 <script>
 import axios from 'axios'
-import router from '../router'
-import InternalLayout from '../layouts/Internal'
+import router from '../../router'
+import InternalLayout from '../../layouts/Internal'
 export default {
-  name: 'Dashboard',
+  name: 'AdminDashboard',
   data () {
     return {
       user: {
-        name: '',
-        email: '',
-        alias: ''
+        email: ''
       }
     }
   },
