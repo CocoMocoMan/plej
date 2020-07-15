@@ -21,8 +21,8 @@
 
 <script>
 import axios from 'axios'
-import router from '../../router'
-import InternalLayout from '../../layouts/Internal'
+//  import router from '../../router'
+//  import InternalLayout from '../../layouts/Internal'
 export default {
   name: 'UserManager',
   data () {
@@ -32,9 +32,10 @@ export default {
   },
   methods: {
     getUsers: function () {
-      let self = this
+      //  let self = this
       axios.get('/api/auth/user')
     }
 
   }
+}
 </script>
