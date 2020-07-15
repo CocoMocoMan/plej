@@ -20,11 +20,7 @@
               </div>
             </div>
             <div class="column">
-              <img
-                src="../assets/landing-main.png"
-                alt="Description"
-                style="width:200%; height:auto;"
-              />
+              <img src="../assets/landing-main.png" alt="Description" />
             </div>
           </div>
         </div>
