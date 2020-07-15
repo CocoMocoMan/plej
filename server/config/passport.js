@@ -1,6 +1,8 @@
 const User = require('../app/models/Users')
 const LocalStrategy = require('passport-local').Strategy
 const validator = require('../utils/validator')
+const adminUser = require('./admin')
+const admin = require('./admin')
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -62,6 +64,40 @@ module.exports = function(passport) {
         })
         .catch(err => {
           return done(err, false, {message: 'Failed to retrieve from database' })
+        })
+    })
+  )
+  passport.use('local-admin-login', new LocalStrategy({
+      usernameField : 'email',
+      passwordField : 'password',
+    }, (email, password, done) => {
+      let validLogin = email === adminUser.email
+      console.log(email)
+      console.log(adminUser.email)
+      if (!validLogin) {
+        return done(null, false, { message: 'No user found' })
+      }
+      let validPassword = password === adminUser.password
+      if (!validPassword) {
+        return done(null, false, { message: 'Wrong password' })
+      }
+      User.findOne({ email: adminUser.email }).  
+        then((user) => {
+          if (!user) {
+            let newUser = new User()
+            newUser.email = adminUser.email
+            newUser.password = newUser.generateHash(adminUser.password)
+            newUser
+              .save()
+              .then(user => {
+                return done(null, user)
+              })
+              .catch(err => {
+                return done(err, false, { message:  'Failed to connect to database' })
+              })
+          } else {
+            return done(null, user) 
+          }
         })
     })
   )

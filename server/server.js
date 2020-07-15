@@ -14,6 +14,7 @@ const authRoutes = require('./app/routes/auth')
 const linkRoutes = require('./app/routes/link')
 const paymentRoutes = require('./app/routes/payment')
 const notifyRoutes = require('./app/routes/notify')
+const adminRoutes = require('./app/routes/admin')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -39,6 +40,7 @@ authRoutes(app, passport)
 linkRoutes(app)
 paymentRoutes(app)
 notifyRoutes(app)
+adminRoutes(app, passport)
 
 //Apple pay verification
 app.use(express.static(__dirname + '/.well-known'))

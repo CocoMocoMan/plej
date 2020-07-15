@@ -11,6 +11,9 @@ import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
+import AdminLogin from '@/views/admin/AdminLogin'
+import AdminDashboard from '@/views/admin/AdminDashboard'
+import UserManager from '@/views/admin/UserManager'
 
 Vue.use(Router)
 
@@ -96,6 +99,30 @@ export default new Router({
       component: PrivacyPolicy,
       meta: {
         title: 'Privacy Policy - Plej'
+      }
+    },
+    {
+      path: '/adminlogin/1r0N!f7B',
+      name: 'AdminLogin',
+      component: AdminLogin,
+      meta: {
+        title: 'Login - Plej'
+      }
+    },
+    {
+      path: '/admindashboard',
+      name: 'AdminDashboard',
+      component: AdminDashboard,
+      meta: {
+        title: 'Dashboard - Plej'
+      }
+    },
+    {
+      path: '/usermanager',
+      name: 'UserManager',
+      component: UserManager,
+      meta: {
+        title: 'Users - Plej'
       }
     },
     {
