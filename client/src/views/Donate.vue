@@ -62,6 +62,7 @@
           </div>
         </div>
         <component
+          id="main"
           style="margin-top:0vh;"
           :is="stage.component"
           :donation.sync="donation"
@@ -164,6 +165,14 @@ export default {
     },
     setStage: function (stage) {
       this.stage = stages[stage]
+    }
+  },
+  watch: {
+    lockNext: function (newVal) {
+      if (!newVal) {
+        let nav = this.$el.querySelector('#main')
+        nav.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   },
   mounted () {
