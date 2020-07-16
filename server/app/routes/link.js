@@ -1,4 +1,4 @@
-const authMiddleware = require('../../utils/auth.js')
+const authMiddleware = require('../../utils/auth.js').authMiddleware
 const User = require('../models/Users')
 const validator = require('../../utils/validator')
 

@@ -81,7 +81,6 @@ export default {
       }
       axios.post('/api/link/addcontent/' + self.link.link_token, data)
         .then(response => {
-          console.log(response.data.link)
           self.$set(this, 'link', response.data.link)
         })
         .catch(err => {

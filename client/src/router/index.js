@@ -11,13 +11,13 @@ import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
-<<<<<<< HEAD
 import UnderConstruction from '@/views/UnderConstruction'
-=======
+// admin
 import AdminLogin from '@/views/admin/AdminLogin'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
->>>>>>> 9d9bed47cbc0b1ee57399e081ab8c8e1e5022140
+import AdminLinkManager from '@/views/admin/AdminLinkManager'
+import LeadsManager from '@/views/admin/LeadsManager'
 
 Vue.use(Router)
 
@@ -107,8 +107,9 @@ export default new Router({
         title: 'Privacy Policy - Plej'
       }
     },
+    // admin
     {
-      path: '/adminlogin/1r0N!f7B',
+      path: '/admin/login',
       name: 'AdminLogin',
       component: AdminLogin,
       meta: {
@@ -116,7 +117,7 @@ export default new Router({
       }
     },
     {
-      path: '/admindashboard',
+      path: '/admin/dashboard',
       name: 'AdminDashboard',
       component: AdminDashboard,
       meta: {
@@ -124,11 +125,28 @@ export default new Router({
       }
     },
     {
-      path: '/usermanager',
+      path: '/admin/usermanager',
       name: 'UserManager',
       component: UserManager,
       meta: {
         title: 'Users - Plej'
+      }
+    },
+    {
+      path: '/admin/linkmanager',
+      name: 'AdminLinkManager',
+      component: AdminLinkManager,
+      props: true,
+      meta: {
+        title: 'Manage Links - Plej'
+      }
+    },
+    {
+      path: '/admin/leadsmanager',
+      name: 'LeadsManager',
+      component: LeadsManager,
+      meta: {
+        title: 'Leads - Plej'
       }
     },
     {
