@@ -97,6 +97,10 @@
         </tfoot>
       </table>
     </div>
+    <router-link
+      :to="{ name: 'AdminDashboard' }"
+      class="button is-rounded is-primary is-strong"
+    >Back</router-link>
   </div>
 </template>
 

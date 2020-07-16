@@ -1,19 +1,22 @@
 <template>
-  <div class="columns is-centered is-multiline has-text-centered section">
-    <div class="column is-half">
-      <h1 class="title is-4">
-        Plej.links for
-        <span class="tag is-primary is-medium">{{ user.email }}</span>
-      </h1>
-      <button
-        class="button is-rounded is-white is-strong has-text-grey"
-        v-on:click="generateLinkToken"
-      >Generate New Link</button>
-      <ul>
-        <li v-for="link in user.links" v-bind:key="link.link_token">
-          <linkcomponent v-bind:iLink="link" />
-        </li>
-      </ul>
+  <div class="section">
+    <router-link :to="{ name: 'UserManager' }" class="button is-rounded is-primary is-strong">Back</router-link>
+    <div class="columns is-centered is-multiline has-text-centered">
+      <div class="column is-half">
+        <h1 class="title is-4">
+          Plej.links for
+          <span class="tag is-primary is-medium">{{ user.email }}</span>
+        </h1>
+        <button
+          class="button is-rounded is-white is-strong has-text-grey"
+          v-on:click="generateLinkToken"
+        >Generate New Link</button>
+        <ul>
+          <li v-for="link in user.links" v-bind:key="link.link_token">
+            <linkcomponent v-bind:iLink="link" />
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
