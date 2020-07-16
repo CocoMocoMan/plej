@@ -102,8 +102,8 @@
 
 <script>
 import axios from 'axios'
-//  import router from '../../router'
-//  import InternalLayout from '../../layouts/Internal'
+import router from '../../router'
+import InternalLayout from '../../layouts/Internal'
 export default {
   name: 'UserManager',
   data () {
@@ -152,7 +152,6 @@ export default {
         }
         axios.post('/api/auth/register', data)
           .then((response) => {
-            console.log('here')
             window.location.reload()
           })
           .catch((err) => {
