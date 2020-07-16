@@ -61,8 +61,8 @@
             </ul>
           </div>
         </div>
+        <a id="main"></a>
         <component
-          id="main"
           style="margin-top:0vh;"
           :is="stage.component"
           :donation.sync="donation"
@@ -102,6 +102,10 @@ import DonationAmount from '../components/DonationAmount.vue'
 import DonationPersonalization from '../components/DonationPersonalization.vue'
 import PaymentEmail from '../components/PaymentEmail.vue'
 import PaymentForm from '../components/PaymentForm.vue'
+import smoothscroll from 'smoothscroll-polyfill'
+
+smoothscroll.polyfill()
+
 const stages = [
   { id: 0, component: DonationAmount },
   { id: 1, component: DonationPersonalization },
@@ -170,8 +174,8 @@ export default {
   watch: {
     lockNext: function (newVal) {
       if (!newVal) {
-        let nav = this.$el.querySelector('#main')
-        nav.scrollIntoView({ behavior: 'smooth' })
+        let main = this.$el.querySelector('#main')
+        main.scrollIntoView({ behavior: 'smooth' })
       }
     }
   },
