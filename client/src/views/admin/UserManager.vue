@@ -75,7 +75,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" v-bind:key="user.email">
+          <tr v-for="user in viewUsers" v-bind:key="user.email">
             <th>{{ user.name }}</th>
             <th>{{ user.alias }}</th>
             <th>{{ user.email }}</th>
@@ -96,6 +96,33 @@
           </tr>
         </tfoot>
       </table>
+      <div class="is-size-7 is-italics">
+        Showing {{ (currentPage - 1) * pageSize + 1}} -
+        {{ currentPage * pageSize > users.length ? users.length: currentPage * pageSize }} of
+        {{ users.length }} Results
+        <div>
+          <a href="#" v-on:click="changePageSize(10)">
+            <u>10</u>
+          </a>
+          <a href="#" v-on:click="changePageSize(25)">
+            <u>25</u>
+          </a>
+          <a href="#" v-on:click="changePageSize(users.length)">
+            <u>All</u>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-mobile is-centered">
+      <div class="column is-narrow">
+        <button
+          v-on:click="prevPage"
+          class="button is-rounded is-primary is-strong is-small"
+        >Previous</button>
+      </div>
+      <div class="column is-narrow">
+        <button v-on:click="nextPage" class="button is-rounded is-primary is-strong is-small">Next</button>
+      </div>
     </div>
     <router-link
       :to="{ name: 'AdminDashboard' }"
@@ -112,7 +139,10 @@ export default {
   name: 'UserManager',
   data () {
     return {
-      users: []
+      users: [],
+      viewUsers: [],
+      pageSize: 10,
+      currentPage: 1
     }
   },
   methods: {
@@ -131,6 +161,7 @@ export default {
       axios.get('/api/admin/users')
         .then(response => {
           self.$set(this, 'users', response.data.users)
+          this.viewUsers = this.sortUsers()
         })
         .catch((err) => {
           if (err.response) {
@@ -165,6 +196,25 @@ export default {
           })
       }
       register()
+    },
+    nextPage: function () {
+      if ((this.currentPage * this.pageSize) < this.users.length) this.currentPage++
+      this.viewUsers = this.sortUsers()
+    },
+    prevPage: function () {
+      if (this.currentPage > 1) this.currentPage--
+      this.viewUsers = this.sortUsers()
+    },
+    changePageSize: function (pageSize) {
+      this.pageSize = pageSize
+      this.viewUsers = this.sortUsers()
+    },
+    sortUsers: function () {
+      return this.users.filter((row, index) => {
+        let start = (this.currentPage - 1) * this.pageSize
+        let end = this.currentPage * this.pageSize
+        if (index >= start && index < end) return true
+      })
     }
   },
   mounted () {

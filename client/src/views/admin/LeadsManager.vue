@@ -70,9 +70,9 @@
         </tfoot>
       </table>
       <div class="is-size-7 is-italics">
-        Showing {{ (this.currentPage - 1) * this.pageSize + 1}} -
-        {{ this.currentPage * this.pageSize > this.leads.length ? this.leads.length: this.currentPage * this.pageSize }} of
-        {{ this.leads.length }} Results
+        Showing {{ (currentPage - 1) * this.pageSize + 1}} -
+        {{ currentPage * pageSize > leads.length ? leads.length: currentPage * pageSize }} of
+        {{ leads.length }} Results
         <div>
           <a href="#" v-on:click="changePageSize(10)">
             <u>10</u>
@@ -80,7 +80,7 @@
           <a href="#" v-on:click="changePageSize(25)">
             <u>25</u>
           </a>
-          <a href="#" v-on:click="changePageSize(this.leads.length)">
+          <a href="#" v-on:click="changePageSize(leads.length)">
             <u>All</u>
           </a>
         </div>
