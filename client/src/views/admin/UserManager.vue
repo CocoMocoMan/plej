@@ -123,7 +123,6 @@ export default {
         })
     },
     getUsers: function () {
-<<<<<<< HEAD
       let self = this
       axios.get('/api/admin/users')
         .then(response => {
@@ -163,10 +162,6 @@ export default {
           })
       }
       register()
-=======
-      //  let self = this
-      axios.get('/api/auth/user')
->>>>>>> 1eb5764233f98fbd3d2b0be5e897e3d1fb57a979
     }
   },
   mounted () {
