@@ -10,9 +10,11 @@
       <div class="column is-one-half">
         <div class="field">
           <div class="control">
+            <a href="#Next"></a>
             <input
               class="input button is-rounded is-primary is-strong has-text-white"
               v-on:click="updatePaymentAmount(1, $event)"
+              onclick="window.location.href = '#Next'"
               type="submit"
               value="$1"
             />
@@ -25,9 +27,11 @@
             <input
               class="input button is-rounded is-primary is-strong has-text-white"
               v-on:click="updatePaymentAmount(5, $event)"
+              onclick="window.location.href = '#Next'"
               type="submit"
               value="$5"
             />
+            <a id="Next"></a>
           </div>
         </div>
       </div>
@@ -39,6 +43,7 @@
             <input
               class="input button is-primary is-rounded is-strong has-text-white"
               v-on:click="updatePaymentAmount(10, $event)"
+              onclick="window.location.href = '#Next'"
               type="submit"
               value="$10"
             />
@@ -51,9 +56,10 @@
             <input
               class="input button is-primary is-rounded is-strong has-text-white"
               v-on:click="updatePaymentAmount(20, $event)"
+              onclick="window.location.href = '#Next'"
               type="submit"
               value="$20"
-            />
+              />
           </div>
         </div>
       </div>
