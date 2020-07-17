@@ -77,7 +77,7 @@
       </div>
     </section>
     -->
-    <section class="section section-feature-grey is-medium">
+    <!-- <section class="section section-feature-grey is-medium">
       <div class="container">
         <div class="title-wrapper has-text-centered">
           <h2 class="title is-2">Drive your content</h2>
@@ -146,7 +146,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
     <!--
 <section class="section is-medium  has-background-image" data-background="https://source.unsplash.com/g30P1zcOzXo/1600x900" data-color="#4FC1EA" data-color-opacity=".6">
     <div class="overlay"></div>
