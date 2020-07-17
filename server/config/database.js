@@ -7,6 +7,6 @@ if (process.env.NODE_ENV === 'production')
 
 module.exports = function (mongoose, logger) {
   mongoose.connect(MONGO_URI, { useNewUrlParser: true })
-    .then(logger.info('DB connected' + MONGO_URI))
+    .then(logger.info('DB connected: ' + MONGO_URI))
     .catch(err => logger.error(err))
 }

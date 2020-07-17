@@ -2,20 +2,20 @@ const adminMiddleWare = require('../../utils/auth.js').adminMiddleWare
 const User = require('../models/Users')
 const Lead = require('../models/Leads')
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport, logger) {
   app.post('/api/admin/login', (req, res, next) => {
     passport.authenticate('local-admin-login', (err, user, info) => {
       if (err) {
-        console.log(err)
+        logger.error(err)
         return res.status(500).json({ info })
       }
       if (!user) {
-        console.log(info.message)
+        logger.error(info.message)
         return res.status(500).json({ info })
       }
       req.login(user, err => {
         if (err) {
-          console.log(err)
+          logger.error(err)
           return res.status(500).json({ info: { message: err } })
         }
         return res.status(200).json({ success: 'Logged In' })
@@ -57,8 +57,15 @@ module.exports = function (app, passport) {
           link_token: linkToken
         })
         user.save()
-          .then(() => {
-            console.log(linkToken)
+          .then((user) => {
+            logger.warn({
+              action: 'Link Generated',
+              data: {
+                token: linkToken,
+                for: user.email,
+                admin: true
+              }
+            })
             return res.status(200).send({ success: 'Link Created' })
           })
           .catch(() => {
@@ -87,6 +94,14 @@ module.exports = function (app, passport) {
     )
       .then((user) => {
         const link = user.links.find(link => { return link.link_token === token })
+        logger.warn({
+          action: 'Link Content Added',
+          data: {
+            for: user.email,
+            link: link,
+            admin: true
+          }
+        })
         return res.status(200).send({ link: link })
       })
       .catch((err) => {

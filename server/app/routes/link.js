@@ -2,7 +2,7 @@ const authMiddleware = require('../../utils/auth.js').authMiddleware
 const User = require('../models/Users')
 const validator = require('../../utils/validator')
 
-module.exports = function (app) {
+module.exports = function (app, logger) {
   app.get('/api/link/generatelinktoken', authMiddleware, (req, res, next) => {
     let user = req.user
     const linkToken = user.generateToken()
@@ -10,8 +10,14 @@ module.exports = function (app) {
       link_token: linkToken
     })
     user.save().
-      then(() => {
-        console.log(linkToken)
+      then((user) => {
+        logger.warn({
+          action: 'Link Generated',
+          data: {
+            token: linkToken,
+            for: user.email
+          }
+        })
         return res.status(200).send({ success: 'Link Created' })
       })
       .catch(() => {
@@ -29,8 +35,15 @@ module.exports = function (app) {
           err.status = 400
           return next(err)
         }
-        creator = creator.publicData()
         const link = creator.links.find(link => { return link.link_token === token })
+        logger.warn({
+          action: 'Donation Page Visited',
+          data: {
+            creator: creator.email,
+            link: link
+          }
+        })
+        creator = creator.publicData()
         return res.status(200).json({ creator: creator, link: link })
       })
       .catch(err => {
@@ -57,6 +70,13 @@ module.exports = function (app) {
     )
       .then((user) => {
         const link = user.links.find(link => { return link.link_token === token })
+        logger.warn({
+          action: 'Link Content Added',
+          data: {
+            for: user.email,
+            link: link
+          }
+        })
         return res.status(200).send({ link: link })
       })
       .catch((err) => {

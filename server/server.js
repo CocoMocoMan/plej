@@ -57,7 +57,7 @@ app.use((err, req, res, next) => {
   if (res.headersSent) {
     return next(err)
   }
-  logger.info({ err: err.message })
+  logger.error({ err: err })
   let status = err.status || 500
   let message = err.message
   return res.status(status).json({ message: message })
@@ -89,5 +89,3 @@ if (process.env.NODE_ENV === 'production') {
     `Listening on port ${port}!`
   ));
 }
-
-//serve

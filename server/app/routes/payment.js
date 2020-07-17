@@ -3,7 +3,7 @@ const stripeconfig = require('../../config/stripe.js')
 
 const stripe = require('stripe')(stripeconfig.secretKey)
 
-module.exports = function (app) {
+module.exports = function (app, logger) {
   // app.get('/api/payment/secret/', async (req, res) => {
   //   stripe.setupIntents.create(
   //     {
@@ -51,7 +51,17 @@ module.exports = function (app) {
             }
           }
         )
-          .then(() => {
+          .then((user) => {
+            logger.warn({
+              action: 'Payment Proccessed',
+              data: {
+                payment: {
+                  intent: intent,
+                  creator: user.email,
+                  donation: donation
+                }
+              }
+            })
             return res.status(200).json({ intent: intent })
           })
           .catch((err) => {

@@ -1,7 +1,7 @@
 const Lead = require('../models/Leads')
 const emailService = require('../../utils/email')
 
-module.exports = function (app) {
+module.exports = function (app, logger) {
   app.post('/api/notify/contactus', (req, res, next) => {
     const lead = req.body
     Lead.addItem(lead, err => {
@@ -14,7 +14,20 @@ module.exports = function (app) {
         html: '<h1>Welcome to Plej</h1><p>A member of our team will be in touch soon!</p>'
       }
       emailService.sendEmail(emailInfo)
-      return res.status(200).json({ success: 'success' })
+        .then(response => {
+          logger.warn({
+            action: 'Lead Email Sent',
+            data: {
+              email: response,
+              lead: lead
+            }
+          })
+          return res.status(200).json({ success: 'success' })
+        })
+        .catch(err => {
+          return next(err)
+        })
+
     })
   })
 }

@@ -15,12 +15,10 @@ const transporter = nodemailer.createTransport({
 module.exports = {
   sendEmail: function (emailInfo) {
     emailInfo.from = fromEmail
-    transporter.sendMail(emailInfo, (err, info) => {
-      if (err) {
-        console.log(err)
-      } else {
-        console.log('Email sent: ' + info.response)
-      }
-    })
+    return transporter.sendMail(emailInfo)
+      .then((info) => {
+        return info.response
+      })
+      .catch(err => { throw err })
   }
 } 
