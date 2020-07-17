@@ -51,6 +51,7 @@
                 <router-link
                   class="is-size-5 is-strong navbar-item"
                   :to="{ name: 'Landing', hash: '#contact_us'}"
+                  @click.native="scrollFix('#contact_us')"
                   :target="useExternalLinks ? '_blank' : ''"
                 >Contact Us</router-link>
               </li>
@@ -94,6 +95,9 @@ export default {
   methods: {
     toggleActive: function () {
       this.isActive = !this.isActive
+    },
+    scrollFix: function (hashbang) {
+      location.href = hashbang
     }
   }
 }
