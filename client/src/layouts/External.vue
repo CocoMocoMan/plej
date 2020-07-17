@@ -26,6 +26,23 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
+      <!--
+      <div class="tabs pl-6 is-medium is-boxed is-fullwidth">
+        <ul>
+          <li><router-link class="is-size-5 is-strong"
+            :to="{ name: 'Landing'}"
+          >Home</router-link></li>
+          <li><router-link class="is-size-5 is-strong"
+            :to="{ name: 'AboutUs'}"
+            :target="useExternalLinks ? '_blank' : ''"
+          >About Us</router-link></li>
+          <li><router-link class="is-size-5 is-strong"
+            :to="{ name: 'Resources'}"
+            :target="useExternalLinks ? '_blank' : ''"
+          >Resources</router-link></li>
+        </ul>
+      </div>
+      -->
       <div class="navbar-menu" id="navMenu" :class="isActive ? 'is-active' : ''">
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">

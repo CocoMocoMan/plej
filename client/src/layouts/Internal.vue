@@ -22,7 +22,16 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-menu" id="navMenu" :class="isActive ? 'is-active' : ''">
+      <!--
+      <div class="tabs pl-6 is-medium is-boxed is-fullwidth">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="AboutUs">About Us</a></li>
+          <li><a href="UnderConstruction">Resources</a></li>
+        </ul>
+      </div>
+      -->
+      <div class="navbar-end" id="navMenu" :class="isActive ? 'is-active' : ''">
         <div class="navbar-end">
           <div class="navbar-item" style="padding-top:0;">
             <a class="button is-white is-rounded is-strong is-medium" href="#" v-on:click="logout">

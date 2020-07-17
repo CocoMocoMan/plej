@@ -11,13 +11,12 @@ import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
-<<<<<<< HEAD
 import UnderConstruction from '@/views/UnderConstruction'
-=======
 import AdminLogin from '@/views/admin/AdminLogin'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
->>>>>>> 9d9bed47cbc0b1ee57399e081ab8c8e1e5022140
+import AboutUs from '@/views/AboutUs'
+import Resources from '@/views/Resources'
 
 Vue.use(Router)
 
@@ -105,6 +104,22 @@ export default new Router({
       component: PrivacyPolicy,
       meta: {
         title: 'Privacy Policy - Plej'
+      }
+    },
+    {
+      path: '/aboutus',
+      name: 'AboutUs',
+      component: AboutUs,
+      meta: {
+        title: 'About Us - Plej'
+      }
+    },
+    {
+      path: '/resources',
+      name: 'Resources',
+      component: Resources,
+      meta: {
+        title: 'Resources - Plej'
       }
     },
     {
