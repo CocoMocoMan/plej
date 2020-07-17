@@ -42,10 +42,10 @@ export default {
   name: 'AdminLogin',
   methods: {
     checkLogin: function () {
-      axios.get('/api/auth/user')
+      axios.get('/api/admin/auth')
         .then((response) => {
           console.log('Logged in')
-          router.push('/admindashboard')
+          router.push('/admin/dashboard')
         })
         .catch((err) => {
           if (err.response && err.response.status === 401) {
@@ -64,7 +64,7 @@ export default {
         }
         axios.post('/api/admin/login', data)
           .then((response) => {
-            router.push('/admindashboard')
+            router.push('/admin/dashboard')
           })
           .catch((err) => {
             if (err.response && err.response.status === 500) {

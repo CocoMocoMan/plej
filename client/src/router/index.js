@@ -12,11 +12,20 @@ import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
 import UnderConstruction from '@/views/UnderConstruction'
+<<<<<<< HEAD
 import AdminLogin from '@/views/admin/AdminLogin'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
 import AboutUs from '@/views/AboutUs'
 import Resources from '@/views/Resources'
+=======
+// admin
+import AdminLogin from '@/views/admin/AdminLogin'
+import AdminDashboard from '@/views/admin/AdminDashboard'
+import UserManager from '@/views/admin/UserManager'
+import AdminLinkManager from '@/views/admin/AdminLinkManager'
+import LeadsManager from '@/views/admin/LeadsManager'
+>>>>>>> a12e844a6cef82f5aadf4f3843cfe3c7cd23f180
 
 Vue.use(Router)
 
@@ -106,7 +115,9 @@ export default new Router({
         title: 'Privacy Policy - Plej'
       }
     },
+    // admin
     {
+<<<<<<< HEAD
       path: '/aboutus',
       name: 'AboutUs',
       component: AboutUs,
@@ -124,6 +135,9 @@ export default new Router({
     },
     {
       path: '/adminlogin/1r0N!f7B',
+=======
+      path: '/admin/login',
+>>>>>>> a12e844a6cef82f5aadf4f3843cfe3c7cd23f180
       name: 'AdminLogin',
       component: AdminLogin,
       meta: {
@@ -131,7 +145,7 @@ export default new Router({
       }
     },
     {
-      path: '/admindashboard',
+      path: '/admin/dashboard',
       name: 'AdminDashboard',
       component: AdminDashboard,
       meta: {
@@ -139,11 +153,28 @@ export default new Router({
       }
     },
     {
-      path: '/usermanager',
+      path: '/admin/usermanager',
       name: 'UserManager',
       component: UserManager,
       meta: {
         title: 'Users - Plej'
+      }
+    },
+    {
+      path: '/admin/linkmanager',
+      name: 'AdminLinkManager',
+      component: AdminLinkManager,
+      props: true,
+      meta: {
+        title: 'Manage Links - Plej'
+      }
+    },
+    {
+      path: '/admin/leadsmanager',
+      name: 'LeadsManager',
+      component: LeadsManager,
+      meta: {
+        title: 'Leads - Plej'
       }
     },
     {

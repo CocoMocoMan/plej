@@ -7,7 +7,7 @@ const LeadSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    fName: {
+    lName: {
       type: String,
       required: true
     },
@@ -17,6 +17,10 @@ const LeadSchema = new mongoose.Schema(
     },
     message: {
       type: String
+    },
+    resolved: {
+      type: Boolean,
+      default: false
     },
     date: {
       type: Date,

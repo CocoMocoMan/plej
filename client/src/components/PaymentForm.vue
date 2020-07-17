@@ -195,7 +195,6 @@ export default {
       })
     },
     handleSuccess: function (intent) {
-      console.log(intent)
       router.push(
         { name: 'PaymentConfirmation',
           params: {
