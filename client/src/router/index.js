@@ -117,7 +117,6 @@ export default new Router({
     },
     // admin
     {
-<<<<<<< HEAD
       path: '/aboutus',
       name: 'AboutUs',
       component: AboutUs,
@@ -135,9 +134,7 @@ export default new Router({
     },
     {
       path: '/adminlogin/1r0N!f7B',
-=======
       path: '/admin/login',
->>>>>>> a12e844a6cef82f5aadf4f3843cfe3c7cd23f180
       name: 'AdminLogin',
       component: AdminLogin,
       meta: {
