@@ -5,7 +5,9 @@ const https = require('https')
 const fs = require('fs')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser')
+const pino = require('pino')
+const expressPino = require('express-pino-logger')
 const passport = require('passport')
 const passportconfig = require('./config/passport')
 const mongoose = require('mongoose')
@@ -19,12 +21,16 @@ const adminRoutes = require('./app/routes/admin')
 const app = express()
 const port = process.env.PORT || 3000
 
+//logging
+const logger = pino({ level: process.env.LOG_LEVEL || 'info' })
+
+//force SSL in production
 if (process.env.NODE_ENV === 'production')
   app.use(forceSSL)
 
 //config
 passportconfig(passport)
-dbconfig(mongoose)
+dbconfig(mongoose, logger)
 
 //express setup
 app.use(bodyParser.json())
@@ -35,12 +41,27 @@ app.use(session({ secret: 'secret' }));
 app.use(passport.initialize())
 app.use(passport.session())
 
+//logger express middleware
+const expressLogger = expressPino(logger)
+app.use(expressLogger)
+
 //routes
-authRoutes(app, passport)
-linkRoutes(app)
-paymentRoutes(app)
-notifyRoutes(app)
-adminRoutes(app, passport)
+authRoutes(app, passport, logger)
+linkRoutes(app, logger)
+paymentRoutes(app, logger)
+notifyRoutes(app, logger)
+adminRoutes(app, passport, logger)
+
+//error handling middleware
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+  logger.info({ err: err.message })
+  let status = err.status || 500
+  let message = err.message
+  return res.status(status).json({ message: message })
+})
 
 //Apple pay verification
 app.use(express.static(__dirname + '/.well-known'))
@@ -64,7 +85,7 @@ if (process.env.NODE_ENV === 'production') {
   httpServer.listen(80);
   httpsServer.listen(443);
 } else {
-  app.listen(port, () => console.log(
+  app.listen(port, () => logger.info(
     `Listening on port ${port}!`
   ));
 }

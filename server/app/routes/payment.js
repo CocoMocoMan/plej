@@ -24,13 +24,12 @@ module.exports = function (app) {
     return res.status(200).json({ publicKey: stripeconfig.publicKey, options: stripeconfig.options })
   })
 
-  app.post('/api/payment/confirm', async (req, res) => {
+  app.post('/api/payment/confirm', async (req, res, next) => {
     const donation = req.body.data.donation
     const amountInCents = donation.amount * 100.0
     const paymentMethod = req.body.data.paymentMethod
     const token = req.body.data.token
     const email = req.body.data.email
-    console.log(email)
     stripe.paymentIntents.create(
       {
         amount: amountInCents,
@@ -42,8 +41,7 @@ module.exports = function (app) {
       },
       ((err, intent) => {
         if (err) {
-          console.log(err.message)
-          return res.status(500).json({ message: err.message })
+          return next(err)
         }
         User.findOneAndUpdate(
           { 'links.link_token': token },
@@ -57,8 +55,7 @@ module.exports = function (app) {
             return res.status(200).json({ intent: intent })
           })
           .catch((err) => {
-            console.log(err.message)
-            return res.status(500).json({ message: err.message })
+            return next(err)
           })
       })
     )

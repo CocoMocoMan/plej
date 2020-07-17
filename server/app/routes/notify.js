@@ -2,11 +2,11 @@ const Lead = require('../models/Leads')
 const emailService = require('../../utils/email')
 
 module.exports = function (app) {
-  app.post('/api/notify/contactus', (req, res) => {
+  app.post('/api/notify/contactus', (req, res, next) => {
     const lead = req.body
     Lead.addItem(lead, err => {
       if (err) {
-        return res.status(500).json({ message: err.message })
+        return next(err)
       }
       const emailInfo = {
         to: lead.email,

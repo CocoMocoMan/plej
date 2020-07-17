@@ -42,13 +42,13 @@ module.exports = function (app, passport) {
     })(req, res, next);
   })
 
-  app.get('/api/auth/logout', (req, res) => {
+  app.get('/api/auth/logout', (req, res, next) => {
     req.logout();
     console.log('Logged out')
     return res.status(200).json({ success: 'Logged Out' })
   });
 
-  app.get('/api/auth/user', authMiddleware, (req, res) => {
+  app.get('/api/auth/user', authMiddleware, (req, res, next) => {
     res.status(200).send({ user: req.user })
   })
 }

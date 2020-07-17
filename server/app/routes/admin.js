@@ -33,22 +33,22 @@ module.exports = function (app, passport) {
         res.status(200).send({ users: users })
       })
       .catch(err => {
-        res.status(500).send({ message: err.message })
+        return next(err)
       })
   })
 
-  app.get('/api/admin/user/:userid', adminMiddleWare, (req, res) => {
+  app.get('/api/admin/user/:userid', adminMiddleWare, (req, res, next) => {
     const userID = req.params.userid
     User.findById(userID)
       .then(user => {
         res.status(200).send({ user: user })
       })
       .catch(err => {
-        res.status(500).send({ message: err.message })
+        return next(err)
       })
   })
 
-  app.get('/api/admin/generatelinktoken/:userid', adminMiddleWare, (req, res) => {
+  app.get('/api/admin/generatelinktoken/:userid', adminMiddleWare, (req, res, next) => {
     const userID = req.params.userid
     User.findById(userID)
       .then(user => {
@@ -62,15 +62,20 @@ module.exports = function (app, passport) {
             return res.status(200).send({ success: 'Link Created' })
           })
           .catch(() => {
-            return res.status(500).send({ message: 'Unable to create link' })
+            let err = new Error('Unable to create link')
+            return next(err)
           })
       })
   })
 
-  app.post('/api/admin/addcontent/:token', adminMiddleWare, async (req, res) => {
+  app.post('/api/admin/addcontent/:token', adminMiddleWare, async (req, res, next) => {
     const token = req.params.token
     const link_content = req.body.link_content
-    if (!validator.validURL(link_content)) return res.status(500).json({ message: 'Not a valid URL' })
+    if (!validator.validURL(link_content)) {
+      let err = new Error('Not a valid URL')
+      err.status = 400
+      return next(err)
+    }
     User.findOneAndUpdate(
       { 'links.link_token': token },
       {
@@ -85,39 +90,38 @@ module.exports = function (app, passport) {
         return res.status(200).send({ link: link })
       })
       .catch((err) => {
-        console.log(err)
-        return res.status(500).json({ message: err.message })
+        return next(err)
       })
   })
 
-  app.get('/api/admin/leads', adminMiddleWare, (req, res) => {
+  app.get('/api/admin/leads', adminMiddleWare, (req, res, next) => {
     Lead.find()
       .then(leads => {
         return res.status(200).send({ leads: leads })
       })
       .catch(err => {
-        return res.status(500).send({ message: err.message })
+        return next(err)
       })
   })
-  app.get('/api/admin/resolvelead/:leadid', adminMiddleWare, (req, res) => {
+  app.get('/api/admin/resolvelead/:leadid', adminMiddleWare, (req, res, next) => {
     const leadID = req.params.leadid
     Lead.findByIdAndUpdate(leadID, { resolved: true })
       .then(() => {
         return res.status(200).send({ success: 'Lead Resolved' })
       })
       .catch(err => {
-        return res.status(500).send({ message: err.message })
+        return next(err)
       })
   })
 
-  app.get('/api/admin/unresolvelead/:leadid', adminMiddleWare, (req, res) => {
+  app.get('/api/admin/unresolvelead/:leadid', adminMiddleWare, (req, res, next) => {
     const leadID = req.params.leadid
     Lead.findByIdAndUpdate(leadID, { resolved: false })
       .then(() => {
         return res.status(200).send({ success: 'Lead Unresolved' })
       })
       .catch(err => {
-        return res.status(500).send({ message: err.message })
+        return next(err)
       })
   })
 }
