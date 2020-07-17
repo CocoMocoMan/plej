@@ -31,12 +31,18 @@
           <div class="tabs pl-6 pb-2 is-medium is-boxed is-fullwidth">
             <ul>
               <li>
-                <router-link class="is-size-5 is-strong navbar-item" :to="{ name: 'Landing'}">Home</router-link>
+                <router-link
+                  class="is-size-5 is-strong navbar-item"
+                  :to="{ name: 'Landing'}"
+                  v-on:click.native="toggleActive"
+                  :target="useExternalLinks ? '_blank' : ''"
+                >Home</router-link>
               </li>
               <li>
                 <router-link
                   class="is-size-5 is-strong navbar-item"
                   :to="{ name: 'AboutUs'}"
+                  v-on:click.native="toggleActive"
                   :target="useExternalLinks ? '_blank' : ''"
                 >About</router-link>
               </li>
@@ -51,7 +57,7 @@
                 <router-link
                   class="is-size-5 is-strong navbar-item"
                   :to="{ name: 'Landing', hash: '#contact_us'}"
-                  @click.native="scrollFix('#contact_us')"
+                  v-on:click.native="scrollFix('#contact_us');"
                   :target="useExternalLinks ? '_blank' : ''"
                 >Contact Us</router-link>
               </li>
@@ -98,6 +104,7 @@ export default {
     },
     scrollFix: function (hashbang) {
       location.href = hashbang
+      this.toggleActive()
     }
   }
 }

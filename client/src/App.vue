@@ -24,7 +24,7 @@
             class="is-size-6 is-strong has-text-white"
             :to="{ name: 'Landing', hash: '#contact_us'}"
             :target="useExternalLinks ? '_blank' : ''"
-            @click.native="scrollFix('#contact_us')"
+            v-on:click.native="scrollFix('#contact_us')"
           >Contact Us</router-link>
         </div>
       </div>
