@@ -110,6 +110,7 @@ export default new Router({
       }
     },
     {
+      path: '/aboutus',
       name: 'AboutUs',
       component: AboutUs,
       meta: {
