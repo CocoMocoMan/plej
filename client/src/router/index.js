@@ -12,20 +12,14 @@ import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
 import UnderConstruction from '@/views/UnderConstruction'
-<<<<<<< HEAD
-import AdminLogin from '@/views/admin/AdminLogin'
-import AdminDashboard from '@/views/admin/AdminDashboard'
-import UserManager from '@/views/admin/UserManager'
 import AboutUs from '@/views/AboutUs'
 import Resources from '@/views/Resources'
-=======
 // admin
 import AdminLogin from '@/views/admin/AdminLogin'
 import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
 import AdminLinkManager from '@/views/admin/AdminLinkManager'
 import LeadsManager from '@/views/admin/LeadsManager'
->>>>>>> a12e844a6cef82f5aadf4f3843cfe3c7cd23f180
 
 Vue.use(Router)
 
@@ -115,9 +109,7 @@ export default new Router({
         title: 'Privacy Policy - Plej'
       }
     },
-    // admin
     {
-      path: '/aboutus',
       name: 'AboutUs',
       component: AboutUs,
       meta: {
@@ -132,8 +124,8 @@ export default new Router({
         title: 'Resources - Plej'
       }
     },
+    // admin
     {
-      path: '/adminlogin/1r0N!f7B',
       path: '/admin/login',
       name: 'AdminLogin',
       component: AdminLogin,
