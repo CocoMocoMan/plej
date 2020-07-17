@@ -9,7 +9,7 @@
         <div>
           <p class="subtitle is-5 is-muted has-text-left pt-2 is-full">
             Plej is the link between your creations and the support of your audience.
-            By providing a Plej Link for your audience, you give them a quick flexible way
+            By providing a Plej link for your audience, you give them a quick flexible way
             to help you fund your passions. Plej connects you with quick payment options
             that eliminate the hassle for your fans. Let your fans support you with the payment methods they use daily,
             such as Apple Pay, PayPal, and Venmo.

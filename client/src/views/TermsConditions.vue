@@ -15,6 +15,10 @@
           </li>
           <br />
           <li>
+            <a href="#Fees">Transaction Fees</a>
+          </li>
+          <br />
+          <li>
             <a href="#Cookies">Cookies</a>
           </li>
           <br />
@@ -68,6 +72,15 @@
         <p>These terms and conditions outline the rules and regulations for the use of Plej.link's Website, located at https://plej.link.</p>
         <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Plej.link if you do not agree to take all of the terms and conditions stated on this page.</p>
         <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
+        <br />
+      </a>
+      <a id="Fees">
+        <p class="is-size-5 is-strong">Transaction Fees</p>
+        <p>-The payment processing fee in U.S. Dollars is 5% plus $0.10 per successful donation.</p>
+        <p>
+          -Additionally, there is a payment processing fee in U.S. Dollars of 2.9% plus $0.29 per successful donation.
+          This processing fee is collected by a third-party transaction processor. Plej does not control this charge.
+        </p>
         <br />
       </a>
       <a id="Cookies">
@@ -174,9 +187,6 @@
         </ul>
         <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
         <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
-        <p>If you are located in the jurisdiction in which Plej is required to charge and collect tax (e.g. VAT or, sales tax), then this tax is added to the total charge. Except in limited circumstances, this tax is shown when you Make your donation. Plej remits all tax collected to the applicable taxing authority. As tax is largely dependant on your location, you are responsible for keeping your address complete and up to date. </p>
-        <p>Depending on your location, some banks may charge you a foreign transaction fee for your membership subscription. Plej does not control this charge, but it is typically around 5%. Please contact your bank for more information. </p>
-        <p>Refunds. Our policy is No Refunds, though we will allow for some exceptions where refunds are granted in our sole discretion.</p>
       </a>
     </div>
   </div>

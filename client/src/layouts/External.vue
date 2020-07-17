@@ -38,7 +38,7 @@
                   class="is-size-5 is-strong navbar-item"
                   :to="{ name: 'AboutUs'}"
                   :target="useExternalLinks ? '_blank' : ''"
-                >About Us</router-link>
+                >About</router-link>
               </li>
               <!-- <li>
             <router-link
