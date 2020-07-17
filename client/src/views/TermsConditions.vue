@@ -174,6 +174,9 @@
         </ul>
         <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
         <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+        <p>If you are located in the jurisdiction in which Plej is required to charge and collect tax (e.g. VAT or, sales tax), then this tax is added to the total charge. Except in limited circumstances, this tax is shown when you Make your donation. Plej remits all tax collected to the applicable taxing authority. As tax is largely dependant on your location, you are responsible for keeping your address complete and up to date. </p>
+        <p>Depending on your location, some banks may charge you a foreign transaction fee for your membership subscription. Plej does not control this charge, but it is typically around 5%. Please contact your bank for more information. </p>
+        <p>Refunds. Our policy is No Refunds, though we will allow for some exceptions where refunds are granted in our sole discretion.</p>
       </a>
     </div>
   </div>
