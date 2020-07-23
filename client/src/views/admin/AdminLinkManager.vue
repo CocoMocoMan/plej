@@ -14,12 +14,32 @@
         <ul>
           <li v-for="link in user.links" v-bind:key="link.link_token">
             <linkcomponent v-bind:iLink="link" />
+            <button class="button is-warning is-strong" v-on:click="openModal(link)">Delete</button>
           </li>
         </ul>
       </div>
     </div>
+    <div class="modal" :class="modalActive ? 'is-active' : ''">
+      <div class="modal-background"></div>
+      <div class="model-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+            Are you sure you want to delete link?
+            <span
+              class="subtitle is-5 is-strong"
+            >(This cannot be undone)</span>
+          </p>
+        </header>
+        <footer class="modal-card-foot">
+          <button class="button is-rounded is-white" v-on:click="closeModal">Cancel</button>
+          <button class="button is-warning is-rounded is-strong" v-on:click="deleteLink">Delete</button>
+        </footer>
+        <p>hi</p>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios'
 import router from '../../router'
@@ -35,7 +55,9 @@ export default {
       user: {
         email: '',
         links: []
-      }
+      },
+      modalActive: false,
+      modalLink: undefined
     }
   },
   components: {
@@ -80,6 +102,20 @@ export default {
               router.push('/admin/login')
             }
           }
+        })
+    },
+    openModal: function (link) {
+      this.modalLink = link
+      this.modalActive = true
+    },
+    closeModal: function () {
+      this.modalLink = undefined
+      this.modalActive = false
+    },
+    deleteLink: function () {
+      axios.get('/api/admin/deletelink/' + this.modalLink.link_token)
+        .then(() => {
+          window.location.reload()
         })
     }
   },

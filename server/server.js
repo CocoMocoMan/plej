@@ -22,7 +22,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 //logging
-const logger = pino({ level: process.env.LOG_LEVEL || 'info' })
+const logger = pino({ level: process.env.LOG_LEVEL || 'warn' })
 
 //force SSL in production
 if (process.env.NODE_ENV === 'production')
@@ -42,7 +42,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //logger express middleware
-const expressLogger = expressPino(logger)
+const expressLogger = expressPino({ logger })
 app.use(expressLogger)
 
 //routes

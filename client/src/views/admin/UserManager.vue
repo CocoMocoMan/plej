@@ -72,6 +72,7 @@
             <th>Alias</th>
             <th>Email</th>
             <th>Links</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -82,8 +83,14 @@
             <th>
               <router-link
                 :to="{ name: 'AdminLinkManager', params: { userID: user._id }}"
-                class="button is-primary is-rounded is-small is-centered"
+                class="button is-primary is-rounded is-small"
               >Manage</router-link>
+            </th>
+            <th>
+              <button
+                class="button is-warning is-rounded is-small is-strong"
+                v-on:click="openModal(user)"
+              >Delete</button>
             </th>
           </tr>
         </tbody>
@@ -111,6 +118,24 @@
             <u>All</u>
           </a>
         </div>
+      </div>
+    </div>
+    <div class="modal" :class="modalActive ? 'is-active' : ''">
+      <div class="modal-background"></div>
+      <div class="model-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">
+            Are you sure you want to delete account for
+            <br />
+            <span class="tag is-primary is-large">{{ modalUser ? modalUser.email: '' }}</span>
+            <span class="subtitle is-5 is-strong">(This cannot be undone)</span>
+          </p>
+        </header>
+        <footer class="modal-card-foot">
+          <button class="button is-rounded is-white" v-on:click="closeModal">Cancel</button>
+          <button class="button is-warning is-rounded is-strong" v-on:click="deleteUser">Delete</button>
+        </footer>
+        <p>hi</p>
       </div>
     </div>
     <div class="columns is-mobile is-centered">
@@ -142,7 +167,9 @@ export default {
       users: [],
       viewUsers: [],
       pageSize: 10,
-      currentPage: 1
+      currentPage: 1,
+      modalActive: false,
+      modalUser: undefined
     }
   },
   methods: {
@@ -215,6 +242,20 @@ export default {
         let end = this.currentPage * this.pageSize
         if (index >= start && index < end) return true
       })
+    },
+    openModal: function (user) {
+      this.modalUser = user
+      this.modalActive = true
+    },
+    closeModal: function () {
+      this.modalUser = undefined
+      this.modalActive = false
+    },
+    deleteUser: function () {
+      axios.get('/api/admin/deleteuser/' + this.modalUser._id)
+        .then(() => {
+          window.location.reload()
+        })
     }
   },
   mounted () {

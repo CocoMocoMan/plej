@@ -3,19 +3,19 @@ const bcrypt = require('bcryptjs')
 
 const ThirdPartyProviderSchema = new mongoose.Schema(
   {
-  provider_name: {
-    type: String,
-    default: null
-  },
-  provider_id: {
-    type: String,
-    default: null
-  },
-  provider_data: {
-    type: {},
-    default: null
-  }
-})
+    provider_name: {
+      type: String,
+      default: null
+    },
+    provider_id: {
+      type: String,
+      default: null
+    },
+    provider_data: {
+      type: {},
+      default: null
+    }
+  })
 
 const DonationSchema = new mongoose.Schema(
   {
@@ -40,22 +40,22 @@ const DonationSchema = new mongoose.Schema(
 
 const LinkSchema = new mongoose.Schema(
   {
-  link_token: {
-    type: String,
-    index: true,
-    unique: true,
-    sparse: true
-  },
-  link_content: {
-    type: String,
-    default: null
-  },
-  donations: [DonationSchema],
-  date: {
-    type: Date,
-    default: Date.now
-  }
-})
+    link_token: {
+      type: String,
+      index: true,
+      unique: true,
+      sparse: true
+    },
+    link_content: {
+      type: String,
+      default: null
+    },
+    donations: [DonationSchema],
+    date: {
+      type: Date,
+      default: Date.now
+    }
+  })
 
 const UserSchema = new mongoose.Schema(
   {
@@ -84,22 +84,22 @@ const UserSchema = new mongoose.Schema(
       default: Date.now
     }
   },
-  {strict: false}
+  { strict: false }
 )
 
-UserSchema.methods.generateHash = function(password) {
+UserSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-UserSchema.methods.validPassword = function(password) {
+UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 
-UserSchema.methods.generateToken = function() {
+UserSchema.methods.generateToken = function () {
   return randomToken()
 }
 
-UserSchema.methods.publicData = function() {
+UserSchema.methods.publicData = function () {
   let publicUser = this
   publicUser.email = ''
   publicUser.password = ''

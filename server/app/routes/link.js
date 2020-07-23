@@ -18,7 +18,7 @@ module.exports = function (app, logger) {
             for: user.email
           }
         })
-        return res.status(200).send({ success: 'Link Created' })
+        return res.status(200).json({ success: 'Link Created' })
       })
       .catch(() => {
         let err = new Error('Unable to create link')
@@ -40,7 +40,7 @@ module.exports = function (app, logger) {
           action: 'Donation Page Visited',
           data: {
             creator: creator.email,
-            link: link
+            link: link.link_token
           }
         })
         creator = creator.publicData()
@@ -74,10 +74,10 @@ module.exports = function (app, logger) {
           action: 'Link Content Added',
           data: {
             for: user.email,
-            link: link
+            link: link.link_token
           }
         })
-        return res.status(200).send({ link: link })
+        return res.status(200).json({ link: link })
       })
       .catch((err) => {
         return next(err)

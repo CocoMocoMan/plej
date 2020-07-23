@@ -10,8 +10,11 @@
       >{{ donate_url + link.link_token }}</a>
     </header>
     <div class="card-body">
-      <div v-if="link.link_content" class="card-header-title is-centered">
+      <div v-if="link.link_content && !editing" class="card-header-title is-centered">
         <linkpreview :url="link.link_content" />
+        <a class="linky" v-on:click="editing=true">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
       </div>
       <div v-else class="card-header-title">
         <div class="field has-addons">
@@ -22,6 +25,7 @@
               name="title"
               placeholder="Link to Content"
               ref="linkContent"
+              v-model="link.link_content"
             />
             <span class="icon is-small is-left">
               <i class="fa fa-link"></i>
@@ -70,18 +74,20 @@ export default {
     return {
       donate_url: `http://${location.host}/donate/`,
       link: this.iLink,
-      balance: ''
+      balance: '',
+      editing: false
     }
   },
   methods: {
     addLinkContent: function () {
       let self = this
       let data = {
-        link_content: self.$refs.linkContent.value
+        link_content: self.link.link_content
       }
       axios.post('/api/link/addcontent/' + self.link.link_token, data)
         .then(response => {
           self.$set(this, 'link', response.data.link)
+          self.editing = false
         })
         .catch(err => {
           if (err.response) {
