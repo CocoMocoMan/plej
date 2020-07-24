@@ -108,6 +108,7 @@ export default {
   },
   mounted () {
     this.balance = this.calculateBalance()
+    if (!this.link.link_content) this.editing = true
   }
 }
 </script>
