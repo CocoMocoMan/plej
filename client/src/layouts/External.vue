@@ -93,8 +93,8 @@ export default {
       this.isActive = !this.isActive
     },
     scrollFix: function (hashbang) {
+      this.isActive = false
       location.href = hashbang
-      this.toggleActive()
     }
   }
 }
