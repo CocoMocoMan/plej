@@ -31,13 +31,13 @@
           <router-link
             class="is-size-5 is-strong navbar-item"
             :to="{ name: 'Landing'}"
-            v-on:click.native="toggleActive"
+            v-on:click.native="inactivate"
             :target="useExternalLinks ? '_blank' : ''"
           >Home</router-link>
           <router-link
             class="is-size-5 is-strong navbar-item"
             :to="{ name: 'AboutUs'}"
-            v-on:click.native="toggleActive"
+            v-on:click.native="inactivate"
             :target="useExternalLinks ? '_blank' : ''"
           >About</router-link>
           <!-- <li>
@@ -59,7 +59,7 @@
             class="is-size-5 is-strong navbar-item"
             :to="{ name: 'Login'}"
             :target="useExternalLinks ? '_blank' : ''"
-            v-on:click.native="toggleActive"
+            v-on:click.native="inactivate"
           >Log In</router-link>
           <div class="navbar-item">
             <router-link
@@ -67,7 +67,7 @@
               :class="isActive ? '': 'is-rounded'"
               :to="{ name: 'Register'}"
               :target="useExternalLinks ? '_blank' : ''"
-              v-on:click.native="toggleActive"
+              v-on:click.native="inactivate"
             >Sign up</router-link>
           </div>
         </div>
@@ -92,8 +92,11 @@ export default {
     toggleActive: function () {
       this.isActive = !this.isActive
     },
-    scrollFix: function (hashbang) {
+    inactivate: function () {
       this.isActive = false
+    },
+    scrollFix: function (hashbang) {
+      this.inactivate()
       location.href = hashbang
     }
   }
