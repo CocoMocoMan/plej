@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="column">
-            <img src="../assets/pig-solo.png" alt="Description" style="width:100%; height:auto;" />
+            <img src="../assets/lost.png" alt="Description" style="width:100%; height:auto;" />
           </div>
         </div>
       </div>

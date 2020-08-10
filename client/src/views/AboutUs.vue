@@ -17,7 +17,7 @@
           <h5 class="title is-5 pt-6 pb-4">Give your supporters ease of mind</h5>
           <p class="subtitle is-5 is-muted has-text-left is-full">
             Plej provides a secure place for your fans to quickly stop by and drop you a few dollars
-            without having to worry about reoccurring fees or setting up an account.
+            without having to worry about recurring fees or setting up an account.
           </p>
           <h5 class="title is-5 pt-6 pb-4">Learn what’s working best</h5>
 
@@ -34,6 +34,11 @@
             Plej is designed to be simple and quick to get up and running.
           </p>
         </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-5 is-offset-7">
+        <img src="../assets/aboutus.png" style="width:100%; height:auto;" />
       </div>
     </div>
   </div>

@@ -1,6 +1,5 @@
 <template>
-  <div class="columns is-centered is-multiline has-text-centered section">
-    <div class="column is-one-third"></div>
+  <div class="columns is-multiline section has-text-centered">
     <div class="column is-one-third">
       <h1 class="title">Dashboard</h1>
       <p class="label">Welcome, {{ user.name }}</p>
@@ -16,7 +15,6 @@
         >Manage Links</router-link>
       </div>
     </div>
-    <div class="column is-one-third"></div>
   </div>
 </template>
 
