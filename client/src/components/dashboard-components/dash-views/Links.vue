@@ -1,5 +1,5 @@
 <template>
-  <div class="container is-rounded">
+  <div class="dash-container">
     <div v-for="links in user.links" :key="links">
       <div>Token: {{links.link_token}}</div>
       <div>Content: {{links.link_content}}</div>
