@@ -20,7 +20,7 @@ import InternalLayout from '../layouts/Internal'
 import sideNav from '../components/dashboard-components/components/sideNav'
 
 export default {
-  name: 'Dashboard',
+  name: 'Dashboard2',
   components: {
     sideNav
   },
