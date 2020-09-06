@@ -20,6 +20,12 @@ import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
 import AdminLinkManager from '@/views/admin/AdminLinkManager'
 import LeadsManager from '@/views/admin/LeadsManager'
+//Importing components for dashboard --Drew
+import Home from '../components/dashboard-components/dash-views/Home.vue'
+import Links from '../components/dashboard-components/dash-views/Links.vue'
+import Donations from '../components/dashboard-components/dash-views/Donations.vue'
+import Analytics from '../components/dashboard-components/dash-views/Analytics.vue'
+import Dashboard2 from '../views/Dashboard2.vue'
 
 Vue.use(Router)
 
@@ -55,7 +61,25 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard,
+      component: Dashboard2,
+      children: [
+        {
+          path: 'home',
+          component: Home
+        },
+        {
+          path: 'links',
+          component: Links
+        },
+        {
+          path: 'donations',
+          component: Donations
+        },
+        {
+          path: 'analytics',
+          component: Analytics
+        }
+      ],
       meta: {
         title: 'Dashboard - Plej'
       }
