@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Login from '@/views/Login'
-// import Register from '@/views/Register'
+import Login from '@/views/Login'
+import Register from '@/views/Register'
 import Dashboard from '@/views/Dashboard'
 import Donate from '@/views/Donate'
 import InvalidLink from '@/views/InvalidLink'
@@ -11,7 +11,7 @@ import Landing from '@/views/Landing'
 import PaymentConfirmation from '@/views/PaymentConfirmation'
 import TermsConditions from '@/views/TermsConditions'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
-import UnderConstruction from '@/views/UnderConstruction'
+// import UnderConstruction from '@/views/UnderConstruction'
 import AboutUs from '@/views/AboutUs'
 import Resources from '@/views/Resources'
 // admin
@@ -37,8 +37,16 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: UnderConstruction,
-      // component: Login,
+      // component: UnderConstruction,
+      component: Login,
+      meta: {
+        title: 'Login - Plej'
+      }
+    },
+    {
+      path: '/login/:error',
+      name: 'LoginError',
+      component: Login,
       meta: {
         title: 'Login - Plej'
       }
@@ -46,8 +54,8 @@ export default new Router({
     {
       path: '/register',
       name: 'Register',
-      // component: Register,
-      component: UnderConstruction,
+      component: Register,
+      // component: UnderConstruction,
       meta: {
         title: 'Sign Up - Plej'
       }

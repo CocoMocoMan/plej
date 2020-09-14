@@ -1,21 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const stripeconfig = require('../../config/stripe.js')
 
-const ThirdPartyProviderSchema = new mongoose.Schema(
-  {
-    provider_name: {
-      type: String,
-      default: null
-    },
-    provider_id: {
-      type: String,
-      default: null
-    },
-    provider_data: {
-      type: {},
-      default: null
-    }
-  })
+const stripe = require('stripe')(stripeconfig.secretKey)
 
 const DonationSchema = new mongoose.Schema(
   {
@@ -59,6 +46,22 @@ const LinkSchema = new mongoose.Schema(
 
 const UserSchema = new mongoose.Schema(
   {
+    google_id: {
+      type: String,
+      default: null
+    },
+    facebook_id: {
+      type: String,
+      default: null
+    },
+    twitter_id: {
+      type: String,
+      default: null
+    },
+    stripe_id: {
+      type: String,
+      default: null
+    },
     name: {
       type: String
     },
@@ -77,7 +80,6 @@ const UserSchema = new mongoose.Schema(
     alias: {
       type: String
     },
-    third_party_auth: [ThirdPartyProviderSchema],
     links: [LinkSchema],
     date: {
       type: Date,
@@ -91,7 +93,7 @@ UserSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
-UserSchema.methods.validPassword = function (password) {
+UserSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 
@@ -99,12 +101,26 @@ UserSchema.methods.generateToken = function () {
   return randomToken()
 }
 
+UserSchema.methods.addStripeAccount = function () {
+  stripe.accounts.create({
+    type: 'express',
+    email: this.email
+  })
+    .then(account => {
+      this.stripe_id = account.id
+      this.save()
+    })
+}
+
 UserSchema.methods.publicData = function () {
   let publicUser = this
+  publicUser.google_id = ''
+  publicUser.facebook_id = ''
+  publicUser.twitter_id = ''
+  publicUser.stripe_id = ''
   publicUser.email = ''
   publicUser.password = ''
-  publicUser.third_party_auth = []
-  publicUser.donations = []
+  publicUser.links = []
   publicUser.date = ''
   return publicUser
 }

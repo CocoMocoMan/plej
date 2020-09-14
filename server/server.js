@@ -2,10 +2,12 @@ const express = require('express')
 const forceSSL = require('express-force-ssl')
 const http = require('http')
 const https = require('https')
+const cors = require('cors')
 const fs = require('fs')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+var flash = require('connect-flash');
 const pino = require('pino')
 const expressPino = require('express-pino-logger')
 const passport = require('passport')
@@ -41,6 +43,8 @@ app.use(session({ secret: 'secret' }));
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(flash())
+
 //logger express middleware
 const expressLogger = expressPino({ logger })
 app.use(expressLogger)
@@ -66,6 +70,14 @@ app.use((err, req, res, next) => {
 //Apple pay verification
 app.use(express.static(__dirname + '/.well-known'))
 app.get('/.well-known/apple-developer-merchantid-domain-association', (req, res) => res.sendFile(__dirname + '/.well-known/apple-developer-merchantid-domain-association'))
+
+//CORS
+const corsOptions = {
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true
+};
+app.use(cors(corsOptions))
 
 //Handle production
 if (process.env.NODE_ENV === 'production') {

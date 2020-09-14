@@ -1,6 +1,10 @@
 <template>
   <div class="section">
-    <a :href="'https://connect.stripe.com/express/oauth/authorize?client_id=ca_32D88BD1qLklliziD7gYQvctJIhWBSQ7&state={STATE_VALUE}&suggested_capabilities[]=transfers&stripe_user[email]=' + user.email "><img src="../assets/connectstripe.png"></a>
+    <div v-if="!account.details_submitted">
+      <a :href="accountLink">
+        <img src="../assets/connectstripe.png" />
+      </a>
+    </div>
   </div>
 </template>
 
@@ -12,11 +16,14 @@ export default {
   name: 'PaymentSetup',
   data () {
     return {
-      stateValue: '',
+      account: {
+        details_submitted: undefined
+      },
       user: {
         email: '',
         name: ''
-      }
+      },
+      accountLink: ''
     }
   },
   methods: {
@@ -33,12 +40,37 @@ export default {
           }
         })
     },
-    getStripeStateValue: function () {
-
+    getAccount: function () {
+      let self = this
+      axios.get('/api/payment/account')
+        .then((response) => {
+          self.$set(this, 'account', response.data.account)
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+            router.push('/login')
+          }
+        })
+    },
+    getAccountLink: function () {
+      let self = this
+      axios.get('/api/payment/accountlink')
+        .then((response) => {
+          self.accountLink = response.data.accountLink
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 401) {
+            console.log(err.response.data.message)
+            router.push('/login')
+          }
+        })
     }
   },
   mounted () {
     this.getUserData()
+    this.getAccount()
+    this.getAccountLink()
   },
   created () {
     this.$emit('update:layout', InternalLayout)

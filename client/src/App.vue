@@ -89,6 +89,7 @@ $input-border-color: #d1d1d1;
 @import "../node_modules/bulma/sass/elements/title.sass";
 @import "@creativebulma/bulma-divider";
 @import "@creativebulma/bulma-tooltip";
+@import "bulma-social/bin/bulma-social.min.css";
 
 html {
   background-color: $white;
