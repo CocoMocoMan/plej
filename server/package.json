@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node ./server.js  | ./node_modules/.bin/pino-cloudwatch --group plej_api_prod --aws_access_key_id AKIAJ33IVW3RTWSS6OFA --aws_secret_access_key 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 --aws_region us-east-2",
-    "dev": "nodemon ./server.js | ./node_modules/.bin/pino-pretty",
+    "start": "node ./server.js  | pino-cloudwatch --group plej_api_prod --aws_access_key_id AKIAJ33IVW3RTWSS6OFA --aws_secret_access_key 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 --aws_region us-east-2",
+    "dev": "nodemon ./server.js | pino-pretty",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "oakel",
