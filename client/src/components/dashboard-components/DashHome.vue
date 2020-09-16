@@ -1,79 +1,90 @@
 <template>
   <!-- Overall tile container -->
-  <div class='tile is-ancestor'>
+  <div class="tile is-ancestor">
     <!-- Vertical tile container for two rows -->
-    <div class='tile is-vertical'>
+    <div class="tile is-vertical">
       <!-- Upper row -->
-      <div class='tile'>
+      <div class="tile">
         <!-- Latest link card -->
-        <div class='tile is-parent is-vertical dash-card is-10'>
+        <div class="tile is-parent is-vertical dash-card is-10">
           <!-- Latest link upper section -->
-          <div class='tile container'>
-            <p><span class='dash-title is-size-5'>Latest Link</span></p>
+          <div class="tile container">
+            <p>
+              <span class="dash-title is-size-5">Latest Link</span>
+            </p>
           </div>
           <!-- Latest link lower section -->
-          <div class='tile'>
+          <div class="tile">
             <!-- Left lower section -->
-            <div class='tile is-vertical'>
-              <p class='is-size-4'>Title of Content</p>
+            <div class="tile is-vertical">
+              <p class="is-size-4">Title of Content</p>
               <div>
-                <button class='dash-button'>Copy Link</button>
+                <button class="dash-button">Copy Link</button>
               </div>
               <p class="mt-2">Date</p>
             </div>
             <!-- Right lower section -->
-            <div class='tile is-vertical has-text-right'>
-              <p class="is-size-4">Amount raised: <span class='plej-yellow'>$420</span></p>
+            <div class="tile is-vertical has-text-right">
+              <p class="is-size-4">
+                Amount raised:
+                <span class="plej-yellow">$420</span>
+              </p>
               <p class="is-size-5">Donations</p>
               <p class="is-size-5">Page visits</p>
             </div>
           </div>
         </div>
         <!-- Balance card -->
-        <div class='tile is-parent is-vertical dash-card'>
+        <div class="tile is-parent is-vertical dash-card">
           <!-- Balance title -->
-          <div class='tile container'>
-            <p><span class='dash-title is-size-5'>Balance</span></p>
+          <div class="tile container">
+            <p>
+              <span class="dash-title is-size-5">Balance</span>
+            </p>
           </div>
           <!-- Balance amount -->
-          <div class='tile container mt-4 mb-4'>
-            <p class='is-size-3'>$120</p>
+          <div class="tile container mt-4 mb-4">
+            <p class="is-size-3">$120</p>
           </div>
           <!-- Balance transfer button section -->
-          <div class='tile container'>
+          <div class="tile container">
             <div>
-              <button class='dash-button'>Transfer</button>
+              <button class="dash-button">Transfer</button>
             </div>
           </div>
         </div>
       </div>
       <!-- Lower row -->
-      <div class='tile'>
+      <div class="tile">
         <!-- Analytics card -->
-        <div class='tile is-parent is-vertical dash-card is-10'>
+        <div class="tile is-parent is-vertical dash-card is-10">
           <!-- Analytics title -->
-          <div class='tile container'>
-            <p><span class='dash-title is-size-5'>Analytics</span></p>
+          <div class="tile container">
+            <p>
+              <span class="dash-title is-size-5">Analytics</span>
+            </p>
           </div>
-          <div class='tile container is-parent'>
-            <img src="../../assets/construction.png" alt="Construction pig" style='height: 10rem;'>
+          <div class="tile container is-parent">
+            <img src="../../assets/construction.png" alt="Construction pig" style="height: 10rem;" />
           </div>
-          <div class='tile container'>
+          <div class="tile container">
             <p class="is-size-4">Under Construction</p>
           </div>
         </div>
         <!-- Last 5 donos card -->
-        <div class='tile is-parent is-vertical dash-card'>
-          <div class='tile container'>
-            <p><span class='dash-title is-size-5'>Last 5 Donations</span></p>
+        <div class="tile is-parent is-vertical dash-card">
+          <div class="tile container">
+            <p>
+              <span class="dash-title is-size-5">Last 5 Donations</span>
+            </p>
           </div>
           <!-- Last 5 donos -->
-          <div class='tile container'>
+          <div class="tile container">
             <p>No links yet. To get started, head to the Link Manager</p>
           </div>
-          <div class='tile container'>
+          <div class="tile container">
             <div>
-              <button class='dash-button mt-6'>Go to Link Manager</button>
+              <button class="dash-button mt-6">Go to Link Manager</button>
             </div>
           </div>
         </div>
@@ -90,34 +101,12 @@ export default {
   components: {
     linkprevue
   },
-  data () {
-    return {
-      user: {
-        name: '',
-        email: '',
-        links: [],
-        date: ''
-      },
-      // Being used for testing
-      fakeUser: {
-        name: 'Max Noman',
-        email: 'max@plej.link',
-        links: [
-          {
-            id: '01',
-            content: 'plej.link',
-            title: 'Jimmy Neutron Analysis',
-            donations: [
-              {
-                from: 'Tony Pizza',
-                amount: '$5',
-                message: 'lmao u suck',
-                date: '09/12/2020'
-              }
-            ]
-          }
-        ]
-      }
+  props: {
+    user: {
+      name: '',
+      email: '',
+      links: [],
+      date: ''
     }
   },
   methods: {

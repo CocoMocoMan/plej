@@ -1,14 +1,16 @@
 <template>
-    <!-- Tile holder -->
-    <div class='tile is-ancestor'>
-        <!-- Vertical Tile -->
-        <div class="tile is-parent is-vertical dash-card">
-            <!-- Title -->
-            <div class="tile container">
-                <p><span class="dash-title is-size-4 pl-2 pr-2">Donations</span></p>
-            </div>
-        </div>
+  <!-- Tile holder -->
+  <div class="tile is-ancestor">
+    <!-- Vertical Tile -->
+    <div class="tile is-parent is-vertical dash-card">
+      <!-- Title -->
+      <div class="tile container">
+        <p>
+          <span class="dash-title is-size-4 pl-2 pr-2">Donations</span>
+        </p>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 import axios from 'axios'
@@ -44,5 +46,4 @@ export default {
 }
 </script>
 <style>
-
 </style>

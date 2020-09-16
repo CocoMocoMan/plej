@@ -1,11 +1,11 @@
 <template>
-  <div class='container is-fluid'>
-    <div class='tile is-ancestor'>
-      <div class='tile is-parent dash-card is-1' style='height: 30%;'>
-        <dash-nav></dash-nav>
+  <div class="container is-fluid">
+    <div class="tile is-ancestor">
+      <div class="tile is-parent dash-card is-1" style="height: 30%;">
+        <dash-nav :currComponent.sync="currComponent"></dash-nav>
       </div>
-      <div class='tile is-parent'>
-        <router-view></router-view>
+      <div class="tile is-parent">
+        <component :is="currComponent" :user="user"></component>
       </div>
     </div>
   </div>
@@ -15,15 +15,13 @@
 import axios from 'axios'
 import router from '../router'
 import InternalLayout from '../layouts/Internal'
-import DashHome from '../components/dashboard-components/DashHome.vue'
-import DashNav from '../components/dashboard-components/DashNav.vue'
-import DashLinks from '../components/dashboard-components/DashLinks'
+import DashHome from '../components/dashboard-components/DashHome'
+import DashNav from '../components/dashboard-components/DashNav'
 export default {
   name: 'Dashboard',
   components: {
-    DashHome,
     DashNav,
-    DashLinks
+    DashHome
   },
   data () {
     return {
@@ -31,7 +29,8 @@ export default {
         name: '',
         email: '',
         alias: ''
-      }
+      },
+      currComponent: DashHome
     }
   },
   methods: {
