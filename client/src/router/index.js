@@ -20,6 +20,10 @@ import AdminDashboard from '@/views/admin/AdminDashboard'
 import UserManager from '@/views/admin/UserManager'
 import AdminLinkManager from '@/views/admin/AdminLinkManager'
 import LeadsManager from '@/views/admin/LeadsManager'
+// dashboard imports
+import DashHome from '../components/dashboard-components/DashHome'
+import DashLinks from '../components/dashboard-components/DashLinks'
+import DashDonos from '../components/dashboard-components/DashDonos'
 
 Vue.use(Router)
 
@@ -64,6 +68,20 @@ export default new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+      children: [
+        {
+          path: '/dashboard/',
+          component: DashHome
+        },
+        {
+          path: '/dashboard/dash-links',
+          component: DashLinks
+        },
+        {
+          path: '/dashboard/dash-donos',
+          component: DashDonos
+        }
+      ],
       meta: {
         title: 'Dashboard - Plej'
       }
