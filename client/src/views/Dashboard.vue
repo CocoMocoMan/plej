@@ -1,18 +1,12 @@
 <template>
-  <div class="columns is-multiline section has-text-centered">
-    <div class="column is-one-third">
-      <h1 class="title">Dashboard</h1>
-      <p class="label">Welcome, {{ user.name }}</p>
-      <br />
-      <div>
-        <router-link
-          class="button is-white is-rounded is-strong has-text-grey"
-          :to="{ name: 'PaymentSetup'}"
-        >Payment Setup</router-link>
-        <router-link
-          class="button is-primary is-rounded has-text-white is-strong"
-          :to="{ name: 'LinkManager'}"
-        >Manage Links</router-link>
+  <div class='container is-fluid'>
+    <div class='tile is-ancestor'>
+      <div class='tile is-parent dash-card is-1' style='height: 30%;'>
+        <!-- <p>{{user.name}}</p> -->
+        <dash-nav></dash-nav>
+      </div>
+      <div class='tile is-parent'>
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -22,8 +16,16 @@
 import axios from 'axios'
 import router from '../router'
 import InternalLayout from '../layouts/Internal'
+import DashHome from '../components/dashboard-components/DashHome.vue'
+import DashNav from '../components/dashboard-components/DashNav.vue'
+import DashLinks from '../components/dashboard-components/DashLinks'
 export default {
   name: 'Dashboard',
+  components: {
+    DashHome,
+    DashNav,
+    DashLinks
+  },
   data () {
     return {
       user: {
