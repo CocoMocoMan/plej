@@ -2,7 +2,6 @@
   <div class='container is-fluid'>
     <div class='tile is-ancestor'>
       <div class='tile is-parent dash-card is-1' style='height: 30%;'>
-        <!-- <p>{{user.name}}</p> -->
         <dash-nav></dash-nav>
       </div>
       <div class='tile is-parent'>
