@@ -18,18 +18,38 @@
             <!-- Left lower section -->
             <div class="tile is-vertical">
               <p class="is-size-4">Title of Content</p>
-              <div>
-                <button class="dash-button">Copy Link</button>
+              <div v-if="user.links && user.links.length != 0">
+                <linkprevue v-if="user.links[0].link_content" :url="user.links[0].link_content">
+                  <template slot-scope="props">
+                    <p class="title is-4">{{props.title}}</p>
+                  </template>
+                </linkprevue>
+                <p v-else>{{ donate_url + user.links[0].link_token}}</p>
+                <div>
+                  <button
+                    class="dash-button"
+                    v-clipboard:copy="donate_url + user.links[0].link_token"
+                  >Copy Link</button>
+                </div>
+                <p class="mt-2">
+                  <u>Date</u>
+                </p>
+                <p
+                  class="subtitle"
+                  v-if="user.links && user.links.length != 0"
+                >{{ prettifyDate(user.links[0].date) }}</p>
               </div>
-              <p class="mt-2">Date</p>
+              <p
+                v-else
+              >You haven't set up a link yet. Go to Link Manager to set up your first Plej link!</p>
             </div>
             <!-- Right lower section -->
             <div class="tile is-vertical has-text-right">
               <p class="is-size-4">
                 Amount raised:
-                <span class="plej-yellow">$420</span>
+                <span class="plej-yellow">{{ getDonationsTotal(user.links[0]) }}</span>
               </p>
-              <p class="is-size-5">Donations</p>
+              <p class="is-size-5">Donations: {{ getNumberOfDonations(user.links[0]) }}</p>
               <p class="is-size-5">Page visits</p>
             </div>
           </div>
@@ -57,7 +77,7 @@
       <!-- Lower row -->
       <div class="tile">
         <!-- Analytics card -->
-        <div class="tile is-parent is-vertical dash-card is-10">
+        <div class="tile is-parent is-vertical dash-card is-8">
           <!-- Analytics title -->
           <div class="tile container">
             <p>
@@ -75,16 +95,76 @@
         <div class="tile is-parent is-vertical dash-card">
           <div class="tile container">
             <p>
-              <span class="dash-title is-size-5">Last 5 Donations</span>
+              <span class="dash-title is-size-5">Recent Donations</span>
             </p>
           </div>
           <!-- Last 5 donos -->
           <div class="tile container">
-            <p>No links yet. To get started, head to the Link Manager</p>
+            <p
+              v-if="!user.links || user.links.length == 0"
+            >No links yet. To get started, head to the Link Manager</p>
+            <p
+              v-else-if="getRecentDonations(user).length === 0"
+            >You haven't recieved any donations yet</p>
+            <div v-else>
+              <div class="level is-mobile">
+                <div class="level-item has-text-centered mr-4">
+                  <div>
+                    <p class="heading has-text-primary has-text-weight-bold">
+                      <i class="fa fa-usd"></i>
+                      &nbsp;Amount
+                    </p>
+                    <p
+                      v-for="donation in getRecentDonations(user)"
+                      :key="donation.from"
+                      class="title is-5"
+                    >${{ donation.amount }}</p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered mr-4 ml-4">
+                  <div>
+                    <p class="heading has-text-primary has-text-weight-bold">
+                      <i class="fa fa-paper-plane"></i>
+                      &nbsp;From
+                    </p>
+                    <p
+                      v-for="donation in getRecentDonations(user)"
+                      :key="donation.from"
+                      class="title is-5"
+                    >
+                      <span v-if="!donation.from">None</span>
+                      {{ donation.from }}
+                    </p>
+                  </div>
+                </div>
+                <div class="level-item has-text-centered ml-4">
+                  <div>
+                    <p class="heading has-text-primary has-text-weight-bold">
+                      <i class="fa fa-calendar"></i>
+                      &nbsp;Date
+                    </p>
+                    <p
+                      v-for="donation in getRecentDonations(user)"
+                      :key="donation.from"
+                      class="title is-5"
+                    >{{ prettifyDateShort(donation.date) }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="tile container">
-            <div>
-              <button class="dash-button mt-6">Go to Link Manager</button>
+            <div v-if="!user.links || user.links.length == 0">
+              <button
+                class="dash-button mt-6"
+                v-on:click="changeComponent(dashLinks)"
+              >Go to Link Manager</button>
+            </div>
+            <div v-else>
+              <button
+                class="dash-button mt-6"
+                v-on:click="changeComponent(dashDonos)"
+              >Go to Donations</button>
             </div>
           </div>
         </div>
@@ -93,13 +173,15 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
-import router from '../../router'
 import linkprevue from 'link-prevue'
+import DashLinks from './DashLinks'
+import DashDonos from './DashDonos'
 export default {
   name: 'DashHome',
   components: {
-    linkprevue
+    linkprevue,
+    DashLinks,
+    DashDonos
   },
   props: {
     user: {
@@ -109,30 +191,42 @@ export default {
       date: ''
     }
   },
+  data () {
+    return {
+      donate_url: `http://${location.host}/donate/`,
+      dashLinks: DashLinks,
+      dashDonos: DashDonos
+    }
+  },
   methods: {
-    getUserData: function () {
-      console.log('here')
-      let self = this
-      axios.get('/api/auth/user')
-        .then((response) => {
-          self.$set(this, 'user', response.data.user)
-          console.log(response.data.user)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status === 401) {
-            console.log(err.response.data.message)
-            router.push('/login')
-          }
-        })
+    getDonationsTotal: function (link) {
+      let total = 0
+      if (!link) return total
+      for (let donation of link.donations) {
+        total += donation.amount
+      }
+      return total
     },
-    mounted () {
-      this.getUserData()
+    getNumberOfDonations: function (link) {
+      if (!link) return 0
+      return link.donations.length
     },
-    copyLink () {
-      alert('This does not work yet.')
+    prettifyDate: function (date) {
+      return new Date(date).toDateString()
     },
-    transfer () {
-      alert('This does not work yet')
+    prettifyDateShort: function (date) {
+      let dateObj = new Date(date)
+      return dateObj.getMonth() + '/' + dateObj.getDate()
+    },
+    getRecentDonations: function (user) {
+      let donations = []
+      for (let link of user.links) {
+        donations = donations.concat(link.donations)
+      }
+      return donations.sort((a, b) => (new Date(b.date) - new Date(a.date))).splice(0, 3)
+    },
+    changeComponent: function (component) {
+      this.$emit('update:currComponent', component)
     }
   }
 }

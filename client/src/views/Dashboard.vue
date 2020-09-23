@@ -5,7 +5,7 @@
         <dash-nav :currComponent.sync="currComponent"></dash-nav>
       </div>
       <div class="tile is-parent">
-        <component :is="currComponent" :user="user"></component>
+        <component :is="currComponent" :user="user" :currComponent.sync="currComponent"></component>
       </div>
     </div>
   </div>

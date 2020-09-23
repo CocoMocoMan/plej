@@ -16,6 +16,16 @@ module.exports = function (passport) {
 
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
+
+      //sort donations and links by date
+      const sortByDate = function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      }
+      if (user.links) {
+        user.links.sort(sortByDate)
+        if (user.links.donations) user.links.donations.sort(sortByDate)
+      }
+
       done(err, user)
     })
   })

@@ -5,10 +5,13 @@ import App from './App'
 import router from './router'
 import VueInputAutowidth from 'vue-input-autowidth'
 import VueDebounce from 'vue-debounce'
+import VueClipboard from 'vue-clipboard2'
 
 Vue.config.productionTip = false
 Vue.use(VueInputAutowidth)
 Vue.use(VueDebounce)
+VueClipboard.config.autoSetContainer = true // add this line
+Vue.use(VueClipboard)
 
 /* eslint-disable no-new */
 new Vue({

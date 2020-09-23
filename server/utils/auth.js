@@ -11,7 +11,7 @@ module.exports = {
 
   adminMiddleWare: function (req, res, next) {
     const user = req.user
-    if (!user || !(user.email === adminUser.email && user.validPassword(adminUser.password))) {
+    if (!user || !(user.email === adminUser.email && user.checkPassword(adminUser.password))) {
       res.status(401).json({ message: 'You are not authenticated' })
     } else {
       return next()
