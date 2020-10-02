@@ -10,7 +10,7 @@
       <li>
         <a v-on:click="changeComponent(dashDonos)" class="linky">Donations</a>
       </li>
-      <li>Analytics</li>
+      <li><a v-on:click="changeComponent(dashAnalytics)" class='linky'>Analytics</a></li>
       <li>Billing</li>
     </ul>
   </div>
@@ -19,19 +19,22 @@
 import DashHome from './DashHome'
 import DashLinks from './DashLinks'
 import DashDonos from './DashDonos'
+import DashAnalytics from './DashAnalytics'
 
 export default {
   name: 'DashNav',
   components: {
     DashHome,
     DashLinks,
-    DashDonos
+    DashDonos,
+    DashAnalytics
   },
   data () {
     return {
       dashHome: DashHome,
       dashLinks: DashLinks,
-      dashDonos: DashDonos
+      dashDonos: DashDonos,
+      dashAnalytics: DashAnalytics
     }
   },
   props: {
