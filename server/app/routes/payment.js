@@ -23,7 +23,6 @@ module.exports = function (app, logger) {
     totalFee = Math.round(totalFee)
     User.findOne({ 'links.link_token': token })
       .then((creator) => {
-        console.log(creator.stripe_id)
         stripe.paymentIntents.create(
           {
             amount: amountInCents,
@@ -102,6 +101,19 @@ module.exports = function (app, logger) {
       })
   })
 
+  app.get('/api/payment/loginlink', authMiddleware, (req, res, next) => {
+    let user = req.user
+    stripe.accounts.createLoginLink(
+      user.stripe_id
+    )
+      .then(link => {
+        res.status(200).json({ loginLink: link.url })
+      })
+      .catch((err) => {
+        return next(err)
+      })
+  })
+
   app.get('/api/payment/account', authMiddleware, (req, res, next) => {
     let user = req.user
     stripe.account.retrieve(user.stripe_id)
@@ -112,4 +124,56 @@ module.exports = function (app, logger) {
         return next(err)
       })
   })
+
+  app.get('/api/payment/balance', authMiddleware, (req, res, next) => {
+    let user = req.user
+    stripe.balance.retrieve({ stripeAccount: user.stripe_id })
+      .then(balance => {
+        res.status(200).json({ balance: balance })
+      })
+      .catch((err) => {
+        return next(err)
+      })
+  })
+
+  app.get('/api/payment/payout', authMiddleware, (req, res, next) => {
+    let user = req.user
+    stripe.balance.retrieve({ stripeAccount: user.stripe_id })
+      .then(balance => {
+        stripe.payouts.create({
+          amount: balance.available[0].amount,
+          currency: 'usd'
+        }, {
+          stripeAccount: user.stripe_id
+        })
+          .then(payout => {
+            logger.warn({
+              action: 'Stripe Payout Processed',
+              data: {
+                user: user.email,
+                payout: payout.id,
+                amount: payout.amount
+              }
+            })
+            res.status(200).json({ success: 'Success' })
+          })
+      })
+      .catch(err => {
+        return next(err)
+      })
+  }),
+
+    app.get('/api/payment/transactions', authMiddleware, (req, res, next) => {
+      let user = req.user
+      stripe.balanceTransactions.list({},
+        {
+          stripeAccount: user.stripe_id
+        })
+        .then(list => {
+          res.status(200).json({ transactions: list.data })
+        })
+        .catch(err => {
+          return next(err)
+        })
+    })
 }

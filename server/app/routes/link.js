@@ -28,7 +28,7 @@ module.exports = function (app, logger) {
 
   app.get('/api/link/creator/:token', (req, res, next) => {
     const token = req.params.token
-    User.findOne({ 'links.link_token': token })
+    User.findOneAndUpdate({ 'links.link_token': token }, { '$inc': { 'links.$.page_visits': 1 } })
       .then(creator => {
         if (!creator) {
           let err = new Error('Invalid Link')

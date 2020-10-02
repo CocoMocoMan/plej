@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const stripeconfig = require('../../config/stripe.js')
+const { isInteger } = require('validate.js')
 
 const stripe = require('stripe')(stripeconfig.secretKey)
 
@@ -38,6 +39,10 @@ const LinkSchema = new mongoose.Schema(
       default: null
     },
     donations: [DonationSchema],
+    page_visits: {
+      type: Number,
+      default: 0
+    },
     date: {
       type: Date,
       default: Date.now
@@ -104,7 +109,14 @@ UserSchema.methods.generateToken = function () {
 UserSchema.methods.addStripeAccount = function () {
   stripe.accounts.create({
     type: 'express',
-    email: this.email
+    email: this.email,
+    settings: {
+      payouts: {
+        schedule: {
+          interval: 'manual'
+        }
+      }
+    }
   })
     .then(account => {
       this.stripe_id = account.id
