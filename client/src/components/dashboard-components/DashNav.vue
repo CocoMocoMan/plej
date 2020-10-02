@@ -10,10 +10,15 @@
       <li>
         <a v-on:click="changeComponent(dashDonos)" class="linky">Donations</a>
       </li>
+<<<<<<< HEAD
       <li>Analytics</li>
       <li>
         <a v-on:click="changeComponent(DashBilling)" class="linky">Billing</a>
       </li>
+=======
+      <li><a v-on:click="changeComponent(dashAnalytics)" class='linky'>Analytics</a></li>
+      <li>Billing</li>
+>>>>>>> 485f5f4b9356a3cb53e5aa13257f3188a301b849
     </ul>
   </div>
 </template>
@@ -21,7 +26,11 @@
 import DashHome from './DashHome'
 import DashLinks from './DashLinks'
 import DashDonos from './DashDonos'
+<<<<<<< HEAD
 import DashBilling from './DashBilling'
+=======
+import DashAnalytics from './DashAnalytics'
+>>>>>>> 485f5f4b9356a3cb53e5aa13257f3188a301b849
 
 export default {
   name: 'DashNav',
@@ -29,14 +38,22 @@ export default {
     DashHome,
     DashLinks,
     DashDonos,
+<<<<<<< HEAD
     DashBilling
+=======
+    DashAnalytics
+>>>>>>> 485f5f4b9356a3cb53e5aa13257f3188a301b849
   },
   data () {
     return {
       dashHome: DashHome,
       dashLinks: DashLinks,
       dashDonos: DashDonos,
+<<<<<<< HEAD
       DashBilling: DashBilling
+=======
+      dashAnalytics: DashAnalytics
+>>>>>>> 485f5f4b9356a3cb53e5aa13257f3188a301b849
     }
   },
   props: {

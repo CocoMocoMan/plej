@@ -9,38 +9,116 @@
           <span class="dash-title is-size-4 pl-2 pr-2">Donations</span>
         </p>
       </div>
+      <div class='tile is-child'>
+        <div v-if='getRecentDonations(user) == 0'>
+          <!-- <p class='has-text-centered'>No donations yet</p> -->
+          <!-- ONLY FOR TESTING -->
+          <div class='level'>
+            <div class='level-left'>
+              <p>Max Noman: $5</p>
+            </div>
+            <div class='level-right'>
+              <p>2020-10-01</p>
+            </div>
+          </div>
+          <div class='level'>
+            <div class='level-left'>
+              <button v-on:click='showModal2()' class='dash-button'>View Message</button>
+            </div>
+          </div>
+          <hr/>
+          <div class='level'>
+            <div class='level-left'>
+              <p>Max Noman: $5</p>
+            </div>
+            <div class='level-right'>
+              <p>2020-10-01</p>
+            </div>
+          </div>
+          <div class='level'>
+            <div class='level-left'>
+              <button class='dash-button'>View Message</button>
+            </div>
+          </div>
+          <hr/>
+          <div id='lol' class='modal' style='background-color: rgba(0, 0, 0, 0.301);'>
+            <div class='modal-card'>
+              <div class='dash-card pl-6 pr-6 pt-6 pb-6'>Hey I really love your content</div>
+              <div class='level'>
+                  <div class='level-item'>
+                      <button v-on:click='closeModal2()' class='dash-button is-size-5'>Close</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- Loop through sorted donation array and display in levels -->
+        <div v-else v-for='donation in getRecentDonations(user)' :key='donation.from'>
+          <div class='level'>
+            <div class='level-left'>
+              <p class='is-size-5'>{{donation.from}}: <span>{{donation.amount}}</span></p>
+            </div>
+            <div class='level-right'>
+              <p class='is-size-5'>{{donation.date.slice(0,10)}}</p>
+            </div>
+          </div>
+          <div class='level'>
+            <div class='level-left'>
+              <button v-on:click='showModal(donation)' class='dash-button'>
+                View Message
+              </button>
+            </div>
+          </div>
+          <div :id='donation' class='modal' style='background-color: rgba(0, 0, 0, 0.301);'>
+            <div class='modal-card'>
+              <div class='dash-card pl-6 pr-6 pt-6 pb-6'>{{dontaion.message}}}</div>
+              <div class='level'>
+                  <div class='level-item'>
+                      <button v-on:click='closeModal()' class='dash-button is-size-5'>Close</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios'
-import router from '../../router'
 export default {
   name: 'DashDonos',
-  data () {
-    return {
-      user: {
-        name: '',
-        email: ''
-      }
+  props: {
+    user: {
+      links: []
     }
   },
   methods: {
-    getUserData: function () {
-      let self = this
-      axios.get('/api/auth/user')
-        .then((response) => {
-          self.$set(this, 'user', response.data.user)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status === 401) {
-            console.log(err.response.data.message)
-            router.push('/login')
-          }
-        })
+    getRecentDonations: function (user) {
+      let donations = []
+      for (let link of user.links) {
+        donations = donations.concat(link.donations)
+      }
+      return donations.sort((a, b) => (new Date(b.date) - new Date(a.date)))
     },
-    mounted () {
-      this.getUserData()
+    closeModal: function (dono) {
+      var element = document.getElementById(dono)
+      element.classList.remove('is-active')
+      console.log(element.classList)
+    },
+    // for testing
+    closeModal2: function () {
+      var element = document.getElementById('lol')
+      element.classList.remove('is-active')
+      console.log(element.classList)
+    },
+    showModal: function (dono) {
+      var element = document.getElementById(dono)
+      element.classList.add('is-active')
+    },
+    // for testing
+    showModal2: function () {
+      var element = document.getElementById('lol')
+      element.classList.add('is-active')
     }
   }
 }
