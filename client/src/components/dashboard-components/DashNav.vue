@@ -36,7 +36,7 @@ export default {
     DashHome,
     DashLinks,
     DashDonos,
-    DashBilling
+    DashBilling,
     DashAnalytics
   },
   data () {
@@ -44,7 +44,7 @@ export default {
       dashHome: DashHome,
       dashLinks: DashLinks,
       dashDonos: DashDonos,
-      DashBilling: DashBilling
+      DashBilling: DashBilling,
       dashAnalytics: DashAnalytics
     }
   },
